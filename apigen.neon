@@ -1,0 +1,18 @@
+source: src
+destination: doc
+extensions: [php]
+
+title: Appshed API
+
+accessLevels: [public, protected]
+php: Yes
+tree: Yes
+sourceCode: Yes
+download: No
+
+wipeout: Yes
+quiet: No
+progressbar: Yes
+colors: Yes
+updateCheck: Yes
+debug: No
