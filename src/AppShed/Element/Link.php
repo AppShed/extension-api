@@ -328,14 +328,16 @@ trait Link {
                 }
                 break;
         }
-        $xml->addClass($node, 'link');
-        if ($this->linkArrow === true) {
-            $node->appendChild($xml->createElement('div', 'link-arrow'));
+        if ($node->hasAttribute('data-linktype')) {
+            $xml->addClass($node, 'link');
+            if ($this->linkArrow === true) {
+                $node->appendChild($xml->createElement('div', 'link-arrow'));
+            }
+            else if ($this->linkArrow === false) {
+                $xml->addClass($node, 'link-no-arrow');
+            }
+            $node->setAttribute('x-blackberry-focusable', 'true');
         }
-        else if ($this->linkArrow === false) {
-            $xml->addClass($node, 'link-no-arrow');
-        }
-        $node->setAttribute('x-blackberry-focusable', 'true');
     }
     
     /**

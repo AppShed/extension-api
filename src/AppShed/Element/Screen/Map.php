@@ -25,6 +25,7 @@ class Map extends Screen {
      * @param array $javascripts
 	 */
     protected function getHTMLNodeBase($node, $xml, $settings, $css, &$javascripts) {
+        parent::getHTMLNodeBase($node, $xml, $settings, $css, $javascripts);
         $node->setAttribute('data-zoom', $this->zoom);
     }
     
@@ -39,7 +40,7 @@ class Map extends Screen {
 	protected function addHTMLChildren($items, $xml, $settings, $css, &$javascripts) {
 		$items->appendChild($itemsInner = $xml->createElement('script', array('type' => 'application/json')));
 		
-        $settings->pushCurrentScreen($this->getId);
+        $settings->pushCurrentScreen($this->getId());
 		
         $locs = array();
 		$headButtons = array();
