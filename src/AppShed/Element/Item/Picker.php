@@ -32,7 +32,7 @@ class Picker extends Item {
     protected $title;
     
     public function __construct($variableName, $type, $title) {
-        parent::__contruct();
+        parent::__construct();
         $this->variableName = $variableName;
         $this->type = $type;
         $this->title = $title;
@@ -88,7 +88,7 @@ class Picker extends Item {
 		$inner->appendChild($xml->createElement('span', array(
 			'class'=>'picked',
 			'data-value'=>$this->value ? ($this->type == static::TYPE_DATE ? $this->value->getTimestamp() : $this->value->format('H:i')) : null,
-			'data-placeholder'=>$this->placeholder,
+			'data-placeholder'=>$this->placeHolder,
 			'data-variable' => $this->variableName,
 			'data-picker-type' => $this->type,
 			'data-save-value' => $this->save)));

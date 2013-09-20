@@ -29,6 +29,12 @@ class Input extends Item {
      *
      * @var string
      */
+    protected $autocomplete;
+    
+    /**
+     *
+     * @var string
+     */
     protected $autoCompleteUrl;
     
     /**
@@ -42,14 +48,14 @@ class Input extends Item {
      *
      * @var boolean
      */
-    protected $localSearch;
+    protected $localsearch;
     
     public function __construct($variableName, $title, $value = null, $placeHolder = null) {
         parent::__construct();
         $this->title = $title;
         $this->variableName = $variableName;
         $this->value = $value;
-        $this->placeHolder = $placeHolder;
+        $this->placeholder = $placeHolder;
     }
 
     public function getTitle() {
@@ -94,7 +100,7 @@ class Input extends Item {
     }
 
     public function setLocalSearch($localSearch) {
-        $this->localSearch = $localSearch;
+        $this->localsearch = $localSearch;
     }
 
     protected function getClass() {

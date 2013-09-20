@@ -1,6 +1,8 @@
 <?php
 namespace AppShed\Element\Screen;
 
+use AppShed\Element\Item\GalleryOuterImage;
+
 class Gallery extends Screen {
     const TYPE = 'photo';
     const TYPE_CLASS = 'photo';
@@ -36,7 +38,6 @@ class Gallery extends Screen {
 	 * @param \AppShed\HTML\Settings $settings
 	 */
     protected function getHTMLNodeInner($node, $xml, $settings) {
-        parent::getHTMLNodeInner($node, $xml, $settings);
         $this->innerScreen = new GalleryInner($this->title);
         $this->innerScreen->copyStyles($this);
         $this->innerScreen->setId($this->getId());
@@ -46,6 +47,7 @@ class Gallery extends Screen {
         }));
         $this->innerScreen->setBack($this);
         $this->innerScreen->getHTMLNode($xml, $settings);
+        parent::getHTMLNodeInner($node, $xml, $settings);
 	}
 	
 	/**
@@ -71,7 +73,7 @@ class Gallery extends Screen {
             }
             else {
                 $child->getCSS($css, $settings);
-                $outerChild = new AppShed\Element\Item\GalleryOuterImage($child->getThumbImage());
+                $outerChild = new GalleryOuterImage($child->getThumbImage());
                 $outerChild->copyStyles($child);
                 $id = $child->getId(true);
                 $outerChild->setId($id);

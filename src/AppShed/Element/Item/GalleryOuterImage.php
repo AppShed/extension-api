@@ -22,7 +22,7 @@ class GalleryOuterImage extends Item {
     }
     
     public function getThumbImage() {
-        return $this->thumbImage ? $this->thumbImage : $this->image;
+        return $this->thumbImage;
     }
 
     public function setThumbImage(\AppShed\Style\Image $thumbImage) {
@@ -40,10 +40,9 @@ class GalleryOuterImage extends Item {
 	 * @param \AppShed\HTML\Settings $settings
 	 */
     protected function getHTMLNodeInner($node, $xml, $settings) {
-        $node->appendChild($xml->createImgElement($this->image->getUrl(), 'image'));
         $imageDiv = $xml->createElement('div', array('class' => 'image-container'));
-		$imageDiv->appendChild($xml->createImgElement($this->thumbImage->getUrl(), 'image'));
-		$node->appendChild($imageDiv);
+        $imageDiv->appendChild($xml->createImgElement($this->thumbImage->getUrl(), 'image'));
+	$node->appendChild($imageDiv);
         $this->applyLinkToNode($xml, $node, $settings);
     }
 }

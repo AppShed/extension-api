@@ -78,7 +78,7 @@ class Select extends Item {
 			'data-save-value' => $this->save)));
         
 		foreach ($this->options as $option) {
-			$optionNode = $xml->createElement('option', array('value' => $option['value'], 'text' => $option['title']));
+			$optionNode = $xml->createElement('option', array('value' => $option['value'], 'text' => $option['name']));
 			$select->appendChild($optionNode);
 			if ($option['value'] == $this->value) {
 				$optionNode->setAttribute('selected', 'selected');

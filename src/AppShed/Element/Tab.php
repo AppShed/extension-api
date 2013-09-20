@@ -1,18 +1,18 @@
 <?php
 namespace AppShed\Element;
 
-class Tab {
+class Tab extends Element {
     use Link;
     
     protected $title;
-    protected $iconSrc;
+    protected $icon;
     
     const HTML_TAG = 'td';
     
-    public function __construct($title, $iconSrc) {
+    public function __construct($title, \AppShed\Style\Image $icon) {
         parent::__construct();
         $this->title = $title;
-        $this->iconSrc = $iconSrc;
+        $this->icon = $icon;
     }
     
     public function getTitle() {
@@ -24,11 +24,11 @@ class Tab {
     }
 
     public function getIconSrc() {
-        return $this->iconSrc;
+        return $this->icon;
     }
 
-    public function setIconSrc($iconSrc) {
-        $this->iconSrc = $iconSrc;
+    public function setIcon(\AppShed\Style\Image $icon) {
+        $this->icon = $icon;
     }
     
 	protected function getIdType() {
@@ -48,6 +48,7 @@ class Tab {
     protected function getHTMLNodeInner($node, $xml, $settings) {
         $node->appendChild($inner = $xml->createElement('div', 'tab-inner'));
         $inner->appendChild($xml->createElement('div', array('class'=>'label', 'text' => $this->title)));
-        $inner->appendChild($xml->createImgElement($this->iconSrc, 'icon'));
+        $inner->appendChild($xml->createImgElement($this->icon->getUrl(), 'icon'));
+        $this->applyLinkToNode($xml, $node, $settings);
     }
 }

@@ -103,7 +103,7 @@ class Image {
 			$positionHor = 'center';
 			$positionVer = 'center';
 
-			switch($this->type) {
+			switch($this->style) {
 				case self::TYPE_STRETCH:
 					$size = '100% 100%';
 					break;

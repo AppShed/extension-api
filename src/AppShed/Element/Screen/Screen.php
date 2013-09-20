@@ -53,7 +53,7 @@ class Screen extends \AppShed\Element\Element {
     
     /**
      *
-     * @var \DateTime
+     * @var boolean|\DateTime
      */
     protected $updated;
     
@@ -143,7 +143,7 @@ class Screen extends \AppShed\Element\Element {
         return $this->updated;
     }
 
-    public function setUpdated(\DateTime $updated) {
+    public function setUpdated($updated) {
         $this->updated = $updated;
     }
     

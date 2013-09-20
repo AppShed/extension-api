@@ -1,61 +1,73 @@
 <?php
+
 namespace AppShed\Element;
 
 class App extends Element {
+
     use Container;
-    use Root;
-    
+
+use Root;
+
     /**
      *
      * @var string
      */
     protected $name;
+
     /**
      *
      * @var string
      */
-	protected $description;
+    protected $description;
+
     /**
      *
      * @var string
      */
     protected $previewUrl;
+
     /**
      *
      * @var string
      */
     protected $webviewUrl;
+
     /**
      *
      * @var \AppShed\Style\Image
      */
     protected $icon;
+
     /**
      *
      * @var string
      */
     protected $flag;
+
     /**
      *
      * @var bool
      */
     protected $ads;
+
     /**
      *
      * @var \DateTime
      */
     protected $updated;
+
     /**
      *
      * @var \AppShed\Style\Image
      */
     protected $splash;
+
     /**
      * 
      * @var string
      */
     protected $js;
-    
+
     /**
      *
      * @var string
@@ -70,68 +82,68 @@ class App extends Element {
     public function __construct($name = null, $icon = null) {
         parent::__construct();
         $this->setName($name);
-		$this->setIcon($icon);
+        $this->setIcon($icon);
     }
-    
+
     /**
      * Set the name of the app
      * @internal used in appbuilder
      * @param string $name
      */
     public function setName($name) {
-		$this->name = $name;
-	}
-	
+        $this->name = $name;
+    }
+
     /**
      * @internal used in appbuilder
      * @param string $description
      */
-	public function setDescription($description) {
-		$this->description = $description;
-	}
-    
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
     /**
      * Link for preview
      * @internal used in appbuilder
      * @param string $url
      */
     public function setPreviewUrl($url) {
-		$this->previewUrl = $url;
-	}
-	
+        $this->previewUrl = $url;
+    }
+
     /**
      * Link to webapp
      * @internal used in appbuilder
      * @param string $url
      */
-	public function setWebviewUrl($url) {
-		$this->webviewUrl = $url;
-	}
-    
+    public function setWebviewUrl($url) {
+        $this->webviewUrl = $url;
+    }
+
     /**
      * @internal used in appbuilder
      * @param string $flag
      */
     public function setFlag($flag) {
-		$this->flag = $flag;
-	}
-    
+        $this->flag = $flag;
+    }
+
     /**
      * @internal used in appbuilder
      * @param \AppShed\Style\Image $icon
      */
     public function setIcon($icon) {
-		$this->icon = $icon;
-	}
-    
+        $this->icon = $icon;
+    }
+
     /**
      * Show ads in this app
      * @param boolean $ads
      */
     public function setAds($ads) {
-		$this->ads = $ads;
-	}
-    
+        $this->ads = $ads;
+    }
+
     public function getUpdated() {
         return $this->updated;
     }
@@ -155,7 +167,7 @@ class App extends Element {
     public function setJs($js) {
         $this->js = $js;
     }
-    
+
     public function getCustomCSS() {
         return $this->customCSS;
     }
@@ -163,32 +175,32 @@ class App extends Element {
     public function setCustomCSS($customCSS) {
         $this->customCSS = $customCSS;
     }
-    
+
     protected function getIdType() {
         return 'app';
     }
-    
+
     protected function getClass() {
-		return "app " . parent::getClass();
-	}
-    
+        return "app " . parent::getClass();
+    }
+
     /**
-	 * Get the html node for this element
+     * Get the html node for this element
      * @param \DOMElement $node
-	 * @param \Appshed\XML\DOMDocument $xml
-	 * @param \AppShed\HTML\Settings $settings
-	 */
+     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\HTML\Settings $settings
+     */
     protected function getHTMLNodeInner($node, $xml, $settings) {
         $css = new \AppShed\Style\CSSDocument();
         $idselector = $css->getIdSelector($this->getIdType() . $settings->getPrefix() . $this->getId());
-		if($this->css) {
-            $css->addCSSText($this->css, $idselector);
+        if ($this->customCSS) {
+            $css->addCSSText($this->customCSS, $idselector);
         }
         $this->getCSS($css, $settings);
-        if($this->splash) {
-            $this->splash->toCSS($css, $idselector.$css->getClassSelector('splash'));
+        if ($this->splash) {
+            $this->splash->toCSS($css, $idselector . $css->getClassSelector('splash'));
         }
-        
+
         if ($this->name) {
             $node->setAttribute('data-name', $this->name);
         }
@@ -208,7 +220,7 @@ class App extends Element {
         if ($this->webviewUrl) {
             $node->setAttribute('data-webview-url', $this->webviewUrl);
         }
-			
+
         if ($this->icon) {
             $node->setAttribute('data-icon', $this->icon->getUrl());
             $idselector = $css->getIdSelector($this->getIdType() . $settings->getPrefix() . $this->getId());
@@ -239,12 +251,7 @@ class App extends Element {
             $tab->getCSS($css, $settings);
         }
 
-        $settings->addApp($this->getId(),
-                $xml->saveXML($node),
-                $css,
-                $this->hasSplash ? "<div class=\"splash\" id=\"app" . $this->getId() . "\"></div>" : null,
-                $this->updated === true ? new DateTime() : $this->updated,
-                array('login'=>$this->login,'register'=>$this->register),
-                $this->js);
-	}
+        $settings->addApp($this->getId(), $xml->saveXML($node), $css, $this->splash ? "<style scoped>" . $css->toSplashString() . "</style><div class=\"splash\" id=\"app" . $this->getId() . "\"></div>" : null, $this->updated === true ? new DateTime() : $this->updated, array('login' => null, 'register' => null), $this->js);
+    }
+
 }
