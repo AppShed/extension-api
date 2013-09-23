@@ -18,6 +18,7 @@ class LinkConsts {
     const LINK_REFRESH  = 'refresh';
     const LINK_EMAIL = 'email';
     const LINK_BACK = 'back';
+    const LINK_REMOTE = 'remote';
     
     const WEBLINK_NORMAL = 'normal';
     const WEBLINK_IFRAME = 'iframe';
