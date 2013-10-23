@@ -111,7 +111,7 @@ class Screen extends \AppShed\Element\Element {
         return $this->tab;
     }
 
-    public function setTab($tab) {
+    public function setTabs($tab) {
         $this->tab = $tab;
     }
 

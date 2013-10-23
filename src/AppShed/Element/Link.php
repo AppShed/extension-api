@@ -305,7 +305,7 @@ trait Link {
                     $screen = new \AppShed\Element\Screen\Screen('Phone');
                     $screen->setId('phone' . $this->getId());
                     $screen->setUpdated(false);
-                    $screen->setScrolling(false);
+                    $screen->setScroll(false);
                     $screen->setEditable(false);
                     $screen->setBack($settings->getCurrentScreen());
                     $screen->addClass('phone-screen');
