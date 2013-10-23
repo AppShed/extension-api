@@ -275,7 +275,7 @@ trait Link {
                 break;
             case LinkConsts::LINK_EMAIL:
                 if ($settings->getEmailPreview()) {
-                    $screen = new \AppShed\Element\Screen('Email');
+                    $screen = new \AppShed\Element\Screen\Screen('Email');
                     $screen->setId('email' . $this->getId());
                     $screen->setUpdated(false);
                     $screen->setEditable(false);
@@ -302,7 +302,7 @@ trait Link {
                 break;
             case LinkConsts::LINK_PHONE:
                 if ($settings->getPhonePreview()) {
-                    $screen = new \AppShed\Element\Screen('Phone');
+                    $screen = new \AppShed\Element\Screen\Screen('Phone');
                     $screen->setId('phone' . $this->getId());
                     $screen->setUpdated(false);
                     $screen->setScrolling(false);
