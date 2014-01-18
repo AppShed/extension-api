@@ -287,6 +287,10 @@ class Screen extends \AppShed\Element\Element
             $node->setAttribute('data-fetch-url', $settings->getFetchUrl());
         }
 
+        if ($settings->getDirect()) {
+            $node->setAttribute('data-fetch-direct', 'direct');
+        }
+
         $node->appendChild($navbar = $xml->createElement('div', 'header'));
         $navbar->setAttribute('x-blackberry-focusable', 'true');
         $navbar->appendChild($xml->createElement('div', 'background'));

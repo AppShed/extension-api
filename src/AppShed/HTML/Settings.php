@@ -16,6 +16,7 @@ class Settings
     protected $apps = array();
     protected $screens = array();
     protected $currentScreens = array();
+    protected $direct = true;
 
     public function getPrefix()
     {
@@ -65,6 +66,22 @@ class Settings
     public function setPhonePreview($phonePreview)
     {
         $this->phonePreview = $phonePreview;
+    }
+
+    /**
+     * @param boolean $direct
+     */
+    public function setDirect($direct)
+    {
+        $this->direct = $direct;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getDirect()
+    {
+        return $this->direct;
     }
 
     public function pushCurrentScreen($screen)
