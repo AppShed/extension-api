@@ -2,7 +2,10 @@
 
 namespace AppShed\Element\Screen;
 
-class Screen extends \AppShed\Element\Element implements Root
+use AppShed\Element\Element;
+use AppShed\Element\Root;
+
+class Screen extends Element implements Root
 {
     const TYPE = 'list';
     const TYPE_CLASS = 'list';
