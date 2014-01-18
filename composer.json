@@ -1,5 +1,6 @@
 {
     "name": "appshed/extension-api",
+    "license": "MIT",
     "description": "API for AppShed remote screens",
     "authors": [
         {
