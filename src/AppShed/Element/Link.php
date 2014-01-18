@@ -2,10 +2,9 @@
 
 namespace AppShed\Element;
 
-use AppShed\Element\LinkConsts;
-
 trait Link
 {
+    use Id;
 
     /**
      *
@@ -72,6 +71,7 @@ trait Link
      * @var string
      */
     protected $webType;
+    protected $remoteUrl;
     protected $youTubeUrl;
     protected $vimeoUrl;
     protected $phoneNumber;
@@ -174,13 +174,13 @@ trait Link
     public function setTwitterLink($screenName)
     {
         $this->linktype = LinkConsts::LINK_TWITTER;
-        $this->twitterScreenName - $screenName;
+        $this->twitterScreenName = $screenName;
     }
 
     public function setRemoteLink($url)
     {
         $this->linktype = LinkConsts::LINK_REMOTE;
-        $this->remoteurl = $url;
+        $this->remoteUrl = $url;
     }
 
     public function setFacebookLink($url)
@@ -216,8 +216,8 @@ trait Link
     /**
      * Get the html node for this element
      *
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
     protected function applyLinkToNode($xml, $node, $settings)
@@ -269,7 +269,7 @@ trait Link
                 break;
             case LinkConsts::LINK_REMOTE:
                 $node->setAttribute('data-linktype', LinkConsts::LINK_REMOTE);
-                $node->setAttribute('data-href', $this->remoteurl);
+                $node->setAttribute('data-href', $this->remoteUrl);
                 $node->setAttribute('data-direct', 'direct');
                 break;
             case LinkConsts::LINK_YOUTUBE:

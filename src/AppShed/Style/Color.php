@@ -2,6 +2,8 @@
 
 namespace AppShed\Style;
 
+use AppShed\Exceptions\InvalidColorException;
+
 /**
  * Represents a css color
  *
@@ -17,6 +19,8 @@ class Color
     /**
      * You can create a color a number of ways, either with separate rgb(a) values, 0-255,
      * or with a css style '#rrggbb' value, or with a comma separated string, 'r,g,b(,a)'
+     *
+     * @throws InvalidColorException
      *
      * @param int $r
      * @param int $g
@@ -43,7 +47,7 @@ class Color
                         $this->green = hexdec(substr($hex, 2, 2));
                         $this->blue = hexdec(substr($hex, 4, 2));
                     } else {
-                        throw new Exception("Invalid Color $r");
+                        throw new InvalidColorException("Invalid Color $r");
                     }
                 }
             } else {
@@ -56,7 +60,7 @@ class Color
                         $this->alpha = $parts[3];
                     }
                 } else {
-                    throw new Exception("Invalid Color $r");
+                    throw new InvalidColorException("Invalid Color $r");
                 }
             }
         }

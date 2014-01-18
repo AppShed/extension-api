@@ -50,7 +50,7 @@ class Image
     protected $color;
 
     /**
-     * @param $url Full URL for the image file
+     * @param string $url Full URL for the image file
      * @param string $style How the image should stretch or scale
      * @param int $attachment
      * @param Size $size should be an array containing 'width' and 'height' keys
@@ -180,6 +180,7 @@ class Image
                     break;
                 case self::TYPE_TILE:
                     $repeat = 'repeat';
+                    break;
                 case self::TYPE_CENTER:
                     if (is_array($this->size)) {
                         $size = "{$this->size['width']}px {$this->size['height']}px";
@@ -204,8 +205,10 @@ class Image
                 $i = $this->attachment & 12;
                 if ($i == 4) {
                     $positionVer = 'top';
-                } else if ($i == 12) {
-                    $positionVer = 'bottom';
+                } else {
+                    if ($i == 12) {
+                        $positionVer = 'bottom';
+                    }
                 }
             }
 

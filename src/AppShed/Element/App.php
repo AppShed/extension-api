@@ -2,10 +2,10 @@
 
 namespace AppShed\Element;
 
+use AppShed\Exceptions\TooManyTabsException;
+
 class App extends Element
 {
-
-    use Container;
 
     use Root;
 
@@ -74,6 +74,11 @@ class App extends Element
      * @var string
      */
     protected $customCSS;
+
+    /**
+     * @var Tab[]
+     */
+    protected $children = [];
 
     /**
      *
@@ -211,10 +216,44 @@ class App extends Element
     }
 
     /**
+     * @throws TooManyTabsException
+     *
+     * @param Tab[] $children
+     */
+    public function setChildren($children)
+    {
+        if(count($children) > 5) {
+            throw new TooManyTabsException("Cannot have more than 5 tabs");
+        }
+        $this->children = $children;
+    }
+
+    /**
+     * @throws TooManyTabsException
+     *
+     * @param Tab $child
+     */
+    public function addChild($child)
+    {
+        if(count($this->children) >= 5) {
+            throw new TooManyTabsException("Cannot have more than 5 tabs");
+        }
+        $this->children[] = $child;
+    }
+
+    /**
+     * @return Tab[]
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
      * Get the html node for this element
      *
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
@@ -293,7 +332,7 @@ class App extends Element
             $css,
             $this->splash ? "<style scoped>" . $css->toSplashString(
                 ) . "</style><div class=\"splash\" id=\"app" . $this->getId() . "\"></div>" : null,
-            $this->updated === true ? new DateTime() : $this->updated,
+            $this->updated === true ? new \DateTime() : $this->updated,
             array('login' => null, 'register' => null),
             $this->js
         );

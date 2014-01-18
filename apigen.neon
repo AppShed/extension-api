@@ -2,13 +2,13 @@ source: src
 destination: doc
 extensions: [php]
 
-title: Appshed API
+title: Appshed Extentions
 
 accessLevels: [public, protected]
-php: Yes
+php: No
 tree: Yes
 sourceCode: Yes
-download: No
+download: Yes
 
 wipeout: Yes
 quiet: No

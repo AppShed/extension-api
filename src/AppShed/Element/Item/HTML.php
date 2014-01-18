@@ -36,7 +36,7 @@ class HTML extends Item
      * Get the html node for this element
      *
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
@@ -66,6 +66,7 @@ class HTML extends Item
 
     /**
      *
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \DOMNode $node
      */
     private function checkNode($xml, $node)

@@ -33,14 +33,16 @@ class DOMDocument extends \DOMDocument
         $text = false;
         if (is_string($attributes)) {
             $node->setAttribute('class', $attributes);
-        } else if (is_array($attributes)) {
-            foreach ($attributes as $key => $value) {
-                if ($key == 'text') {
-                    $node->appendChild($this->createTextNode($value));
-                    $text = true;
-                } else {
-                    if (!is_null($value)) {
-                        $node->setAttribute($key, $value);
+        } else {
+            if (is_array($attributes)) {
+                foreach ($attributes as $key => $value) {
+                    if ($key == 'text') {
+                        $node->appendChild($this->createTextNode($value));
+                        $text = true;
+                    } else {
+                        if (!is_null($value)) {
+                            $node->setAttribute($key, $value);
+                        }
                     }
                 }
             }
@@ -54,7 +56,7 @@ class DOMDocument extends \DOMDocument
     /**
      * Add a class to the element
      *
-     * @param \DOMElement $element
+     * @param \DOMElement $node
      * @param string $class
      */
     public function addClass($node, $class)
@@ -68,7 +70,7 @@ class DOMDocument extends \DOMDocument
      *
      * @param string $src
      * @param string|array $attributes if its a string it will be the class attribute
-     * @param array $imageSize should contain width and height
+     * @param \AppShed\Style\Size $imageSize an array containing width and height
      *
      * @return \DOMElement
      */
@@ -87,7 +89,8 @@ class DOMDocument extends \DOMDocument
                 );
             }
             if ($imageSize) {
-                $attributes = array_merge($attributes, $imageSize);
+                $attributes['width'] = $imageSize['width'];
+                $attributes['height'] = $imageSize['height'];
             }
         }
         return $this->createElement($tag, $attributes);

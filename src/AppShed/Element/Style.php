@@ -4,10 +4,7 @@ namespace AppShed\Element;
 
 trait Style
 {
-
-    abstract public function getId();
-
-    abstract protected function getIdType();
+    use Id;
 
     /**
      *
@@ -537,7 +534,7 @@ trait Style
     }
 
     /**
-     * @param \Appshed\Style\CSSDocument $css
+     * @param \AppShed\Style\CSSDocument $css
      * @param \AppShed\HTML\Settings $settings
      */
     public function getCSS($css, $settings)
@@ -599,14 +596,18 @@ trait Style
 
         if ($this->italic === true) {
             $css->addRule($idselector, 'font-style', 'italic');
-        } else if ($this->italic === false) {
-            $css->addRule($idselector, 'font-style', 'normal');
+        } else {
+            if ($this->italic === false) {
+                $css->addRule($idselector, 'font-style', 'normal');
+            }
         }
 
         if ($this->underline === true) {
             $css->addRule($idselector, 'text-decoration', 'underline');
-        } else if ($this->underline === false) {
-            $css->addRule($idselector, 'text-decoration', 'none');
+        } else {
+            if ($this->underline === false) {
+                $css->addRule($idselector, 'text-decoration', 'none');
+            }
         }
 
         if ($this->headerDisplay === false) {
@@ -791,16 +792,25 @@ trait Style
                     $css,
                     array($idselector . $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('item'))
                 );
-            } else if ($isItem) {
-                $this->background->toCSS(
-                    $css,
-                    array($css->getClassSelector(array('screen', 'list')), $idselector . $css->getClassSelector('item'))
-                );
             } else {
-                $this->background->toCSS(
-                    $css,
-                    array($idselector, $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('item'))
-                );
+                if ($isItem) {
+                    $this->background->toCSS(
+                        $css,
+                        array(
+                            $css->getClassSelector(array('screen', 'list')),
+                            $idselector . $css->getClassSelector('item')
+                        )
+                    );
+                } else {
+                    $this->background->toCSS(
+                        $css,
+                        array(
+                            $idselector,
+                            $css->getClassSelector(array('screen', 'list')),
+                            $css->getClassSelector('item')
+                        )
+                    );
+                }
             }
         }
 
@@ -892,11 +902,13 @@ trait Style
                     $css->getSizeValue($width)
                 );
             }
-        } else if ($this->hrAfter === false) {
-            if ($isItem) {
-                $css->addRule($idselector . $css->getClassSelector('item'), 'border-bottom-width', 0);
-            } else {
-                $css->addRule(array($idselector, $css->getClassSelector('item')), 'border-bottom-width', 0);
+        } else {
+            if ($this->hrAfter === false) {
+                if ($isItem) {
+                    $css->addRule($idselector . $css->getClassSelector('item'), 'border-bottom-width', 0);
+                } else {
+                    $css->addRule(array($idselector, $css->getClassSelector('item')), 'border-bottom-width', 0);
+                }
             }
         }
         if ($isItem) {
@@ -946,7 +958,7 @@ trait Style
     /**
      * copy styles from $from to this
      *
-     * @param Style $from
+     * @param \AppShed\Element\Style $from
      */
     public function copyStyles($from)
     {

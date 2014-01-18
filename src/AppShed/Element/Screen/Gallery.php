@@ -19,6 +19,11 @@ class Gallery extends Screen
      */
     protected $innerScreen;
 
+    /**
+     * @var \AppShed\Element\Item\GalleryImage[]
+     */
+    protected $children = [];
+
     public function __construct($title, $columns = 3)
     {
         parent::__construct($title);
@@ -36,10 +41,34 @@ class Gallery extends Screen
     }
 
     /**
+     * @param \AppShed\Element\Item\GalleryImage[] $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    /**
+     * @param \AppShed\Element\Item\GalleryImage $child
+     */
+    public function addChild($child)
+    {
+        $this->children[] = $child;
+    }
+
+    /**
+     * @return \AppShed\Element\Item\GalleryImage[]
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
      * Get the html node for this element
      *
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
@@ -64,10 +93,12 @@ class Gallery extends Screen
     /**
      *
      * @param \DOMElement $items
-     * @param \DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      * @param \AppShed\Style\CSSDocument $css
      * @param array $javascripts
+     *
+     * @return \AppShed\Element\Item\Item[] of header items
      */
     protected function addHTMLChildren($items, $xml, $settings, $css, &$javascripts)
     {

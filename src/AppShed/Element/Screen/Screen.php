@@ -4,7 +4,6 @@ namespace AppShed\Element\Screen;
 
 class Screen extends \AppShed\Element\Element
 {
-    use \AppShed\Element\Container;
     use \AppShed\Element\Root;
 
     const TYPE = 'list';
@@ -69,6 +68,11 @@ class Screen extends \AppShed\Element\Element
      * @var string
      */
     protected $customCSS;
+
+    /**
+     * @var \AppShed\Element\Item\Item[]
+     */
+    protected $children = [];
 
 
     public function __construct($title)
@@ -178,10 +182,34 @@ class Screen extends \AppShed\Element\Element
     }
 
     /**
+     * @param \AppShed\Element\Item\Item[] $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    /**
+     * @param \AppShed\Element\Item\Item $child
+     */
+    public function addChild($child)
+    {
+        $this->children[] = $child;
+    }
+
+    /**
+     * @return \AppShed\Element\Item\Item[]
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
      * Get the html node for this element
      *
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
@@ -200,7 +228,7 @@ class Screen extends \AppShed\Element\Element
             $this->getId(),
             $xml->saveXML($node),
             $css,
-            $this->updated === true ? new DateTime() : $this->updated,
+            $this->updated === true ? new \DateTime() : $this->updated,
             $this->secure,
             $javascripts
         );
@@ -210,7 +238,7 @@ class Screen extends \AppShed\Element\Element
      * Get the html node for this element
      *
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      * @param \AppShed\Style\CSSDocument $css
      * @param array $javascripts
@@ -233,14 +261,18 @@ class Screen extends \AppShed\Element\Element
 
         if ($this->header === 'float') {
             $xml->addClass($node, 'float-header');
-        } else if (!$this->header) {
-            $xml->addClass($node, 'hide-header');
+        } else {
+            if (!$this->header) {
+                $xml->addClass($node, 'hide-header');
+            }
         }
 
         if ($this->statusBarStyle === 'float') {
             $node->setAttribute('data-status', 'float');
-        } else if ($this->statusBarStyle === 'black') {
-            $node->setAttribute('data-status', 'black');
+        } else {
+            if ($this->statusBarStyle === 'black') {
+                $node->setAttribute('data-status', 'black');
+            }
         }
 
         if ($this->tab) {
@@ -268,8 +300,10 @@ class Screen extends \AppShed\Element\Element
             if ($this->back instanceof Screen) {
                 $this->back->getHTMLNode($xml, $settings);
                 $back->setAttribute('data-href', $settings->getPrefix() . $this->back->getId());
-            } else if ($this->back !== true) {
-                $back->setAttribute('data-href', $settings->getPrefix() . $this->back);
+            } else {
+                if ($this->back !== true) {
+                    $back->setAttribute('data-href', $settings->getPrefix() . $this->back);
+                }
             }
             $back->setAttribute('x-blackberry-focusable', 'true');
         }
@@ -293,10 +327,12 @@ class Screen extends \AppShed\Element\Element
     /**
      *
      * @param \DOMElement $items
-     * @param \DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      * @param \AppShed\Style\CSSDocument $css
      * @param array $javascripts
+     *
+     * @return \AppShed\Element\Item\Item[] of header items
      */
     protected function addHTMLChildren($items, $xml, $settings, $css, &$javascripts)
     {

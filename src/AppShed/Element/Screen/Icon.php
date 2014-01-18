@@ -12,6 +12,11 @@ class Icon extends Screen
      */
     protected $columns = 3;
 
+    /**
+     * @var \AppShed\Element\Item\Icon[]
+     */
+    protected $children = [];
+
     public function __construct($title, $columns = 3)
     {
         parent::__construct($title);
@@ -29,12 +34,38 @@ class Icon extends Screen
     }
 
     /**
+     * @param \AppShed\Element\Item\Icon[] $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    /**
+     * @param \AppShed\Element\Item\Icon $child
+     */
+    public function addChild($child)
+    {
+        $this->children[] = $child;
+    }
+
+    /**
+     * @return \AppShed\Element\Item\Icon[]
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
      *
      * @param \DOMElement $items
-     * @param \DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      * @param \AppShed\Style\CSSDocument $css
      * @param array $javascripts
+     *
+     * @return \AppShed\Element\Item\Item[] of header items
      */
     protected function addHTMLChildren($items, $xml, $settings, $css, &$javascripts)
     {

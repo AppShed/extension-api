@@ -30,7 +30,7 @@ class Thumb extends Plain
      * Get the html node for this element
      *
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
     protected function getHTMLNodeInner($node, $xml, $settings)

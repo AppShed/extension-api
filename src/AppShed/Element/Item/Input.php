@@ -49,7 +49,7 @@ class Input extends Item
      *
      * @var boolean
      */
-    protected $localsearch;
+    protected $localSearch;
 
     public function __construct($variableName, $title, $value = null, $placeHolder = null)
     {
@@ -57,7 +57,7 @@ class Input extends Item
         $this->title = $title;
         $this->variableName = $variableName;
         $this->value = $value;
-        $this->placeholder = $placeHolder;
+        $this->placeHolder = $placeHolder;
     }
 
     public function getTitle()
@@ -113,7 +113,7 @@ class Input extends Item
 
     public function setLocalSearch($localSearch)
     {
-        $this->localsearch = $localSearch;
+        $this->localSearch = $localSearch;
     }
 
     protected function getClass()
@@ -125,7 +125,7 @@ class Input extends Item
      * Get the html node for this element
      *
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
@@ -140,11 +140,11 @@ class Input extends Item
             $xml->createElement(
                 'input',
                 array(
-                    'class' => 'textbox' . ($this->localsearch ? ' localsearch' : ''),
+                    'class' => 'textbox' . ($this->localSearch ? ' localsearch' : ''),
                     'type' => static::INPUT_TYPE,
                     'name' => $this->variableName,
                     'value' => $this->value,
-                    'placeholder' => $this->placeholder,
+                    'placeholder' => $this->placeHolder,
                     'data-variable' => $this->variableName,
                     'data-save-value' => $this->save,
                     'data-autocomplete-url' => $this->autocomplete,

@@ -27,8 +27,6 @@ abstract class Element
 
     /**
      * Create a new item
-     *
-     * @param string $tagName
      */
     protected function __construct()
     {
@@ -84,12 +82,6 @@ abstract class Element
     }
 
     /**
-     * Get the id type for this element, will be overridden by various elements
-     * @return string
-     */
-    protected abstract function getIdType();
-
-    /**
      * Mark element as editable in the appbuilder
      *
      * @internal Used to allow appbuilder to edit elements
@@ -105,7 +97,7 @@ abstract class Element
     /**
      * Get the html node for this element
      *
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      *
      * @return \DOMElement
@@ -127,7 +119,7 @@ abstract class Element
      * Get the html node for this element
      *
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
     abstract protected function getHTMLNodeInner($node, $xml, $settings);

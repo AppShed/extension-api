@@ -44,7 +44,7 @@ class Marker extends Item
         if (strlen($title) == 0) {
             $title = ' ';
         }
-        $this->setAttribute('title', $title);
+        $this->title = $title;
     }
 
     public function setSubTitle($title)
@@ -52,7 +52,7 @@ class Marker extends Item
         if (strlen($title) == 0) {
             $title = ' ';
         }
-        $this->setAttribute('subtitle', $title);
+        $this->subtitle = $title;
     }
 
     public function setPosition($longitude, $latitude)
@@ -71,10 +71,11 @@ class Marker extends Item
     /**
      * Get the html node for this element
      *
-     * @param AppBuilderAPIDOMDocument $xml
-     * @param array $data
+     * @param \DOMElement $node
+     * @param \AppShed\XML\DOMDocument $xml
+     * @param \AppShed\HTML\Settings $settings
      *
-     * @return DOMElement
+     * @return \DOMElement
      */
     public function getHTMLNodeInner($node, $xml, $settings)
     {
@@ -88,16 +89,23 @@ class Marker extends Item
         } else {
             $node->appendChild($xml->createElement('div', array('class' => 'text', 'text' => $this->subtitle)));
         }
+        return $node;
     }
 
-    public function getMarkerObject($xml, &$data)
+    /**
+     * @param \AppShed\XML\DOMDocument $xml
+     * @param \AppShed\HTML\Settings $settings
+     *
+     * @return array
+     */
+    public function getMarkerObject($xml, $settings)
     {
         return array(
             'title' => $this->title,
             'subtitle' => $this->subtitle,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
-            'html' => $xml->saveXML($this->getHTMLNode($xml, $data))
+            'html' => $xml->saveXML($this->getHTMLNode($xml, $settings))
         );
     }
 

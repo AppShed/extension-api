@@ -6,7 +6,7 @@ trait Root
     /**
      * Get the html node for this element
      *
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      *
      * @return \DOMElement

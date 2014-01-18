@@ -10,7 +10,7 @@ class Capture extends Item
     const TYPE_AUDIO = 'audio';
     const TYPE_PHOTO = 'photo';
 
-    protected $type = static::TYPE_PHOTO;
+    protected $type = self::TYPE_PHOTO;
 
     /**
      *
@@ -72,7 +72,7 @@ class Capture extends Item
      * Get the html node for this element
      *
      * @param \DOMElement $node
-     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
@@ -98,7 +98,10 @@ class Capture extends Item
         $off->appendChild(
             $xml->createElement(
                 'div',
-                array('class' => 'text', 'text' => "You need to install this app via the store to use $type capture")
+                array(
+                    'class' => 'text',
+                    'text' => "You need to install this app via the store to use {$this->type} capture"
+                )
             )
         );
     }

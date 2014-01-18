@@ -1,6 +1,8 @@
 <?php
 namespace AppShed\Element\Screen;
 
+use AppShed\Exceptions\TooManyIconsException;
+
 class Apps extends Screen
 {
     const TYPE = 'app';
@@ -12,7 +14,15 @@ class Apps extends Screen
      */
     protected $columns = 3;
 
+    /**
+     * @var \AppShed\Element\Item\AppIcon[]
+     */
     protected $homeChildren = array();
+
+    /**
+     * @var \AppShed\Element\Item\AppIcon[]
+     */
+    protected $children = [];
 
     public function __construct($title, $columns = 3)
     {
@@ -30,22 +40,54 @@ class Apps extends Screen
         $this->columns = $columns;
     }
 
+    /**
+     * @throws TooManyIconsException
+     *
+     * @param \AppShed\Element\Item\AppIcon $item
+     *
+     * @return bool ret
+     */
     public function addHomeChild($item)
     {
-        if (count($this->homeChildren) <= 4) {
-            $this->homeChildren[] = $item;
-        } else {
-            return false;
+        if (count($this->homeChildren) >= 45) {
+            throw new TooManyIconsException("Cannot have more than 5 home icons");
         }
+        $this->homeChildren[] = $item;
+    }
+
+    /**
+     * @param \AppShed\Element\Item\AppIcon[] $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    /**
+     * @param \AppShed\Element\Item\AppIcon $child
+     */
+    public function addChild($child)
+    {
+        $this->children[] = $child;
+    }
+
+    /**
+     * @return \AppShed\Element\Item\AppIcon[]
+     */
+    public function getChildren()
+    {
+        return $this->children;
     }
 
     /**
      *
      * @param \DOMElement $items
-     * @param \DOMDocument $xml
+     * @param \AppShed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      * @param \AppShed\Style\CSSDocument $css
      * @param array $javascripts
+     *
+     * @return \AppShed\Element\Item\Item[] of header items
      */
     protected function addHTMLChildren($items, $xml, $settings, $css, &$javascripts)
     {
@@ -54,12 +96,12 @@ class Apps extends Screen
         $screens = array_chunk($this->children, 16);
 
         //Home bar
-        $items->appendChild($homebar = $xml->createElement('div', array('class' => 'home-bar')));
+        $items->appendChild($homeBar = $xml->createElement('div', array('class' => 'home-bar')));
         $items->appendChild($xml->createElement('div', 'home-underlay'));
 
         //Dots
-        $homebar->appendChild($homeDots = $xml->createElement('div', array('class' => 'home-dots')));
-        $homebar->appendChild($xml->createElement('div', array('class' => 'home-bar-bg')));
+        $homeBar->appendChild($homeDots = $xml->createElement('div', array('class' => 'home-dots')));
+        $homeBar->appendChild($xml->createElement('div', array('class' => 'home-bar-bg')));
         $homeDots->appendChild($cnt = $xml->createElement('div', array('class' => 'home-dots-inner')));
         $screensCount = count($screens) + 1;
         for ($i = 0; $i < $screensCount; $i++) {
@@ -78,14 +120,14 @@ class Apps extends Screen
 
         //Home bar buttons
         if (count($this->homeChildren) > 0) {
-            $homebar->appendChild($homebarButtons = $xml->createElement('div', array('class' => 'home-bar-buttons')));
+            $homeBar->appendChild($homeBarButtons = $xml->createElement('div', array('class' => 'home-bar-buttons')));
             foreach ($this->homeChildren as $homeButton) {
                 $childNode = $homeButton->getHTMLNode($xml, $settings);
                 if ($childNode) {
-                    $homebarButtons->appendChild($childNode);
+                    $homeBarButtons->appendChild($childNode);
                 }
                 $homeButton->getCSS($css, $settings);
-                $homeButton->getJavascript($javascripts);
+                $homeButton->getJavascript($javascripts, $settings);
             }
         }
 

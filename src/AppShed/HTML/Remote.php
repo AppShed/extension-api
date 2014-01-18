@@ -18,7 +18,7 @@ class Remote
 
     /**
      *
-     * @var array
+     * @var \AppShed\Element\Root[]
      */
     protected $roots = array();
 
@@ -81,6 +81,8 @@ class Remote
      * Get the JSON object that should be sent to the client
      *
      * @param \AppShed\HTML\Settings $settings
+     *
+     * @return array
      */
     public function getResponseObject($settings = null)
     {
@@ -118,7 +120,7 @@ class Remote
         $callback = $this->getCallback();
 
         if ($header) {
-            if($callback) {
+            if ($callback) {
                 header('Content-type: application/javascript');
             } else {
                 header('Content-type: application/json');
@@ -136,8 +138,9 @@ class Remote
                     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
                 }
 
-                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
                     header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+                }
 
                 exit(0);
             }
@@ -164,9 +167,9 @@ class Remote
 
         if ($return) {
             return $ret;
-        } else {
-            echo $ret;
         }
+        echo $ret;
+        return null;
     }
 
     /**
@@ -235,12 +238,16 @@ class Remote
     {
         if ($this->requestUrl) {
             return $this->requestUrl;
-        } else if (isset($_REQUEST['fetchURL'])) {
-            return $_REQUEST['fetchURL'];
-        } else if (isset($_SERVER['HTTP_HOST']) && isset($_SERVER['REQUEST_URI'])) {
-            return (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
         } else {
-            return "";
+            if (isset($_REQUEST['fetchURL'])) {
+                return $_REQUEST['fetchURL'];
+            } else {
+                if (isset($_SERVER['HTTP_HOST']) && isset($_SERVER['REQUEST_URI'])) {
+                    return (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+                } else {
+                    return "";
+                }
+            }
         }
     }
 
