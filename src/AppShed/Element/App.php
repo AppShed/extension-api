@@ -4,10 +4,8 @@ namespace AppShed\Element;
 
 use AppShed\Exceptions\TooManyTabsException;
 
-class App extends Element
+class App extends Element implements Root
 {
-
-    use Root;
 
     /**
      *

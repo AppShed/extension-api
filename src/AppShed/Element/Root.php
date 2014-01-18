@@ -1,7 +1,7 @@
 <?php
 namespace AppShed\Element;
 
-trait Root
+interface Root
 {
     /**
      * Get the html node for this element
@@ -11,11 +11,11 @@ trait Root
      *
      * @return \DOMElement
      */
-    abstract public function getHTMLNode($xml, $settings);
+    public function getHTMLNode($xml, $settings);
 
     /**
      *
      * @return string
      */
-    abstract public function getId();
+    public function getId();
 }
