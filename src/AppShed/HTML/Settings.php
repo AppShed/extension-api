@@ -1,6 +1,11 @@
 <?php
 namespace AppShed\HTML;
 
+/**
+ * Represents some settings about how html should be generated
+ *
+ * @package AppShed\HTML
+ */
 class Settings {
     protected $prefix = '';
     protected $fetchUrl;

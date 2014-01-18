@@ -2,12 +2,26 @@
 
 namespace AppShed\Style;
 
+/**
+ * Represents a css color
+ *
+ * @package AppShed\Style
+ */
 class Color {
     protected $red;
     protected $green;
     protected $blue;
     protected $alpha;
 
+    /**
+     * You can create a color a number of ways, either with separate rgb(a) values, 0-255,
+     * or with a css style '#rrggbb' value, or with a comma separated string, 'r,g,b(,a)'
+     *
+     * @param int $r
+     * @param int $g
+     * @param int $b
+     * @param int $a
+     */
     public function __construct($r, $g = null, $b = null, $a = null) {
         if ($g) {
 			$this->red = $r;
@@ -48,7 +62,14 @@ class Color {
             }
 		}
     }
-    
+
+    /**
+     * Returns a CSS string representation of this Color
+     *
+     * @param int $alpha 0-255 override the alpha value of this color
+     *
+     * @return string
+     */
     public function toString($alpha = null) {
         if($alpha) {
             return "rgba($this->red, $this->green, $this->blue, $alpha)";

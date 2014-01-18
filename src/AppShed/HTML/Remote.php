@@ -1,6 +1,13 @@
 <?php
 namespace AppShed\HTML;
 
+use AppShed\XML\DOMDocument;
+
+/**
+ * Provides functions to send AppShed objects to an app
+ *
+ * @package AppShed\HTML
+ */
 class Remote {
     /**
      *
@@ -25,20 +32,34 @@ class Remote {
      */
     protected $refreshAfter = 0;
 
+    /**
+     * Create a response with the main Element $root
+     *
+     * @param \AppShed\Element\Root $root
+     */
     public function __construct($root) {
         $this->root = $root;
     }
-    
+
+    /**
+     * Add additional roots to the response
+     *
+     * @param \AppShed\Element\Root $root
+     */
     public function addRoot($root) {
         $this->roots[] = $root;
     }
-    
+
+    /**
+     * @param int $refreshAfter Time in seconds after which the screen should be refreshed
+     */
     public function setRefreshAfter($refreshAfter) {
         $this->refreshAfter = $refreshAfter;
     }
     
     /**
-     * 
+     * Get the settings sent from the app
+     *
      * @return \AppShed\HTML\Settings
      */
     public function getSettings() {
@@ -52,7 +73,8 @@ class Remote {
     }
     
     /**
-     * 
+     * Get the JSON object that should be sent to the client
+     *
      * @param \AppShed\HTML\Settings $settings
      */
     public function getResponseObject($settings = null) {
@@ -60,7 +82,7 @@ class Remote {
             $settings = $this->getSettings();
         }
         
-        $xml = self::getNewXMLDocument();
+        $xml = new DOMDocument();
         $this->root->getHTMLNode($xml, $settings);
         foreach ($this->roots as $root) {
             $root->getHTMLNode($xml, $settings);
@@ -75,10 +97,15 @@ class Remote {
             )
         );
     }
-    
+
     /**
-     * 
+     * Get the response text for the client, as either json, or jsonp
+     *
      * @param \AppShed\HTML\Settings $settings
+     * @param bool $header Whether to set the correct headers
+     * @param bool $return if true the response is returned, otherwise it will be echoed
+     *
+     * @return string
      */
     public function getResponse($settings = null, $header = true, $return = false) {
         if(!$settings) {
@@ -127,7 +154,12 @@ class Remote {
             echo $ret;
         }
     }
-    
+
+    /**
+     * Override the detected request url
+     *
+     * @param $url
+     */
     public function setRequestUrl($url) {
         $this->requestUrl = $url;
     }
@@ -153,12 +185,4 @@ class Remote {
         }
         return false;
     }
-
-
-    protected function getNewXMLDocument() {
-		$xml = new \AppShed\XML\DOMDocument('1.0', 'UTF-8');
-		$xml->preserveWhiteSpace = false;
-		$xml->formatOutput = false;
-		return $xml;
-	}
 }

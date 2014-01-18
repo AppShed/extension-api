@@ -2,6 +2,11 @@
 
 namespace AppShed\Style;
 
+/**
+ * Represents an image used in AppShed and some settings about how it should be displayed
+ *
+ * @package AppShed\Style
+ */
 class Image {
     
     const TYPE_FILL = 'Fill';
@@ -34,7 +39,7 @@ class Image {
     protected $attachment = 0;
     /**
      *
-     * @var array
+     * @var Size
      */
     protected $size;
     /**
@@ -42,7 +47,14 @@ class Image {
      * @var Color
      */
     protected $color;
-    
+
+    /**
+     * @param $url Full URL for the image file
+     * @param string $style How the image should stretch or scale
+     * @param int $attachment
+     * @param Size $size should be an array containing 'width' and 'height' keys
+     * @param Color $color
+     */
     public function __construct($url, $style = null, $attachment = 0, $size = null, $color = null) {
         $this->url = $url;
         $this->style = $style;
@@ -50,49 +62,103 @@ class Image {
         $this->size = $size;
         $this->color = $color;
     }
-    
-    public function getUrl() {
-        return $this->url;
-    }
 
-    public function setUrl($url) {
-        $this->url = $url;
-    }
-
-    public function getStyle() {
-        return $this->style;
-    }
-
-    public function setStyle($style) {
-        $this->style = $style;
-    }
-
-    public function getAttachment() {
-        return $this->attachment;
-    }
-
-    public function setAttachment($attachment) {
+    /**
+     *
+     * @see Image::ATTACHMENT_HOR_LEFT
+     * @see Image::ATTACHMENT_HOR_CENTER
+     * @see Image::ATTACHMENT_HOR_RIGHT
+     * @see Image::ATTACHMENT_VER_TOP
+     * @see Image::ATTACHMENT_VER_CENTER
+     * @see Image::ATTACHMENT_VER_BOTTOM
+     * @param int $attachment
+     */
+    public function setAttachment($attachment)
+    {
         $this->attachment = $attachment;
     }
 
-    public function getSize() {
-        return $this->size;
+    /**
+     * @return int
+     */
+    public function getAttachment()
+    {
+        return $this->attachment;
     }
 
-    public function setSize($size) {
-        $this->size = $size;
+    /**
+     * @param \AppShed\Style\Color $color
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
     }
 
-    public function getColor() {
+    /**
+     * @return \AppShed\Style\Color
+     */
+    public function getColor()
+    {
         return $this->color;
     }
 
-    public function setColor($color) {
-        $this->color = $color;
+    /**
+     * @param \AppShed\Style\Size $size
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+    }
+
+    /**
+     * @return \AppShed\Style\Size
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     *
+     * @see Image::TYPE_FILL
+     * @see Image::TYPE_FIT
+     * @see Image::TYPE_STRETCH
+     * @see Image::TYPE_TILE
+     * @see Image::TYPE_CENTER
+     * @param string $style
+     */
+    public function setStyle($style)
+    {
+        $this->style = $style;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStyle()
+    {
+        return $this->style;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
     
     /**
-     * 
+     * Add CSS rules for this element to the given document
+     *
      * @param CSSDocument $css
      * @param string $selector
      */

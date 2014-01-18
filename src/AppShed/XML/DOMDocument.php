@@ -1,7 +1,21 @@
 <?php
 namespace AppShed\XML;
 
+/**
+ * Adds some useful functions for creating HTML elements for AppShed
+ *
+ * @package AppShed\XML
+ */
 class DOMDocument extends \DOMDocument {
+
+    /**
+     * Set the defaults for AppShed HTML documents
+     */
+    public function __construct() {
+        parent::__construct('1.0', 'UTF-8');
+        $this->preserveWhiteSpace = false;
+        $this->formatOutput = false;
+    }
 
 	/**
 	 * Create a new domelement with either a class or array of attributes given
