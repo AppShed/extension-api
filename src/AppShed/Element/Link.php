@@ -82,6 +82,11 @@ trait Link
     protected $emailBody;
     protected $backScreenId;
 
+    /**
+     * @var \AppShed\Element\Item\FormItem[]
+     */
+    protected $variables;
+
     public function getLinkArrow()
     {
         return $this->linkArrow;
@@ -214,6 +219,22 @@ trait Link
     }
 
     /**
+     * @param \AppShed\Element\Item\FormItem $variable
+     */
+    public function addVariable($variable)
+    {
+        $this->variables[] = $variable;
+    }
+
+    /**
+     * @param \AppShed\Element\Item\FormItem[] $variables
+     */
+    public function setVariables($variables)
+    {
+        $this->variables = $variables;
+    }
+
+    /**
      * Get the html node for this element
      *
      * @param \AppShed\XML\DOMDocument $xml
@@ -264,12 +285,12 @@ trait Link
                 break;
             case LinkConsts::LINK_WEB:
                 $node->setAttribute('data-linktype', LinkConsts::LINK_WEB);
-                $node->setAttribute('data-href', $this->webUrl);
+                $node->setAttribute('data-href', $this->applyVariablesToUrl($this->webUrl));
                 $node->setAttribute('data-weblinktype', $this->webType);
                 break;
             case LinkConsts::LINK_REMOTE:
                 $node->setAttribute('data-linktype', LinkConsts::LINK_REMOTE);
-                $node->setAttribute('data-href', $this->remoteUrl);
+                $node->setAttribute('data-href', $this->applyVariablesToUrl($this->remoteUrl));
                 $node->setAttribute('data-direct', 'direct');
                 break;
             case LinkConsts::LINK_YOUTUBE:
@@ -392,6 +413,28 @@ trait Link
         if ($this->linktype == LinkConsts::LINK_JAVASCRIPT) {
             $javascripts[$this->getIdType() . $settings->getPrefix() . $this->getId()] = $this->javascript;
         }
+    }
+
+    /**
+     * @param string $url
+     * @return string
+     */
+    protected function applyVariablesToUrl($url)
+    {
+        if(count($this->variables) > 0) {
+            $newParams = [];
+            foreach($this->variables as $variable) {
+                $name = $variable->getVariableName();
+                $newParams[$name] = '{' . $name . '}';
+            }
+            $query = str_replace(['%7B', '%7D'], ['{', '}'], http_build_query($newParams));
+
+            if(strpos($url, '?')) {
+                return "$url&$query";
+            }
+            return "$url?$query";
+        }
+        return $url;
     }
 
 }
