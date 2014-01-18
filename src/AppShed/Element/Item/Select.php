@@ -2,7 +2,7 @@
 
 namespace AppShed\Element\Item;
 
-class Select extends Item
+class Select extends Item implements FormVariable
 {
     use FormItem;
 

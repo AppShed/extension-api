@@ -2,7 +2,7 @@
 
 namespace AppShed\Element\Item;
 
-class Input extends Item
+class Input extends Item implements FormVariable
 {
     use FormItem;
 

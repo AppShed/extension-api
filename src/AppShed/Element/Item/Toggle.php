@@ -2,7 +2,7 @@
 
 namespace AppShed\Element\Item;
 
-class Toggle extends Item
+class Toggle extends Item implements FormVariable
 {
 
     use FormItem;

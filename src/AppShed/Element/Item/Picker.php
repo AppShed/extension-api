@@ -1,7 +1,7 @@
 <?php
 namespace AppShed\Element\Item;
 
-class Picker extends Item
+class Picker extends Item implements FormVariable
 {
     use FormItem;
 

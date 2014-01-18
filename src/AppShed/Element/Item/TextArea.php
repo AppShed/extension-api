@@ -2,7 +2,7 @@
 
 namespace AppShed\Element\Item;
 
-class TextArea extends Item
+class TextArea extends Item implements FormVariable
 {
     use FormItem;
 

@@ -83,7 +83,7 @@ trait Link
     protected $backScreenId;
 
     /**
-     * @var \AppShed\Element\Item\FormItem[]
+     * @var \AppShed\Element\Item\FormVariable[]
      */
     protected $variables;
 
@@ -219,7 +219,7 @@ trait Link
     }
 
     /**
-     * @param \AppShed\Element\Item\FormItem $variable
+     * @param \AppShed\Element\Item\FormVariable $variable
      */
     public function addVariable($variable)
     {
@@ -227,7 +227,7 @@ trait Link
     }
 
     /**
-     * @param \AppShed\Element\Item\FormItem[] $variables
+     * @param \AppShed\Element\Item\FormVariable[] $variables
      */
     public function setVariables($variables)
     {

@@ -2,7 +2,7 @@
 
 namespace AppShed\Element\Item;
 
-class Capture extends Item
+class Capture extends Item implements FormVariable
 {
     use FormItem;
 

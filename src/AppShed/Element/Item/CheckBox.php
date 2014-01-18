@@ -2,7 +2,7 @@
 
 namespace AppShed\Element\Item;
 
-class CheckBox extends Item
+class CheckBox extends Item implements FormVariable
 {
     use FormItem;
 
