@@ -2,58 +2,67 @@
 
 namespace AppShed\Element\Item;
 
-class Link extends Item {
+class Link extends Item
+{
     use \AppShed\Element\Link;
-    
+
     /**
      *
      * @var string
      */
     protected $title;
-    
+
     /**
      *
      * @var \AppShed\Style\Image
      */
     protected $image;
-            
-    public function __construct($title, \AppShed\Style\Image $image = null) {
+
+    public function __construct($title, \AppShed\Style\Image $image = null)
+    {
         parent::__construct();
         $this->title = $title;
         $this->image = $image;
     }
-    
-    public function getTitle() {
+
+    public function getTitle()
+    {
         return $this->title;
     }
 
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
-    
-    public function getImage() {
+
+    public function getImage()
+    {
         return $this->image;
     }
 
-    public function setImage(\AppShed\Style\Image $image) {
+    public function setImage(\AppShed\Style\Image $image)
+    {
         $this->image = $image;
     }
 
-    protected function getClass() {
-		return parent::getClass() . " plain";
-	}
-    
+    protected function getClass()
+    {
+        return parent::getClass() . " plain";
+    }
+
     /**
-	 * Get the html node for this element
+     * Get the html node for this element
+     *
      * @param \DOMElement $node
-	 * @param \Appshed\XML\DOMDocument $xml
-	 * @param \AppShed\HTML\Settings $settings
-	 */
-    protected function getHTMLNodeInner($node, $xml, $settings) {
+     * @param \Appshed\XML\DOMDocument $xml
+     * @param \AppShed\HTML\Settings $settings
+     */
+    protected function getHTMLNodeInner($node, $xml, $settings)
+    {
         if ($this->image) {
-			$node->appendChild($xml->createImgElement($this->image->getUrl(), 'icon', $this->image->getSize()));
-		}
-		$node->appendChild($xml->createElement('div', array('class' => 'text', 'text' => $this->title)));
+            $node->appendChild($xml->createImgElement($this->image->getUrl(), 'icon', $this->image->getSize()));
+        }
+        $node->appendChild($xml->createElement('div', array('class' => 'text', 'text' => $this->title)));
         $this->applyLinkToNode($xml, $node, $settings);
     }
 }

@@ -2,11 +2,12 @@
 
 namespace AppShed\Element;
 
-class App extends Element {
+class App extends Element
+{
 
     use Container;
 
-use Root;
+    use Root;
 
     /**
      *
@@ -63,7 +64,7 @@ use Root;
     protected $splash;
 
     /**
-     * 
+     *
      * @var string
      */
     protected $js;
@@ -75,11 +76,12 @@ use Root;
     protected $customCSS;
 
     /**
-     * 
+     *
      * @param string $name
      * @param \AppShed\Style\Image $icon
      */
-    public function __construct($name = null, $icon = null) {
+    public function __construct($name = null, $icon = null)
+    {
         parent::__construct();
         $this->setName($name);
         $this->setIcon($icon);
@@ -88,109 +90,135 @@ use Root;
     /**
      * Set the name of the app
      * @internal used in appbuilder
+     *
      * @param string $name
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
     /**
      * @internal used in appbuilder
+     *
      * @param string $description
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
 
     /**
      * Link for preview
      * @internal used in appbuilder
+     *
      * @param string $url
      */
-    public function setPreviewUrl($url) {
+    public function setPreviewUrl($url)
+    {
         $this->previewUrl = $url;
     }
 
     /**
      * Link to webapp
      * @internal used in appbuilder
+     *
      * @param string $url
      */
-    public function setWebviewUrl($url) {
+    public function setWebviewUrl($url)
+    {
         $this->webviewUrl = $url;
     }
 
     /**
      * @internal used in appbuilder
+     *
      * @param string $flag
      */
-    public function setFlag($flag) {
+    public function setFlag($flag)
+    {
         $this->flag = $flag;
     }
 
     /**
      * @internal used in appbuilder
+     *
      * @param \AppShed\Style\Image $icon
      */
-    public function setIcon($icon) {
+    public function setIcon($icon)
+    {
         $this->icon = $icon;
     }
 
     /**
      * Show ads in this app
+     *
      * @param boolean $ads
      */
-    public function setAds($ads) {
+    public function setAds($ads)
+    {
         $this->ads = $ads;
     }
 
-    public function getUpdated() {
+    public function getUpdated()
+    {
         return $this->updated;
     }
 
-    public function setUpdated(\DateTime $updated) {
+    public function setUpdated(\DateTime $updated)
+    {
         $this->updated = $updated;
     }
 
-    public function getSplash() {
+    public function getSplash()
+    {
         return $this->splash;
     }
 
-    public function setSplash(\AppShed\Style\Image $splash) {
+    public function setSplash(\AppShed\Style\Image $splash)
+    {
         $this->splash = $splash;
     }
 
-    public function getJs() {
+    public function getJs()
+    {
         return $this->js;
     }
 
-    public function setJs($js) {
+    public function setJs($js)
+    {
         $this->js = $js;
     }
 
-    public function getCustomCSS() {
+    public function getCustomCSS()
+    {
         return $this->customCSS;
     }
 
-    public function setCustomCSS($customCSS) {
+    public function setCustomCSS($customCSS)
+    {
         $this->customCSS = $customCSS;
     }
 
-    protected function getIdType() {
+    protected function getIdType()
+    {
         return 'app';
     }
 
-    protected function getClass() {
+    protected function getClass()
+    {
         return "app " . parent::getClass();
     }
 
     /**
      * Get the html node for this element
+     *
      * @param \DOMElement $node
      * @param \Appshed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
-    protected function getHTMLNodeInner($node, $xml, $settings) {
+    protected function getHTMLNodeInner($node, $xml, $settings)
+    {
         $css = new \AppShed\Style\CSSDocument();
         $idselector = $css->getIdSelector($this->getIdType() . $settings->getPrefix() . $this->getId());
         if ($this->customCSS) {
@@ -224,8 +252,16 @@ use Root;
         if ($this->icon) {
             $node->setAttribute('data-icon', $this->icon->getUrl());
             $idselector = $css->getIdSelector($this->getIdType() . $settings->getPrefix() . $this->getId());
-            $css->addRule(array(".android .phone-navigator $idselector.app .app-navigator .screen .header .back"), 'background-image', $css->getURLValue($this->icon->getUrl()));
-            $css->addRule(array(".blackberry .phone-navigator $idselector.app .app-navigator .screen .header"), 'background-image', $css->getURLValue($this->icon->getUrl()));
+            $css->addRule(
+                array(".android .phone-navigator $idselector.app .app-navigator .screen .header .back"),
+                'background-image',
+                $css->getURLValue($this->icon->getUrl())
+            );
+            $css->addRule(
+                array(".blackberry .phone-navigator $idselector.app .app-navigator .screen .header"),
+                'background-image',
+                $css->getURLValue($this->icon->getUrl())
+            );
         }
 
         if ($settings->getFetchUrl()) {
@@ -251,7 +287,16 @@ use Root;
             $tab->getCSS($css, $settings);
         }
 
-        $settings->addApp($this->getId(), $xml->saveXML($node), $css, $this->splash ? "<style scoped>" . $css->toSplashString() . "</style><div class=\"splash\" id=\"app" . $this->getId() . "\"></div>" : null, $this->updated === true ? new DateTime() : $this->updated, array('login' => null, 'register' => null), $this->js);
+        $settings->addApp(
+            $this->getId(),
+            $xml->saveXML($node),
+            $css,
+            $this->splash ? "<style scoped>" . $css->toSplashString(
+                ) . "</style><div class=\"splash\" id=\"app" . $this->getId() . "\"></div>" : null,
+            $this->updated === true ? new DateTime() : $this->updated,
+            array('login' => null, 'register' => null),
+            $this->js
+        );
     }
 
 }

@@ -8,13 +8,14 @@ use AppShed\XML\DOMDocument;
  *
  * @package AppShed\HTML
  */
-class Remote {
+class Remote
+{
     /**
      *
      * @var \AppShed\Element\Root
      */
     protected $root;
-    
+
     /**
      *
      * @var array
@@ -25,7 +26,7 @@ class Remote {
      * @var string
      */
     protected $requestUrl;
-    
+
     /**
      *
      * @var int
@@ -37,7 +38,8 @@ class Remote {
      *
      * @param \AppShed\Element\Root $root
      */
-    public function __construct($root) {
+    public function __construct($root)
+    {
         $this->root = $root;
     }
 
@@ -46,23 +48,26 @@ class Remote {
      *
      * @param \AppShed\Element\Root $root
      */
-    public function addRoot($root) {
+    public function addRoot($root)
+    {
         $this->roots[] = $root;
     }
 
     /**
      * @param int $refreshAfter Time in seconds after which the screen should be refreshed
      */
-    public function setRefreshAfter($refreshAfter) {
+    public function setRefreshAfter($refreshAfter)
+    {
         $this->refreshAfter = $refreshAfter;
     }
-    
+
     /**
      * Get the settings sent from the app
      *
      * @return \AppShed\HTML\Settings
      */
-    public function getSettings() {
+    public function getSettings()
+    {
         $settings = new Settings();
         $requestUrl = $this->getRequestUrl();
         $settings->setFetchUrl($requestUrl);
@@ -71,23 +76,24 @@ class Remote {
         $settings->setPhonePreview(isset($_REQUEST['telPreview']) ? $_REQUEST['telPreview'] === 'true' : false);
         return $settings;
     }
-    
+
     /**
      * Get the JSON object that should be sent to the client
      *
      * @param \AppShed\HTML\Settings $settings
      */
-    public function getResponseObject($settings = null) {
-        if(!$settings) {
+    public function getResponseObject($settings = null)
+    {
+        if (!$settings) {
             $settings = $this->getSettings();
         }
-        
+
         $xml = new DOMDocument();
         $this->root->getHTMLNode($xml, $settings);
         foreach ($this->roots as $root) {
             $root->getHTMLNode($xml, $settings);
         }
-        
+
         return array(
             'app' => $settings->getApps(),
             'screen' => $settings->getScreens(),
@@ -107,54 +113,54 @@ class Remote {
      *
      * @return string
      */
-    public function getResponse($settings = null, $header = true, $return = false) {
-        if(!$settings) {
+    public function getResponse($settings = null, $header = true, $return = false)
+    {
+        if (!$settings) {
             $settings = $this->getSettings();
         }
         $data = $this->getResponseObject($settings);
-        
+
         $data['remote'] = array(
             'url' => $settings->getFetchUrl(),
             'refreshAfter' => $this->refreshAfter
         );
         $data['remote'][$settings->getFetchUrl()] = $data['settings']['main'];
-        
+
         $json = json_encode($data);
         $callback = $this->getCallback();
         if ($header) {
-			header('Content-type: application/javascript');
-			
-			if (isset($_SERVER['HTTP_ORIGIN'])) {
-				header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-				header('Access-Control-Allow-Credentials: true');
-				header('Access-Control-Max-Age: 86400');	// cache for 1 day
-			}
-			// Access-Control headers are received during OPTIONS requests
-			if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+            header('Content-type: application/javascript');
 
-				if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-					header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+            if (isset($_SERVER['HTTP_ORIGIN'])) {
+                header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+                header('Access-Control-Allow-Credentials: true');
+                header('Access-Control-Max-Age: 86400'); // cache for 1 day
+            }
+            // Access-Control headers are received during OPTIONS requests
+            if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
-				if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-					header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
+                    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+                }
 
-				exit(0);
-			}
-		}
-		if ($callback) {
-			$ret = "$callback(" . $json . ");";
-		}
-		else {
-			$ret = $json;
-		}
-        if($return) {
-            return $ret;
+                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+                    header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+                exit(0);
+            }
         }
-        else {
+        if ($callback) {
+            $ret = "$callback(" . $json . ");";
+        } else {
+            $ret = $json;
+        }
+        if ($return) {
+            return $ret;
+        } else {
             echo $ret;
         }
     }
-    
+
     /**
      * Creates a Symfony response object to simplify using the API in Symfony or frameworks that use the
      * HttpFoundation component
@@ -163,8 +169,9 @@ class Remote {
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getSymfonyResponse($settings = null) {
-        if(!$settings) {
+    public function getSymfonyResponse($settings = null)
+    {
+        if (!$settings) {
             $settings = $this->getSettings();
         }
         $data = $this->getResponseObject($settings);
@@ -211,27 +218,27 @@ class Remote {
      *
      * @param $url
      */
-    public function setRequestUrl($url) {
+    public function setRequestUrl($url)
+    {
         $this->requestUrl = $url;
     }
-    
-    protected function getRequestUrl() {
-        if($this->requestUrl) {
+
+    protected function getRequestUrl()
+    {
+        if ($this->requestUrl) {
             return $this->requestUrl;
-        }
-        else if(isset($_REQUEST['fetchURL'])) {
+        } else if (isset($_REQUEST['fetchURL'])) {
             return $_REQUEST['fetchURL'];
-        }
-        else if(isset($_SERVER['HTTP_HOST']) && isset($_SERVER['REQUEST_URI'])) {
+        } else if (isset($_SERVER['HTTP_HOST']) && isset($_SERVER['REQUEST_URI'])) {
             return (isset($_SERVER['HTTPS']) ? 'https' : 'http') . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-        }
-        else {
+        } else {
             return "";
         }
     }
-    
-    protected function getCallback() {
-        if(isset($_REQUEST['callback'])) {
+
+    protected function getCallback()
+    {
+        if (isset($_REQUEST['callback'])) {
             return $_REQUEST['callback'];
         }
         return false;

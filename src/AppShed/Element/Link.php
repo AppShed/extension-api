@@ -4,7 +4,8 @@ namespace AppShed\Element;
 
 use AppShed\Element\LinkConsts;
 
-trait Link {
+trait Link
+{
 
     /**
      *
@@ -81,126 +82,146 @@ trait Link {
     protected $emailBody;
     protected $backScreenId;
 
-    public function getLinkArrow() {
+    public function getLinkArrow()
+    {
         return $this->linkArrow;
     }
 
-    public function setLinkArrow($linkArrow) {
+    public function setLinkArrow($linkArrow)
+    {
         $this->linkArrow = $linkArrow;
     }
 
     /**
-     * 
+     *
      * @param string $javascript
      */
-    public function setJavascriptLink($javascript) {
+    public function setJavascriptLink($javascript)
+    {
         $this->linktype = LinkConsts::LINK_JAVASCRIPT;
         $this->javascript = $javascript;
     }
 
     /**
-     * 
+     *
      * @param \AppShed\Element\App|string $app
      */
-    public function setAppLink($app) {
+    public function setAppLink($app)
+    {
         $this->linktype = LinkConsts::LINK_APP;
         $this->app = $app;
     }
 
     /**
-     * 
+     *
      * @param \AppShed\Element\Screen\Screen|string $screen
      * @param string $elementId
      */
-    public function setScreenLink($screen, $elementId = null) {
+    public function setScreenLink($screen, $elementId = null)
+    {
         $this->linktype = LinkConsts::LINK_SCREEN;
         $this->screen = $screen;
         $this->elementId = $elementId;
     }
 
     /**
-     * 
+     *
      * @param \AppShed\Element\Tab|string $tab
      */
-    public function setTabLink($tab) {
+    public function setTabLink($tab)
+    {
         $this->linktype = LinkConsts::LINK_TAB;
         $this->tab = $tab;
     }
 
     /**
-     * 
+     *
      * @param string $url
      * @param string $fileName
      */
-    public function setFileLink($url, $fileName = null) {
+    public function setFileLink($url, $fileName = null)
+    {
         $this->linktype = LinkConsts::LINK_FILE;
         $this->fileUrl = $url;
         $this->fileName = $fileName;
     }
 
-    public function setWebLink($url, $type = LinkConsts::WEBLINK_NORMAL) {
+    public function setWebLink($url, $type = LinkConsts::WEBLINK_NORMAL)
+    {
         $this->linktype = LinkConsts::LINK_WEB;
         $this->webUrl = $url;
         $this->webType = $type;
     }
 
-    public function setYouTubeLink($url) {
+    public function setYouTubeLink($url)
+    {
         $this->linktype = LinkConsts::LINK_YOUTUBE;
         $this->youTubeUrl = $url;
     }
 
-    public function setVimeoLink($url) {
+    public function setVimeoLink($url)
+    {
         $this->linktype = LinkConsts::LINK_VIMEO;
         $this->vimeoUrl = $url;
     }
 
-    public function setPhoneLink($number) {
+    public function setPhoneLink($number)
+    {
         $this->linktype = LinkConsts::LINK_PHONE;
         $this->phoneNumber = $number;
     }
 
-    public function setTwitterLink($screenName) {
+    public function setTwitterLink($screenName)
+    {
         $this->linktype = LinkConsts::LINK_TWITTER;
         $this->twitterScreenName - $screenName;
     }
 
-    public function setRemoteLink($url) {
+    public function setRemoteLink($url)
+    {
         $this->linktype = LinkConsts::LINK_REMOTE;
         $this->remoteurl = $url;
     }
-    
-    public function setFacebookLink($url) {
+
+    public function setFacebookLink($url)
+    {
         $this->linktype = LinkConsts::LINK_FACEBOOK;
         $this->facebookUrl = $url;
     }
 
-    public function setRefreshLink() {
+    public function setRefreshLink()
+    {
         $this->linktype = LinkConsts::LINK_REFRESH;
     }
 
-    public function setBBMLink() {
+    public function setBBMLink()
+    {
         $this->linktype = LinkConsts::LINK_BBM;
     }
 
-    public function setEmailLink($to, $subject, $body) {
+    public function setEmailLink($to, $subject, $body)
+    {
         $this->linktype = LinkConsts::LINK_EMAIL;
         $this->emailTo = $to;
         $this->emailSubject = $subject;
         $this->emailBody = $body;
     }
 
-    public function setBackLink($screenId = null) {
+    public function setBackLink($screenId = null)
+    {
         $this->linktype = LinkConsts::LINK_BACK;
         $this->backScreenId = $screenId;
     }
 
     /**
      * Get the html node for this element
+     *
      * @param \DOMElement $node
      * @param \Appshed\XML\DOMDocument $xml
      * @param \AppShed\HTML\Settings $settings
      */
-    protected function applyLinkToNode($xml, $node, $settings) {
+    protected function applyLinkToNode($xml, $node, $settings)
+    {
         switch ($this->linktype) {
             case LinkConsts::LINK_JAVASCRIPT:
                 $node->setAttribute('data-linktype', LinkConsts::LINK_JAVASCRIPT);
@@ -286,17 +307,25 @@ trait Link {
                     $screen->addChild(new \AppShed\Element\Item\TextArea('email_body', 'Message', $this->emailBody));
 
                     $send = new \AppShed\Element\Item\Button('Send');
-                    $send->setWebLink('mailto:{email_to}?subject={email_subject}&body={email_body}', LinkConsts::WEBLINK_EXTERNAL);
+                    $send->setWebLink(
+                        'mailto:{email_to}?subject={email_subject}&body={email_body}',
+                        LinkConsts::WEBLINK_EXTERNAL
+                    );
                     $screen->addChild($send);
                     $screen->getHTMLNode($xml, $settings);
                     $node->setAttribute('data-linktype', LinkConsts::LINK_SCREEN);
                     $node->setAttribute('data-href', $settings->getPrefix() . $screen->getId());
                 } else {
                     $node->setAttribute('data-linktype', LinkConsts::LINK_WEB);
-                    $node->setAttribute('data-href', 'mailto:' . $this->emailTo . '?' . http_build_query(array(
+                    $node->setAttribute(
+                        'data-href',
+                        'mailto:' . $this->emailTo . '?' . http_build_query(
+                            array(
                                 'subject' => $this->emailSubject,
                                 'body' => $this->emailBody
-                    )));
+                            )
+                        )
+                    );
                     $node->setAttribute('data-weblinktype', LinkConsts::WEBLINK_EXTERNAL);
                 }
                 break;
@@ -343,8 +372,10 @@ trait Link {
             $xml->addClass($node, 'link');
             if ($this->linkArrow === true) {
                 $node->appendChild($xml->createElement('div', 'link-arrow'));
-            } else if ($this->linkArrow === false) {
-                $xml->addClass($node, 'link-no-arrow');
+            } else {
+                if ($this->linkArrow === false) {
+                    $xml->addClass($node, 'link-no-arrow');
+                }
             }
             $node->setAttribute('x-blackberry-focusable', 'true');
         }
@@ -352,10 +383,12 @@ trait Link {
 
     /**
      * Get the html node for this element
+     *
      * @param array $javascripts
      * @param \AppShed\HTML\Settings $settings
      */
-    public function getJavascript(&$javascripts, $settings) {
+    public function getJavascript(&$javascripts, $settings)
+    {
         if ($this->linktype == LinkConsts::LINK_JAVASCRIPT) {
             $javascripts[$this->getIdType() . $settings->getPrefix() . $this->getId()] = $this->javascript;
         }

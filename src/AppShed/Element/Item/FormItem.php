@@ -2,7 +2,8 @@
 
 namespace AppShed\Element\Item;
 
-trait FormItem {
+trait FormItem
+{
     /**
      *
      * @var string
@@ -18,28 +19,34 @@ trait FormItem {
      * @var boolean
      */
     protected $post;
-    
-    public function getVariableName() {
+
+    public function getVariableName()
+    {
         return $this->variableName;
     }
 
-    public function setVariableName($variableName) {
+    public function setVariableName($variableName)
+    {
         $this->variableName = $variableName;
     }
 
-    public function getSave() {
+    public function getSave()
+    {
         return $this->save;
     }
 
-    public function setSave($save) {
+    public function setSave($save)
+    {
         $this->save = $save;
     }
 
-    public function getPost() {
+    public function getPost()
+    {
         return $this->post;
     }
 
-    public function setPost($post) {
+    public function setPost($post)
+    {
         $this->post = $post;
     }
 }

@@ -2,7 +2,8 @@
 
 namespace AppShed\Element;
 
-class LinkConsts {
+class LinkConsts
+{
     const LINK_JAVASCRIPT = 'jscode';
     const LINK_APP = 'app';
     const LINK_SCREEN = 'screen';
@@ -15,11 +16,11 @@ class LinkConsts {
     const LINK_TWITTER = 'twitter';
     const LINK_FACEBOOK = 'facebook';
     const LINK_BBM = 'bbm';
-    const LINK_REFRESH  = 'refresh';
+    const LINK_REFRESH = 'refresh';
     const LINK_EMAIL = 'email';
     const LINK_BACK = 'back';
     const LINK_REMOTE = 'remote';
-    
+
     const WEBLINK_NORMAL = 'normal';
     const WEBLINK_IFRAME = 'iframe';
     const WEBLINK_EXTERNAL = 'external';

@@ -2,7 +2,8 @@
 
 namespace AppShed\Element;
 
-trait Style {
+trait Style
+{
 
     abstract public function getId();
 
@@ -205,267 +206,333 @@ trait Style {
      */
     protected $autoCompleteHighlightColor;
 
-    public function getColor() {
+    public function getColor()
+    {
         return $this->color;
     }
 
-    public function setColor(\AppShed\Style\Color $color) {
+    public function setColor(\AppShed\Style\Color $color)
+    {
         $this->color = $color;
     }
 
-    public function getTitleColor() {
+    public function getTitleColor()
+    {
         return $this->titleColor;
     }
 
-    public function setTitleColor(\AppShed\Style\Color $titleColor) {
+    public function setTitleColor(\AppShed\Style\Color $titleColor)
+    {
         $this->titleColor = $titleColor;
     }
 
-    public function getSubtitleColor() {
+    public function getSubtitleColor()
+    {
         return $this->subtitleColor;
     }
 
-    public function setSubtitleColor(\AppShed\Style\Color $subtitleColor) {
+    public function setSubtitleColor(\AppShed\Style\Color $subtitleColor)
+    {
         $this->subtitleColor = $subtitleColor;
     }
 
-    public function getGlowColor() {
+    public function getGlowColor()
+    {
         return $this->glowColor;
     }
 
-    public function setGlowColor(\AppShed\Style\Color $glowColor) {
+    public function setGlowColor(\AppShed\Style\Color $glowColor)
+    {
         $this->glowColor = $glowColor;
     }
 
-    public function getBorderColor() {
+    public function getBorderColor()
+    {
         return $this->borderColor;
     }
 
-    public function setBorderColor(\AppShed\Style\Color $borderColor) {
+    public function setBorderColor(\AppShed\Style\Color $borderColor)
+    {
         $this->borderColor = $borderColor;
     }
 
-    public function getUnderline() {
+    public function getUnderline()
+    {
         return $this->underline;
     }
 
-    public function setUnderline($underline) {
+    public function setUnderline($underline)
+    {
         $this->underline = $underline;
     }
 
-    public function getSize() {
+    public function getSize()
+    {
         return $this->size;
     }
 
-    public function setSize($size) {
+    public function setSize($size)
+    {
         $this->size = $size;
     }
 
-    public function getFontFamily() {
+    public function getFontFamily()
+    {
         return $this->fontFamily;
     }
 
-    public function setFontFamily($fontFamily) {
+    public function setFontFamily($fontFamily)
+    {
         $this->fontFamily = $fontFamily;
     }
 
-    public function getAlign() {
+    public function getAlign()
+    {
         return $this->align;
     }
 
-    public function setAlign($align) {
+    public function setAlign($align)
+    {
         $this->align = $align;
     }
 
-    public function getBold() {
+    public function getBold()
+    {
         return $this->bold;
     }
 
-    public function setBold($bold) {
+    public function setBold($bold)
+    {
         $this->bold = $bold;
     }
 
-    public function getItalic() {
+    public function getItalic()
+    {
         return $this->italic;
     }
 
-    public function setItalic($italic) {
+    public function setItalic($italic)
+    {
         $this->italic = $italic;
     }
 
-    public function getListBackground() {
+    public function getListBackground()
+    {
         return $this->listBackground;
     }
 
-    public function setListBackground(\AppShed\Style\Image $listBackground) {
+    public function setListBackground(\AppShed\Style\Image $listBackground)
+    {
         $this->listBackground = $listBackground;
     }
 
-    public function getGalleryBackground() {
+    public function getGalleryBackground()
+    {
         return $this->galleryBackground;
     }
 
-    public function setGalleryBackground(\AppShed\Style\Image $galleryBackground) {
+    public function setGalleryBackground(\AppShed\Style\Image $galleryBackground)
+    {
         $this->galleryBackground = $galleryBackground;
     }
 
-    public function getIconBackground() {
+    public function getIconBackground()
+    {
         return $this->iconBackground;
     }
 
-    public function setIconBackground(\AppShed\Style\Image $iconBackground) {
+    public function setIconBackground(\AppShed\Style\Image $iconBackground)
+    {
         $this->iconBackground = $iconBackground;
     }
 
-    public function getAppsBackground() {
+    public function getAppsBackground()
+    {
         return $this->appsBackground;
     }
 
-    public function setAppsBackground(\AppShed\Style\Image $appsBackground) {
+    public function setAppsBackground(\AppShed\Style\Image $appsBackground)
+    {
         $this->appsBackground = $appsBackground;
     }
 
-    public function getBackground() {
+    public function getBackground()
+    {
         return $this->background;
     }
 
-    public function setBackground(\AppShed\Style\Image $background) {
+    public function setBackground(\AppShed\Style\Image $background)
+    {
         $this->background = $background;
     }
 
-    public function getHrAfter() {
+    public function getHrAfter()
+    {
         return $this->hrAfter;
     }
 
-    public function setHrAfter($hrAfter) {
+    public function setHrAfter($hrAfter)
+    {
         $this->hrAfter = $hrAfter;
     }
 
-    public function getHrColor() {
+    public function getHrColor()
+    {
         return $this->hrColor;
     }
 
-    public function setHrColor(\AppShed\Style\Color $hrColor) {
+    public function setHrColor(\AppShed\Style\Color $hrColor)
+    {
         $this->hrColor = $hrColor;
     }
 
-    public function getHrWidth() {
+    public function getHrWidth()
+    {
         return $this->hrWidth;
     }
 
-    public function setHrWidth($hrWidth) {
+    public function setHrWidth($hrWidth)
+    {
         $this->hrWidth = $hrWidth;
     }
 
-    public function getHeaderColor() {
+    public function getHeaderColor()
+    {
         return $this->headerColor;
     }
 
-    public function setHeaderColor(\AppShed\Style\Color $headerColor) {
+    public function setHeaderColor(\AppShed\Style\Color $headerColor)
+    {
         $this->headerColor = $headerColor;
     }
 
-    public function getHeaderTextColor() {
+    public function getHeaderTextColor()
+    {
         return $this->headerTextColor;
     }
 
-    public function setHeaderTextColor(\AppShed\Style\Color $headerTextColor) {
+    public function setHeaderTextColor(\AppShed\Style\Color $headerTextColor)
+    {
         $this->headerTextColor = $headerTextColor;
     }
 
-    public function getHeaderDisplay() {
+    public function getHeaderDisplay()
+    {
         return $this->headerDisplay;
     }
 
-    public function setHeaderDisplay($headerDisplay) {
+    public function setHeaderDisplay($headerDisplay)
+    {
         $this->headerDisplay = $headerDisplay;
     }
 
-    public function getPaddingTop() {
+    public function getPaddingTop()
+    {
         return $this->paddingTop;
     }
 
-    public function setPaddingTop($paddingTop) {
+    public function setPaddingTop($paddingTop)
+    {
         $this->paddingTop = $paddingTop;
     }
 
-    public function getPaddingBottom() {
+    public function getPaddingBottom()
+    {
         return $this->paddingBottom;
     }
 
-    public function setPaddingBottom($paddingBottom) {
+    public function setPaddingBottom($paddingBottom)
+    {
         $this->paddingBottom = $paddingBottom;
     }
 
-    public function getPaddingLeft() {
+    public function getPaddingLeft()
+    {
         return $this->paddingLeft;
     }
 
-    public function setPaddingLeft($paddingLeft) {
+    public function setPaddingLeft($paddingLeft)
+    {
         $this->paddingLeft = $paddingLeft;
     }
 
-    public function getPaddingRight() {
+    public function getPaddingRight()
+    {
         return $this->paddingRight;
     }
 
-    public function setPaddingRight($paddingRight) {
+    public function setPaddingRight($paddingRight)
+    {
         $this->paddingRight = $paddingRight;
     }
 
-    public function getTitleSize() {
+    public function getTitleSize()
+    {
         return $this->titleSize;
     }
 
-    public function setTitleSize($titleSize) {
+    public function setTitleSize($titleSize)
+    {
         $this->titleSize = $titleSize;
     }
 
-    public function getSubtitleSize() {
+    public function getSubtitleSize()
+    {
         return $this->subtitleSize;
     }
 
-    public function setSubtitleSize($subtitleSize) {
+    public function setSubtitleSize($subtitleSize)
+    {
         $this->subtitleSize = $subtitleSize;
     }
 
-    public function getTitleFont() {
+    public function getTitleFont()
+    {
         return $this->titleFont;
     }
 
-    public function setTitleFont($titleFont) {
+    public function setTitleFont($titleFont)
+    {
         $this->titleFont = $titleFont;
     }
 
-    public function getSubtitleFont() {
+    public function getSubtitleFont()
+    {
         return $this->subtitleFont;
     }
 
-    public function setSubtitleFont($subtitleFont) {
+    public function setSubtitleFont($subtitleFont)
+    {
         $this->subtitleFont = $subtitleFont;
     }
 
-    public function getAutoCompleteColor() {
+    public function getAutoCompleteColor()
+    {
         return $this->autoCompleteColor;
     }
 
-    public function setAutoCompleteColor(\AppShed\Style\Color $autoCompleteColor) {
+    public function setAutoCompleteColor(\AppShed\Style\Color $autoCompleteColor)
+    {
         $this->autoCompleteColor = $autoCompleteColor;
     }
 
-    public function getAutoCompleteBackgroundColor() {
+    public function getAutoCompleteBackgroundColor()
+    {
         return $this->autoCompleteBackgroundColor;
     }
 
-    public function setAutoCompleteBackgroundColor(\AppShed\Style\Color $autoCompleteBackgroundColor) {
+    public function setAutoCompleteBackgroundColor(\AppShed\Style\Color $autoCompleteBackgroundColor)
+    {
         $this->autoCompleteBackgroundColor = $autoCompleteBackgroundColor;
     }
 
-    public function getAutoCompleteHighlightColor() {
+    public function getAutoCompleteHighlightColor()
+    {
         return $this->autoCompleteHighlightColor;
     }
 
-    public function setAutoCompleteHighlightColor(\AppShed\Style\Color $autoCompleteHighlightColor) {
+    public function setAutoCompleteHighlightColor(\AppShed\Style\Color $autoCompleteHighlightColor)
+    {
         $this->autoCompleteHighlightColor = $autoCompleteHighlightColor;
     }
 
@@ -473,7 +540,8 @@ trait Style {
      * @param \Appshed\Style\CSSDocument $css
      * @param \AppShed\HTML\Settings $settings
      */
-    public function getCSS($css, $settings) {
+    public function getCSS($css, $settings)
+    {
         $idselector = $css->getIdSelector($this->getIdType() . $settings->getPrefix() . $this->getId());
         $isScreen = $this instanceof \AppShed\Element\Screen\Screen;
         $isItem = $this instanceof \AppShed\Element\Item\Item;
@@ -486,20 +554,47 @@ trait Style {
             $css->addRule($idselector . " .item-icon-inner .title", 'color', $css->getColorValue($this->color));
         }
 
-        $css->addRule(array($idselector, $css->getClassSelector('glow-back')), 'fill', $css->getColorValue($this->glowColor));
-        $css->addRule(array($css->getClassSelector('android'), $idselector, $css->getClassSelector('glow-back'), $css->getClassSelector('back-left')), 'background-color', $css->getColorValue($this->glowColor));
-        $css->addRule(array($idselector, $css->getClassSelector('glow-back'), $css->getClassSelector('back-right')), 'background-color', $css->getColorValue($this->glowColor));
-        $css->addRule(array($idselector, $css->getClassSelector('glow-back'), $css->getClassSelector('back-center')), 'background-color', $css->getColorValue($this->glowColor));
+        $css->addRule(
+            array($idselector, $css->getClassSelector('glow-back')),
+            'fill',
+            $css->getColorValue($this->glowColor)
+        );
+        $css->addRule(
+            array(
+                $css->getClassSelector('android'),
+                $idselector,
+                $css->getClassSelector('glow-back'),
+                $css->getClassSelector('back-left')
+            ),
+            'background-color',
+            $css->getColorValue($this->glowColor)
+        );
+        $css->addRule(
+            array($idselector, $css->getClassSelector('glow-back'), $css->getClassSelector('back-right')),
+            'background-color',
+            $css->getColorValue($this->glowColor)
+        );
+        $css->addRule(
+            array($idselector, $css->getClassSelector('glow-back'), $css->getClassSelector('back-center')),
+            'background-color',
+            $css->getColorValue($this->glowColor)
+        );
         if ($this->glowColor) {
-            $css->addRule(array($idselector, $css->getClassSelector('glow')), 'background-color', $this->glowColor->toString(0.5));
+            $css->addRule(
+                array($idselector, $css->getClassSelector('glow')),
+                'background-color',
+                $this->glowColor->toString(0.5)
+            );
         }
 
         $css->addRule($idselector, 'font-size', $css->getSizeValue($this->size));
 
         if ($this->bold === true) {
             $css->addRule($idselector, 'font-weight', 'bold');
-        } else if ($this->bold === false) {
-            $css->addRule($idselector, 'font-weight', 'normal');
+        } else {
+            if ($this->bold === false) {
+                $css->addRule($idselector, 'font-weight', 'normal');
+            }
         }
 
         if ($this->italic === true) {
@@ -516,11 +611,27 @@ trait Style {
 
         if ($this->headerDisplay === false) {
             if ($isScreen) {
-                $css->addRule(array($idselector . $css->getClassSelector('screen'), $css->getClassSelector('header')), 'display', 'none');
-                $css->addRule(array($idselector . $css->getClassSelector('screen'), $css->getClassSelector('items')), 'top', '0');
+                $css->addRule(
+                    array($idselector . $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                    'display',
+                    'none'
+                );
+                $css->addRule(
+                    array($idselector . $css->getClassSelector('screen'), $css->getClassSelector('items')),
+                    'top',
+                    '0'
+                );
             } else {
-                $css->addRule(array($idselector, $css->getClassSelector('screen'), $css->getClassSelector('header')), 'display', 'none');
-                $css->addRule(array($idselector, $css->getClassSelector('screen'), $css->getClassSelector('items')), 'top', '0');
+                $css->addRule(
+                    array($idselector, $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                    'display',
+                    'none'
+                );
+                $css->addRule(
+                    array($idselector, $css->getClassSelector('screen'), $css->getClassSelector('items')),
+                    'top',
+                    '0'
+                );
             }
         }
 
@@ -529,76 +640,238 @@ trait Style {
         $css->addRule(array($idselector, 'input'), 'border-color', $css->getColorValue($this->borderColor));
         $css->addRule(array($idselector, 'select'), 'border-color', $css->getColorValue($this->borderColor));
 
-        $css->addRule(array($idselector, $css->getClassSelector('autocomplete')), 'color', $css->getColorValue($this->autoCompleteColor));
-        $css->addRule(array($idselector, $css->getClassSelector('autocomplete')), 'border-color', $css->getColorValue($this->autoCompleteColor));
-        $css->addRule(array($idselector, $css->getClassSelector('autocomplete')), 'background-color', $css->getColorValue($this->autoCompleteBackgroundColor));
-        $css->addRule(array($idselector, $css->getClassSelector('autocomplete'), $css->getClassSelector('completion') . $css->getPseudoClassSelector('hover')), 'color', $css->getColorValue($this->autoCompleteHighlightColor));
+        $css->addRule(
+            array($idselector, $css->getClassSelector('autocomplete')),
+            'color',
+            $css->getColorValue($this->autoCompleteColor)
+        );
+        $css->addRule(
+            array($idselector, $css->getClassSelector('autocomplete')),
+            'border-color',
+            $css->getColorValue($this->autoCompleteColor)
+        );
+        $css->addRule(
+            array($idselector, $css->getClassSelector('autocomplete')),
+            'background-color',
+            $css->getColorValue($this->autoCompleteBackgroundColor)
+        );
+        $css->addRule(
+            array(
+                $idselector,
+                $css->getClassSelector('autocomplete'),
+                $css->getClassSelector('completion') . $css->getPseudoClassSelector('hover')
+            ),
+            'color',
+            $css->getColorValue($this->autoCompleteHighlightColor)
+        );
 
-        $css->addRule(array($idselector, $css->getClassSelector('title')), 'color', $css->getColorValue($this->titleColor));
-        $css->addRule(array($idselector, $css->getClassSelector('title')), 'font-size', $css->getSizeValue($this->titleSize));
-        $css->addRule(array($idselector, $css->getClassSelector('title')), 'font-family', $css->getFontValue($this->titleFont));
+        $css->addRule(
+            array($idselector, $css->getClassSelector('title')),
+            'color',
+            $css->getColorValue($this->titleColor)
+        );
+        $css->addRule(
+            array($idselector, $css->getClassSelector('title')),
+            'font-size',
+            $css->getSizeValue($this->titleSize)
+        );
+        $css->addRule(
+            array($idselector, $css->getClassSelector('title')),
+            'font-family',
+            $css->getFontValue($this->titleFont)
+        );
 
-        $css->addRule(array($idselector, $css->getClassSelector('text')), 'color', $css->getColorValue($this->subtitleColor));
-        $css->addRule(array($idselector, $css->getClassSelector('text')), 'font-size', $css->getSizeValue($this->subtitleSize));
-        $css->addRule(array($idselector, $css->getClassSelector('text')), 'font-family', $css->getFontValue($this->subtitleFont));
+        $css->addRule(
+            array($idselector, $css->getClassSelector('text')),
+            'color',
+            $css->getColorValue($this->subtitleColor)
+        );
+        $css->addRule(
+            array($idselector, $css->getClassSelector('text')),
+            'font-size',
+            $css->getSizeValue($this->subtitleSize)
+        );
+        $css->addRule(
+            array($idselector, $css->getClassSelector('text')),
+            'font-family',
+            $css->getFontValue($this->subtitleFont)
+        );
 
         if ($isScreen) {
             if ($this->galleryBackground) {
-                $this->galleryBackground->toCSS($css, array($idselector . $css->getClassSelector(array('screen', 'gallery')), $css->getClassSelector('items')));
-                $this->galleryBackground->toCSS($css, array($idselector . $css->getClassSelector(array('screen', 'photo')), $css->getClassSelector('items')));
+                $this->galleryBackground->toCSS(
+                    $css,
+                    array(
+                        $idselector . $css->getClassSelector(array('screen', 'gallery')),
+                        $css->getClassSelector('items')
+                    )
+                );
+                $this->galleryBackground->toCSS(
+                    $css,
+                    array(
+                        $idselector . $css->getClassSelector(array('screen', 'photo')),
+                        $css->getClassSelector('items')
+                    )
+                );
             }
             if ($this->listBackground) {
-                $this->listBackground->toCSS($css, array($idselector . $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('items')));
+                $this->listBackground->toCSS(
+                    $css,
+                    array(
+                        $idselector . $css->getClassSelector(array('screen', 'list')),
+                        $css->getClassSelector('items')
+                    )
+                );
             }
             if ($this->iconBackground) {
-                $this->iconBackground->toCSS($css, array($idselector . $css->getClassSelector(array('screen', 'icon')), $css->getClassSelector('items')));
+                $this->iconBackground->toCSS(
+                    $css,
+                    array(
+                        $idselector . $css->getClassSelector(array('screen', 'icon')),
+                        $css->getClassSelector('items')
+                    )
+                );
             }
             if ($this->appsBackground) {
-                $this->appsBackground->toCSS($css, array($idselector . $css->getClassSelector(array('screen', 'appsscreen')), $css->getClassSelector('items')));
+                $this->appsBackground->toCSS(
+                    $css,
+                    array(
+                        $idselector . $css->getClassSelector(array('screen', 'appsscreen')),
+                        $css->getClassSelector('items')
+                    )
+                );
             }
         } else {
             if ($this->galleryBackground) {
-                $this->galleryBackground->toCSS($css, array($idselector, $css->getClassSelector(array('screen', 'gallery')), $css->getClassSelector('items')));
-                $this->galleryBackground->toCSS($css, array($idselector, $css->getClassSelector(array('screen', 'photo')), $css->getClassSelector('items')));
+                $this->galleryBackground->toCSS(
+                    $css,
+                    array(
+                        $idselector,
+                        $css->getClassSelector(array('screen', 'gallery')),
+                        $css->getClassSelector('items')
+                    )
+                );
+                $this->galleryBackground->toCSS(
+                    $css,
+                    array(
+                        $idselector,
+                        $css->getClassSelector(array('screen', 'photo')),
+                        $css->getClassSelector('items')
+                    )
+                );
             }
             if ($this->listBackground) {
-                $this->listBackground->toCSS($css, array($idselector, $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('items')));
+                $this->listBackground->toCSS(
+                    $css,
+                    array($idselector, $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('items'))
+                );
             }
             if ($this->iconBackground) {
-                $this->iconBackground->toCSS($css, array($idselector, $css->getClassSelector(array('screen', 'icon')), $css->getClassSelector('items')));
+                $this->iconBackground->toCSS(
+                    $css,
+                    array($idselector, $css->getClassSelector(array('screen', 'icon')), $css->getClassSelector('items'))
+                );
             }
             if ($this->appsBackground) {
-                $this->appsBackground->toCSS($css, array($idselector, $css->getClassSelector(array('screen', 'appsscreen')), $css->getClassSelector('items')));
+                $this->appsBackground->toCSS(
+                    $css,
+                    array(
+                        $idselector,
+                        $css->getClassSelector(array('screen', 'appsscreen')),
+                        $css->getClassSelector('items')
+                    )
+                );
             }
         }
 
         //if this is an item
         if ($this->background) {
             if ($isScreen) {
-                $this->background->toCSS($css, array($idselector . $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('item')));
+                $this->background->toCSS(
+                    $css,
+                    array($idselector . $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('item'))
+                );
             } else if ($isItem) {
-                $this->background->toCSS($css, array($css->getClassSelector(array('screen', 'list')), $idselector . $css->getClassSelector('item')));
+                $this->background->toCSS(
+                    $css,
+                    array($css->getClassSelector(array('screen', 'list')), $idselector . $css->getClassSelector('item'))
+                );
             } else {
-                $this->background->toCSS($css, array($idselector, $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('item')));
+                $this->background->toCSS(
+                    $css,
+                    array($idselector, $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('item'))
+                );
             }
         }
 
         if ($this->headerTextColor) {
             if ($isScreen) {
-                $css->addRule(array($idselector . $css->getClassSelector('screen'), $css->getClassSelector('header')), 'color', $css->getColorValue($this->headerTextColor));
-                $css->addRule(array($css->getClassSelector('android'), $idselector . $css->getClassSelector('screen'), $css->getClassSelector('header'), $css->getClassSelector('back')), 'stroke', $css->getColorValue($this->headerTextColor));
-                $css->addRule(array($idselector . $css->getClassSelector('screen'), $css->getClassSelector('header'), $css->getClassSelector('title')), 'text-shadow', "0px 1px 0px " . $css->getColorValue($this->getShadowColor($this->headerTextColor)));
+                $css->addRule(
+                    array($idselector . $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                    'color',
+                    $css->getColorValue($this->headerTextColor)
+                );
+                $css->addRule(
+                    array(
+                        $css->getClassSelector('android'),
+                        $idselector . $css->getClassSelector('screen'),
+                        $css->getClassSelector('header'),
+                        $css->getClassSelector('back')
+                    ),
+                    'stroke',
+                    $css->getColorValue($this->headerTextColor)
+                );
+                $css->addRule(
+                    array(
+                        $idselector . $css->getClassSelector('screen'),
+                        $css->getClassSelector('header'),
+                        $css->getClassSelector('title')
+                    ),
+                    'text-shadow',
+                    "0px 1px 0px " . $css->getColorValue($this->getShadowColor($this->headerTextColor))
+                );
             } else {
-                $css->addRule(array($idselector, $css->getClassSelector('screen'), $css->getClassSelector('header')), 'color', $css->getColorValue($this->headerTextColor));
-                $css->addRule(array($css->getClassSelector('android'), $idselector, $css->getClassSelector('screen'), $css->getClassSelector('header'), $css->getClassSelector('back')), 'stroke', $css->getColorValue($this->headerTextColor));
-                $css->addRule(array($idselector, $css->getClassSelector('screen'), $css->getClassSelector('header'), $css->getClassSelector('title')), 'text-shadow', "0px 1px 0px " . $css->getColorValue($this->getShadowColor($this->headerTextColor)));
+                $css->addRule(
+                    array($idselector, $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                    'color',
+                    $css->getColorValue($this->headerTextColor)
+                );
+                $css->addRule(
+                    array(
+                        $css->getClassSelector('android'),
+                        $idselector,
+                        $css->getClassSelector('screen'),
+                        $css->getClassSelector('header'),
+                        $css->getClassSelector('back')
+                    ),
+                    'stroke',
+                    $css->getColorValue($this->headerTextColor)
+                );
+                $css->addRule(
+                    array(
+                        $idselector,
+                        $css->getClassSelector('screen'),
+                        $css->getClassSelector('header'),
+                        $css->getClassSelector('title')
+                    ),
+                    'text-shadow',
+                    "0px 1px 0px " . $css->getColorValue($this->getShadowColor($this->headerTextColor))
+                );
             }
         }
 
         if ($isScreen) {
-            $css->addRule(array($idselector . $css->getClassSelector('screen'), $css->getClassSelector('header')), 'background-color', $css->getColorValue($this->headerColor));
+            $css->addRule(
+                array($idselector . $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                'background-color',
+                $css->getColorValue($this->headerColor)
+            );
         } else {
-            $css->addRule(array($idselector, $css->getClassSelector('screen'), $css->getClassSelector('header')), 'background-color', $css->getColorValue($this->headerColor));
+            $css->addRule(
+                array($idselector, $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                'background-color',
+                $css->getColorValue($this->headerColor)
+            );
         }
 
         if ($this->hrAfter === true) {
@@ -607,9 +880,17 @@ trait Style {
                 $width = 1;
             }
             if ($isItem) {
-                $css->addRule($idselector . $css->getClassSelector('item'), 'border-bottom-width', $css->getSizeValue($width));
+                $css->addRule(
+                    $idselector . $css->getClassSelector('item'),
+                    'border-bottom-width',
+                    $css->getSizeValue($width)
+                );
             } else {
-                $css->addRule(array($idselector, $css->getClassSelector('item')), 'border-bottom-width', $css->getSizeValue($width));
+                $css->addRule(
+                    array($idselector, $css->getClassSelector('item')),
+                    'border-bottom-width',
+                    $css->getSizeValue($width)
+                );
             }
         } else if ($this->hrAfter === false) {
             if ($isItem) {
@@ -619,9 +900,17 @@ trait Style {
             }
         }
         if ($isItem) {
-            $css->addRule($idselector . $css->getClassSelector('item'), 'border-bottom-color', $css->getColorValue($this->hrColor));
+            $css->addRule(
+                $idselector . $css->getClassSelector('item'),
+                'border-bottom-color',
+                $css->getColorValue($this->hrColor)
+            );
         } else {
-            $css->addRule(array($idselector, $css->getClassSelector('item')), 'border-bottom-color', $css->getColorValue($this->hrColor));
+            $css->addRule(
+                array($idselector, $css->getClassSelector('item')),
+                'border-bottom-color',
+                $css->getColorValue($this->hrColor)
+            );
         }
 
         $css->addRule($idselector, 'padding-top', $css->getSizeValue($this->paddingTop));
@@ -631,11 +920,13 @@ trait Style {
     }
 
     /**
-     * 
+     *
      * @param \AppShed\Style\Color $color
+     *
      * @return \AppShed\Style\Color
      */
-    protected function getShadowColor($color) {
+    protected function getShadowColor($color)
+    {
         $vals = array(
             'red' => $color->getRed(),
             'green' => $color->getGreen(),
@@ -654,9 +945,11 @@ trait Style {
 
     /**
      * copy styles from $from to this
-     * @param Style $from 
+     *
+     * @param Style $from
      */
-    public function copyStyles($from) {
+    public function copyStyles($from)
+    {
         $this->color = $from->color;
         $this->titleColor = $from->titleColor;
         $this->subtitleColor = $from->subtitleColor;

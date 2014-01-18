@@ -2,18 +2,22 @@
 
 namespace AppShed\Element;
 
-trait Container {
+trait Container
+{
     protected $children = array();
-    
-    public function setChildren($children) {
+
+    public function setChildren($children)
+    {
         $this->children = $children;
     }
 
-    public function addChild($child) {
+    public function addChild($child)
+    {
         $this->children[] = $child;
     }
-    
-    public function getChildren() {
+
+    public function getChildren()
+    {
         return $this->children;
     }
 }
