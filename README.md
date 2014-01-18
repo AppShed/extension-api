@@ -4,7 +4,7 @@ This is the api for remote screens.
 
 ## Installing
 
-You can install the API in your project just add `"appshed/extension-api": "*"` to your composer.json and run `composer install`.
+You can install the API in your project just add `"appshed/extension-api": "*"` to your composer.json and run `composer update appshed/extension-api`.
 
 ## Examples
 
