@@ -154,6 +154,57 @@ class Remote {
             echo $ret;
         }
     }
+    
+    /**
+     * Creates a Symfony response object to simplify using the API in Symfony or frameworks that use the
+     * HttpFoundation component
+     *
+     * @param \AppShed\HTML\Settings $settings
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getSymfonyResponse($settings = null) {
+        if(!$settings) {
+            $settings = $this->getSettings();
+        }
+        $data = $this->getResponseObject($settings);
+
+        $data['remote'] = array(
+            'url' => $settings->getFetchUrl(),
+            'refreshAfter' => $this->refreshAfter
+        );
+        $data['remote'][$settings->getFetchUrl()] = $data['settings']['main'];
+
+        $headers = [];
+
+        if (isset($_SERVER['HTTP_ORIGIN'])) {
+            $headers['Access-Control-Allow-Origin'] = $_SERVER['HTTP_ORIGIN'];
+            $headers['Access-Control-Allow-Credentials'] = 'true';
+            $headers['Access-Control-Max-Age'] = '86400';
+        }
+
+        // Access-Control headers are received during OPTIONS requests
+        if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
+                $headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
+            }
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
+                $headers['Access-Control-Allow-Headers'] = $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'];
+            }
+
+            return new \Symfony\Component\HttpFoundation\Response('', 200, $headers);
+        }
+
+        $response = new \Symfony\Component\HttpFoundation\JsonResponse($data, 200, $headers);
+
+        if (($callback = $this->getCallback())) {
+            $response->setCallback($callback);
+        }
+
+        return $response;
+    }
 
     /**
      * Override the detected request url
