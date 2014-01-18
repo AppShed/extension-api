@@ -115,21 +115,14 @@ class Remote
      */
     public function getResponse($settings = null, $header = true, $return = false)
     {
-        if (!$settings) {
-            $settings = $this->getSettings();
-        }
-        $data = $this->getResponseObject($settings);
-
-        $data['remote'] = array(
-            'url' => $settings->getFetchUrl(),
-            'refreshAfter' => $this->refreshAfter
-        );
-        $data['remote'][$settings->getFetchUrl()] = $data['settings']['main'];
-
-        $json = json_encode($data);
         $callback = $this->getCallback();
+
         if ($header) {
-            header('Content-type: application/javascript');
+            if($callback) {
+                header('Content-type: application/javascript');
+            } else {
+                header('Content-type: application/json');
+            }
 
             if (isset($_SERVER['HTTP_ORIGIN'])) {
                 header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
@@ -149,11 +142,26 @@ class Remote
                 exit(0);
             }
         }
+
+        if (!$settings) {
+            $settings = $this->getSettings();
+        }
+        $data = $this->getResponseObject($settings);
+
+        $data['remote'] = array(
+            'url' => $settings->getFetchUrl(),
+            'refreshAfter' => $this->refreshAfter
+        );
+        $data['remote'][$settings->getFetchUrl()] = $data['settings']['main'];
+
+        $json = json_encode($data);
+
         if ($callback) {
             $ret = "$callback(" . $json . ");";
         } else {
             $ret = $json;
         }
+
         if ($return) {
             return $ret;
         } else {
@@ -171,17 +179,6 @@ class Remote
      */
     public function getSymfonyResponse($settings = null)
     {
-        if (!$settings) {
-            $settings = $this->getSettings();
-        }
-        $data = $this->getResponseObject($settings);
-
-        $data['remote'] = array(
-            'url' => $settings->getFetchUrl(),
-            'refreshAfter' => $this->refreshAfter
-        );
-        $data['remote'][$settings->getFetchUrl()] = $data['settings']['main'];
-
         $headers = [];
 
         if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -203,6 +200,17 @@ class Remote
 
             return new \Symfony\Component\HttpFoundation\Response('', 200, $headers);
         }
+
+        if (!$settings) {
+            $settings = $this->getSettings();
+        }
+        $data = $this->getResponseObject($settings);
+
+        $data['remote'] = array(
+            'url' => $settings->getFetchUrl(),
+            'refreshAfter' => $this->refreshAfter
+        );
+        $data['remote'][$settings->getFetchUrl()] = $data['settings']['main'];
 
         $response = new \Symfony\Component\HttpFoundation\JsonResponse($data, 200, $headers);
 
