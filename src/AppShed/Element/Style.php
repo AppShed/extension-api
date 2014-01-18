@@ -958,43 +958,43 @@ trait Style
     /**
      * copy styles from $from to this
      *
-     * @param \AppShed\Element\Style $from
+     * @param \AppShed\Element\Stylable $from
      */
     public function copyStyles($from)
     {
-        $this->color = $from->color;
-        $this->titleColor = $from->titleColor;
-        $this->subtitleColor = $from->subtitleColor;
-        $this->glowColor = $from->glowColor;
-        $this->borderColor = $from->borderColor;
-        $this->underline = $from->underline;
-        $this->size = $from->size;
-        $this->fontFamily = $from->fontFamily;
-        $this->align = $from->align;
-        $this->bold = $from->bold;
-        $this->italic = $from->italic;
-        $this->listBackground = $from->listBackground;
-        $this->galleryBackground = $from->galleryBackground;
-        $this->iconBackground = $from->iconBackground;
-        $this->appsBackground = $from->appsBackground;
-        $this->background = $from->background;
-        $this->hrAfter = $from->hrAfter;
-        $this->hrColor = $from->hrColor;
-        $this->hrWidth = $from->hrWidth;
-        $this->headerColor = $from->headerColor;
-        $this->headerTextColor = $from->headerTextColor;
-        $this->headerDisplay = $from->headerDisplay;
-        $this->paddingTop = $from->paddingTop;
-        $this->paddingBottom = $from->paddingBottom;
-        $this->paddingLeft = $from->paddingLeft;
-        $this->paddingRight = $from->paddingRight;
-        $this->titleSize = $from->titleSize;
-        $this->subtitleSize = $from->subtitleSize;
-        $this->titleFont = $from->titleFont;
-        $this->subtitleFont = $from->subtitleFont;
-        $this->autoCompleteColor = $from->autoCompleteColor;
-        $this->autoCompleteBackgroundColor = $from->autoCompleteBackgroundColor;
-        $this->autoCompleteHighlightColor = $from->autoCompleteHighlightColor;
+        $this->color = $from->getColor();
+        $this->titleColor = $from->getTitleColor();
+        $this->subtitleColor = $from->getSubtitleColor();
+        $this->glowColor = $from->getGlowColor();
+        $this->borderColor = $from->getBorderColor();
+        $this->underline = $from->getUnderline();
+        $this->size = $from->getSize();
+        $this->fontFamily = $from->getFontFamily();
+        $this->align = $from->getAlign();
+        $this->bold = $from->getBold();
+        $this->italic = $from->getItalic();
+        $this->listBackground = $from->getListBackground();
+        $this->galleryBackground = $from->getGalleryBackground();
+        $this->iconBackground = $from->getIconBackground();
+        $this->appsBackground = $from->getAppsBackground();
+        $this->background = $from->getBackground();
+        $this->hrAfter = $from->getHrAfter();
+        $this->hrColor = $from->getHrColor();
+        $this->hrWidth = $from->getHrWidth();
+        $this->headerColor = $from->getHeaderColor();
+        $this->headerTextColor = $from->getHeaderTextColor();
+        $this->headerDisplay = $from->getHeaderDisplay();
+        $this->paddingTop = $from->getPaddingTop();
+        $this->paddingBottom = $from->getPaddingBottom();
+        $this->paddingLeft = $from->getPaddingLeft();
+        $this->paddingRight = $from->getPaddingRight();
+        $this->titleSize = $from->getTitleSize();
+        $this->subtitleSize = $from->getSubtitleSize();
+        $this->titleFont = $from->getTitleFont();
+        $this->subtitleFont = $from->getSubtitleFont();
+        $this->autoCompleteColor = $from->getAutoCompleteColor();
+        $this->autoCompleteBackgroundColor = $from->getAutoCompleteBackgroundColor();
+        $this->autoCompleteHighlightColor = $from->getAutoCompleteHighlightColor();
     }
 
 }

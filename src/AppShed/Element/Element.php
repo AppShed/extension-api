@@ -2,7 +2,7 @@
 
 namespace AppShed\Element;
 
-abstract class Element
+abstract class Element implements Stylable
 {
     use Style;
 
