@@ -2,7 +2,7 @@ source: src
 destination: doc
 extensions: [php]
 
-title: Appshed Extentions
+title: AppShed Extentions
 
 accessLevels: [public, protected]
 php: No
