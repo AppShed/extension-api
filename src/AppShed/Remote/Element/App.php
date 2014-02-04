@@ -222,7 +222,7 @@ class App extends Element implements Root
      */
     public function setChildren($children)
     {
-        if(count($children) > 5) {
+        if (count($children) > 5) {
             throw new TooManyTabsException("Cannot have more than 5 tabs");
         }
         $this->children = $children;
@@ -235,7 +235,7 @@ class App extends Element implements Root
      */
     public function addChild($child)
     {
-        if(count($this->children) >= 5) {
+        if (count($this->children) >= 5) {
             throw new TooManyTabsException("Cannot have more than 5 tabs");
         }
         $this->children[] = $child;

@@ -7,7 +7,7 @@ use AppShed\Remote\Element\Item\Marker;
 
 $screen = new Map('Map Screen');
 
-$screen->addChild(new Marker('Hi there' , 'hello', 32,49));
+$screen->addChild(new Marker('Hi there', 'hello', 32, 49));
 
 $remote = new AppShed\Remote\HTML\Remote($screen);
 $remote->getResponse();

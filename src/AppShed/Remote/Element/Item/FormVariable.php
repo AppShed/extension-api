@@ -3,6 +3,7 @@
 namespace AppShed\Remote\Element\Item;
 
 
-interface FormVariable {
+interface FormVariable
+{
     public function getVariableName();
 }

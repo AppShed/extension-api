@@ -2,6 +2,7 @@
 namespace AppShed\Remote\Exceptions;
 
 
-class TooManyTabsException extends \Exception {
+class TooManyTabsException extends \Exception
+{
 
 }

@@ -427,15 +427,15 @@ trait Link
      */
     protected function applyVariablesToUrl($url)
     {
-        if(count($this->variables) > 0) {
+        if (count($this->variables) > 0) {
             $newParams = [];
-            foreach($this->variables as $variable) {
+            foreach ($this->variables as $variable) {
                 $name = $variable->getVariableName();
                 $newParams[$name] = '{' . $name . '}';
             }
             $query = str_replace(['%7B', '%7D'], ['{', '}'], http_build_query($newParams));
 
-            if(strpos($url, '?')) {
+            if (strpos($url, '?')) {
                 return "$url&$query";
             }
             return "$url?$query";
