@@ -6,6 +6,11 @@ use AppShed\Remote\Element\Item\Text;
 use AppShed\Remote\Element\Item\Image;
 use AppShed\Remote\Element\Item\Marker;
 use AppShed\Remote\Element\Item\Toggle;
+use AppShed\Remote\HTML\Remote;
+
+if(Remote::isOptionsRequest()) {
+    Remote::getCORSResponseHeaders();
+}
 
 $screen = new Screen('My Screen');
 $screen->addChild(new Text('Hi there'));
@@ -19,5 +24,5 @@ $link->setEmailLink('test@gmail.com', 'hello', 'body');
 $screen->addChild(new Toggle('test switch', 'title', 'value-1', true));
 
 
-$remote = new AppShed\Remote\HTML\Remote($screen);
+$remote = new Remote($screen);
 $remote->getResponse();
