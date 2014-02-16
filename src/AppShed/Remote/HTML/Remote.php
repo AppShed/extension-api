@@ -255,6 +255,34 @@ class Remote
     }
 
     /**
+     * Get the $_REQUEST vars without the extension api internal vars
+     * @return array
+     */
+    public static function getRequestVariables()
+    {
+        $vars = $_REQUEST;
+        unset($vars['appId']);
+        unset($vars['appSecret']);
+        unset($vars['clientId']);
+        unset($vars['clientSecret']);
+        unset($vars['itemid']);
+        unset($vars['identifier']);
+        unset($vars['emailPreview']);
+        unset($vars['telPreview']);
+        unset($vars['fetchURL']);
+        unset($vars['version']);
+
+        //Try to remove the random variable added for get requests to break cache
+        foreach ($vars as $key => $var) {
+            if ($var === '' && preg_match('/^[a-z0-9]{8}/', $key)) {
+                unset ($vars[$key]);
+            }
+        }
+
+        return $vars;
+    }
+
+    /**
      * Override the detected request url
      *
      * @param $url
