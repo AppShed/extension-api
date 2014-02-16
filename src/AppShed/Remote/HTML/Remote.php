@@ -121,29 +121,12 @@ class Remote
         $callback = $this->getCallback();
 
         if ($header) {
+            static::getCORSResponse();
+
             if ($callback) {
                 header('Content-type: application/javascript');
             } else {
                 header('Content-type: application/json');
-            }
-
-            if (isset($_SERVER['HTTP_ORIGIN'])) {
-                header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-                header('Access-Control-Allow-Credentials: true');
-                header('Access-Control-Max-Age: 86400'); // cache for 1 day
-            }
-            // Access-Control headers are received during OPTIONS requests
-            if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-
-                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
-                    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-                }
-
-                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
-                    header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-                }
-
-                exit(0);
             }
         }
 
@@ -183,25 +166,9 @@ class Remote
      */
     public function getSymfonyResponse($settings = null)
     {
-        $headers = [];
+        $headers = static::getCORSResponseHeaders();
 
-        if (isset($_SERVER['HTTP_ORIGIN'])) {
-            $headers['Access-Control-Allow-Origin'] = $_SERVER['HTTP_ORIGIN'];
-            $headers['Access-Control-Allow-Credentials'] = 'true';
-            $headers['Access-Control-Max-Age'] = '86400';
-        }
-
-        // Access-Control headers are received during OPTIONS requests
-        if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
-                $headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
-            }
-
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
-                $headers['Access-Control-Allow-Headers'] = $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'];
-            }
-
+        if (static::isOptionsRequest()) {
             return new \Symfony\Component\HttpFoundation\Response('', 200, $headers);
         }
 
@@ -223,6 +190,68 @@ class Remote
         }
 
         return $response;
+    }
+
+    /**
+     * Check if this is an options request
+     *
+     * @return bool
+     */
+    public static function isOptionsRequest()
+    {
+        return isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'OPTIONS';
+    }
+
+    /**
+     * Get the default CORS headers
+     *
+     * @return array
+     */
+    public static function getCORSResponseHeaders()
+    {
+        $headers = [];
+        if (isset($_SERVER['HTTP_ORIGIN'])) {
+            $headers['Access-Control-Allow-Origin'] = $_SERVER['HTTP_ORIGIN'];
+            $headers['Access-Control-Allow-Credentials'] = 'true';
+            $headers['Access-Control-Max-Age'] = '86400';
+        }
+
+        if (static::isOptionsRequest()) {
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
+                $headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS';
+            }
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
+                $headers['Access-Control-Allow-Headers'] = $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'];
+            }
+        }
+
+        return $headers;
+    }
+
+    /**
+     * Helper function to set CORS headers
+     * Will call exit if this is an OPTIONS request
+     */
+    public static function getCORSResponse() {
+        $headers = static::getCORSResponseHeaders();
+        foreach ($headers as $name => $value) {
+            header("$name: $value");
+        }
+
+        if (static::isOptionsRequest()) {
+            exit(0);
+        }
+    }
+
+    /**
+     * Get a Symfony response with the correct CORS headers
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public static function getCORSSymfonyResponse()
+    {
+        return new \Symfony\Component\HttpFoundation\Response('', 200, static::getCORSResponseHeaders());
     }
 
     /**
