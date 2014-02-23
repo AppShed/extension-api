@@ -8,6 +8,10 @@ namespace AppShed\Remote\Style;
  */
 class Size extends \ArrayObject
 {
+    /**
+     * @param int $width
+     * @param int $height
+     */
     public function __construct($width, $height)
     {
         $this['width'] = $width;
