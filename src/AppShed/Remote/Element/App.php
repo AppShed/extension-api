@@ -76,6 +76,20 @@ class App extends Element implements Root
     protected $customCSS;
 
     /**
+     * Disable the ios7 theme
+     *
+     * @var bool
+     */
+    protected $disableIos7;
+
+    /**
+     * Disable masking of tab images
+     *
+     * @var bool
+     */
+    protected $disableMasking;
+
+    /**
      * @var Tab[]
      */
     protected $children = [];
@@ -205,6 +219,42 @@ class App extends Element implements Root
         $this->customCSS = $customCSS;
     }
 
+    /**
+     * @return boolean
+     */
+    public function getDisableIos7()
+    {
+        return $this->disableIos7;
+    }
+
+    /**
+     * @param boolean $disableIos7
+     * @return App
+     */
+    public function setDisableIos7($disableIos7)
+    {
+        $this->disableIos7 = $disableIos7;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getDisableMasking()
+    {
+        return $this->disableMasking;
+    }
+
+    /**
+     * @param boolean $disableMasking
+     * @return App
+     */
+    public function setDisableMasking($disableMasking)
+    {
+        $this->disableMasking = $disableMasking;
+        return $this;
+    }
+
     protected function getIdType()
     {
         return 'app';
@@ -286,6 +336,14 @@ class App extends Element implements Root
 
         if ($this->webviewUrl) {
             $node->setAttribute('data-webview-url', $this->webviewUrl);
+        }
+
+        if ($this->disableIos7) {
+            $node->setAttribute('data-disable-ios7', 'data-disable-ios7');
+        }
+
+        if ($this->disableMasking) {
+            $node->setAttribute('data-disable-masking', 'data-disable-masking');
         }
 
         if ($this->icon) {
