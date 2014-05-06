@@ -25,7 +25,7 @@ class Toggle extends Item implements FormVariable
      */
     protected $checked;
 
-    public function __construct($variableName, $title, $value, $checked = false)
+    public function __construct($variableName, $title, $value = '1', $checked = false)
     {
         parent::__construct();
         $this->variable = $variableName;
@@ -94,14 +94,12 @@ class Toggle extends Item implements FormVariable
                     'data-variable' => $this->variable,
                     'data-save-value' => $this->save,
                     'class' => 'switch',
-                    'value' => $this->value
+                    'value' => $this->value,
+                    'checked' => $this->checked ? 'checked' : null
                 )
             )
         );
 
-        if ($this->value) {
-            $input->setAttribute('checked', 'checked');
-        }
         $inner->appendChild($switch = $xml->createElement('div'));
         $switch->appendChild($slider = $xml->createElement('div', array('class' => 'slider')));
 

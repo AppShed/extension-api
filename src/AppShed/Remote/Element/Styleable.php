@@ -7,8 +7,6 @@ use AppShed\Remote\Style\Image;
 
 interface Styleable
 {
-    public function getHeaderDisplay();
-
     public function getPaddingTop();
 
     public function getHrAfter();
@@ -28,8 +26,6 @@ interface Styleable
     public function setSubtitleColor(Color $subtitleColor);
 
     public function setTitleSize($titleSize);
-
-    public function setHeaderDisplay($headerDisplay);
 
     public function getPaddingRight();
 

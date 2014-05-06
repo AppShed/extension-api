@@ -24,7 +24,7 @@ class CheckBox extends Item implements FormVariable
      */
     protected $checked;
 
-    public function __construct($variableName, $title, $value, $checked = false)
+    public function __construct($variableName, $title, $value = '1', $checked = false)
     {
         parent::__construct();
         $this->variableName = $variableName;
@@ -32,7 +32,6 @@ class CheckBox extends Item implements FormVariable
         $this->value = $value;
         $this->checked = $checked;
     }
-
 
     public function getTitle()
     {
