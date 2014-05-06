@@ -140,12 +140,6 @@ trait Style
      *
      * @var boolean
      */
-    protected $headerDisplay;
-
-    /**
-     *
-     * @var boolean
-     */
     protected $paddingTop;
 
     /**
@@ -418,16 +412,6 @@ trait Style
         $this->headerTextColor = $headerTextColor;
     }
 
-    public function getHeaderDisplay()
-    {
-        return $this->headerDisplay;
-    }
-
-    public function setHeaderDisplay($headerDisplay)
-    {
-        $this->headerDisplay = $headerDisplay;
-    }
-
     public function getPaddingTop()
     {
         return $this->paddingTop;
@@ -612,32 +596,6 @@ trait Style
         } else {
             if ($this->underline === false) {
                 $css->addRule($idSelector, 'text-decoration', 'none');
-            }
-        }
-
-        if ($this->headerDisplay === false) {
-            if ($isScreen) {
-                $css->addRule(
-                    array($idSelector . $css->getClassSelector('screen'), $css->getClassSelector('header')),
-                    'display',
-                    'none'
-                );
-                $css->addRule(
-                    array($idSelector . $css->getClassSelector('screen'), $css->getClassSelector('items')),
-                    'top',
-                    '0'
-                );
-            } else {
-                $css->addRule(
-                    array($idSelector, $css->getClassSelector('screen'), $css->getClassSelector('header')),
-                    'display',
-                    'none'
-                );
-                $css->addRule(
-                    array($idSelector, $css->getClassSelector('screen'), $css->getClassSelector('items')),
-                    'top',
-                    '0'
-                );
             }
         }
 
@@ -988,7 +946,6 @@ trait Style
         $this->hrWidth = $from->getHrWidth();
         $this->headerColor = $from->getHeaderColor();
         $this->headerTextColor = $from->getHeaderTextColor();
-        $this->headerDisplay = $from->getHeaderDisplay();
         $this->paddingTop = $from->getPaddingTop();
         $this->paddingBottom = $from->getPaddingBottom();
         $this->paddingLeft = $from->getPaddingLeft();

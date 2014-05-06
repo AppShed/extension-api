@@ -24,7 +24,8 @@ class Screen extends Element implements Root
     protected $title;
 
     /**
-     * Display header with this screen, of float it
+     * Display header with this screen (true), or float it ('float'), or hide it (false)
+     *
      * @var boolean|string
      */
     protected $header = true;
