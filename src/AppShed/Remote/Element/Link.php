@@ -70,6 +70,18 @@ trait Link
      *
      * @var string
      */
+    protected $soundUrl;
+
+    /**
+     *
+     * @var string
+     */
+    protected $soundName;
+
+    /**
+     *
+     * @var string
+     */
     protected $webUrl;
 
     /**
@@ -155,6 +167,18 @@ trait Link
         $this->linktype = LinkConstants::LINK_FILE;
         $this->fileUrl = $url;
         $this->fileName = $fileName;
+    }
+
+    /**
+     *
+     * @param string $url
+     * @param string $fileName
+     */
+    public function setSoundLink($url, $fileName = null)
+    {
+        $this->linktype = LinkConstants::LINK_SOUND;
+        $this->soundUrl = $url;
+        $this->soundName = $fileName;
     }
 
     public function setWebLink($url, $type = LinkConstants::WEBLINK_NORMAL)
@@ -287,6 +311,13 @@ trait Link
                 $node->setAttribute('data-href', $this->fileUrl);
                 if ($this->fileName) {
                     $node->setAttribute('data-filename', $this->fileName);
+                }
+                break;
+            case LinkConstants::LINK_SOUND:
+                $node->setAttribute('data-linktype', LinkConstants::LINK_SOUND);
+                $node->setAttribute('data-href', $this->soundUrl);
+                if ($this->soundName) {
+                    $node->setAttribute('data-filename', $this->soundName);
                 }
                 break;
             case LinkConstants::LINK_WEB:

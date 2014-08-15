@@ -9,6 +9,7 @@ class LinkConstants
     const LINK_SCREEN = 'screen';
     const LINK_TAB = 'tab';
     const LINK_FILE = 'file';
+    const LINK_SOUND = 'sound';
     const LINK_WEB = 'web';
     const LINK_YOUTUBE = 'youtube';
     const LINK_VIMEO = 'vimeo';
