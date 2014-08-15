@@ -246,7 +246,7 @@ trait Link
         $this->linktype = LinkConstants::LINK_BBM;
     }
 
-    public function setEmailLink($to, $subject, $body)
+    public function setEmailLink($to, $subject = null, $body = null)
     {
         $this->linktype = LinkConstants::LINK_EMAIL;
         $this->emailTo = $to;
