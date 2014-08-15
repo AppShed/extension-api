@@ -50,7 +50,7 @@ trait Link
 
     /**
      *
-     * @var Tab|string $tab
+     * @var Tab|string
      */
     protected $tab;
 
@@ -95,21 +95,71 @@ trait Link
      * @var string
      */
     protected $webType;
+
+    /**
+     * @var string
+     */
     protected $remoteUrl;
+
+    /**
+     * @var string
+     */
     protected $youTubeUrl;
+
+    /**
+     * @var string
+     */
     protected $vimeoUrl;
+
+    /**
+     * @var string
+     */
     protected $phoneNumber;
+
+    /**
+     * @var string
+     */
     protected $twitterScreenName;
+
+    /**
+     * @var string
+     */
     protected $facebookUrl;
+
+    /**
+     * @var string
+     */
     protected $emailTo;
+
+    /**
+     * @var string
+     */
     protected $emailSubject;
+
+    /**
+     * @var string
+     */
     protected $emailBody;
+
+    /**
+     * @var string
+     */
     protected $backScreenId;
 
     /**
      * @var \AppShed\Remote\Element\Item\FormVariable[]
      */
     protected $variables;
+
+    /**
+     * @var string
+     */
+    protected $loginId;
+
+    /**
+     * @var string
+     */
+    protected $registerId;
 
     public function getLinkArrow()
     {
@@ -230,6 +280,18 @@ trait Link
         $this->remoteUrl = $url;
     }
 
+    public function setLoginLink($href)
+    {
+        $this->linktype = LinkConstants::LINK_LOGIN;
+        $this->loginId = $href;
+    }
+
+    public function setRegisterLink($href)
+    {
+        $this->linktype = LinkConstants::LINK_REGISTER;
+        $this->registerId = $href;
+    }
+
     public function setFacebookLink($url)
     {
         $this->linktype = LinkConstants::LINK_FACEBOOK;
@@ -341,6 +403,14 @@ trait Link
                 $node->setAttribute('data-linktype', LinkConstants::LINK_REMOTE);
                 $node->setAttribute('data-href', $this->applyVariablesToUrl($this->remoteUrl));
                 $node->setAttribute('data-direct', 'direct');
+                break;
+            case LinkConstants::LINK_LOGIN:
+                $node->setAttribute('data-linktype', LinkConstants::LINK_LOGIN);
+                $node->setAttribute('data-href', $this->loginId);
+                break;
+            case LinkConstants::LINK_REGISTER:
+                $node->setAttribute('data-linktype', LinkConstants::LINK_REGISTER);
+                $node->setAttribute('data-href', $this->registerId);
                 break;
             case LinkConstants::LINK_YOUTUBE:
                 $node->setAttribute('data-linktype', LinkConstants::LINK_YOUTUBE);
