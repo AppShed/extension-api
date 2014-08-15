@@ -88,6 +88,12 @@ trait Link
      *
      * @var string
      */
+    protected $videoUrl;
+
+    /**
+     *
+     * @var string
+     */
     protected $webType;
     protected $remoteUrl;
     protected $youTubeUrl;
@@ -198,6 +204,12 @@ trait Link
     {
         $this->linktype = LinkConstants::LINK_VIMEO;
         $this->vimeoUrl = $url;
+    }
+
+    public function setVideoLink($url)
+    {
+        $this->linktype = LinkConstants::LINK_VIDEO;
+        $this->videoUrl = $url;
     }
 
     public function setPhoneLink($number)
@@ -337,6 +349,10 @@ trait Link
             case LinkConstants::LINK_VIMEO:
                 $node->setAttribute('data-linktype', LinkConstants::LINK_VIMEO);
                 $node->setAttribute('data-href', $this->vimeoUrl);
+                break;
+            case LinkConstants::LINK_VIDEO:
+                $node->setAttribute('data-linktype', LinkConstants::LINK_VIDEO);
+                $node->setAttribute('data-href', $this->videoUrl);
                 break;
             case LinkConstants::LINK_FACEBOOK:
                 $node->setAttribute('data-linktype', LinkConstants::LINK_FACEBOOK);
