@@ -10,7 +10,7 @@ You can install the API in your project just add `"appshed/extension-api": "*"` 
 
 ### Phar
 
-If you don't want to use composer, you can (download the phar)[https://raw.githubusercontent.com/AppShed/extension-api/master/build/appshed-api.phar]. This is a package of everything you need, you just need to `require_once 'appshed-api.phar'`.
+If you don't want to use composer, you can [download the phar](https://raw.githubusercontent.com/AppShed/extension-api/master/build/appshed-api.phar). This is a package of everything you need, you just need to `require_once 'appshed-api.phar'`.
 
 ## Examples
 
@@ -22,6 +22,6 @@ You can run `apigen` to generate the API doc.
 
 ## Contributing
 
- Please be sure to update the phar before commiting. You need to use (Box)[http://box-project.org/] to do this.
+ Please be sure to update the phar before commiting. You need to use [Box](http://box-project.org/) to do this.
 
 Just run `box build -v`.
