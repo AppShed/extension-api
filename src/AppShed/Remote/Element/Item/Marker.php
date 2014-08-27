@@ -2,11 +2,9 @@
 
 namespace AppShed\Remote\Element\Item;
 
-use AppShed\Remote\Element\Link;
-
 class Marker extends Item
 {
-    use Link;
+    use \AppShed\Remote\Element\Link;
 
     /**
      *

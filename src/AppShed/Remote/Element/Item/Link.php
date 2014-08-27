@@ -2,8 +2,6 @@
 
 namespace AppShed\Remote\Element\Item;
 
-use AppShed\Remote\Style\Image;
-
 class Link extends Item
 {
     use \AppShed\Remote\Element\Link;
@@ -16,11 +14,11 @@ class Link extends Item
 
     /**
      *
-     * @var Image
+     * @var \AppShed\Remote\Style\Image
      */
     protected $image;
 
-    public function __construct($title, Image $image = null)
+    public function __construct($title, \AppShed\Remote\Style\Image $image = null)
     {
         parent::__construct();
         $this->title = $title;
@@ -42,7 +40,7 @@ class Link extends Item
         return $this->image;
     }
 
-    public function setImage(Image $image)
+    public function setImage(\AppShed\Remote\Style\Image $image)
     {
         $this->image = $image;
     }

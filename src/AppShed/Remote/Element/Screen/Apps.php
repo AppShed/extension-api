@@ -155,6 +155,7 @@ class Apps extends Screen
 
         $i = 1;
         $headButtons = array();
+        /** @var \AppShed\Remote\Element\Item\AppIcon[] $screen */
         foreach ($screens as $screen) {
             $itemsInner->appendChild($appsEl = $xml->createElement('div', array('class' => 'apps')));
             $appsEl->appendChild($xml->createElement('div', array('class' => 'apps-title', 'text' => "Page $i")));

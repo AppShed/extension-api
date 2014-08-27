@@ -80,7 +80,7 @@ class Gallery extends Screen
         $this->innerScreen->setChildren(
             array_filter(
                 $this->children,
-                function ($child) {
+                function (\AppShed\Remote\Element\Item\GalleryImage $child) {
                     return !$child->getDisableInner();
                 }
             )

@@ -2,11 +2,9 @@
 
 namespace AppShed\Remote\Element\Item;
 
-use AppShed\Remote\Element\Link;
-
 class HeaderButton extends Item
 {
-    use Link;
+    use \AppShed\Remote\Element\Link;
 
     /**
      *

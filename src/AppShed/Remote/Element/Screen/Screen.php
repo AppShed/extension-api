@@ -321,12 +321,10 @@ class Screen extends Element implements Root
         $items = $xml->createElement('div', 'items' . ($this->scroll ? ' scrolling' : ''));
         $node->appendChild($items);
         $headButtons = $this->addHTMLChildren($items, $xml, $settings, $css, $javascripts);
-        if (is_array($headButtons)) {
-            foreach ($headButtons as $b) {
-                $c = $b->getHTMLNode($xml, $settings);
-                if ($c) {
-                    $navbar->appendChild($c);
-                }
+        foreach ($headButtons as $b) {
+            $c = $b->getHTMLNode($xml, $settings);
+            if ($c) {
+                $navbar->appendChild($c);
             }
         }
     }

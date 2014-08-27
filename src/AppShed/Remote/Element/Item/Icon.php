@@ -2,12 +2,9 @@
 
 namespace AppShed\Remote\Element\Item;
 
-use AppShed\Remote\Element\Link;
-use AppShed\Remote\Style\Image;
-
 class Icon extends Item
 {
-    use Link;
+    use \AppShed\Remote\Element\Link;
 
     const HTML_TAG = 'td';
 
@@ -19,11 +16,11 @@ class Icon extends Item
 
     /**
      *
-     * @var Image
+     * @var \AppShed\Remote\Style\Image
      */
     protected $icon;
 
-    public function __construct($title, Image $icon = null)
+    public function __construct($title, \AppShed\Remote\Style\Image $icon = null)
     {
         parent::__construct();
         $this->title = $title;
@@ -45,7 +42,7 @@ class Icon extends Item
         return $this->icon;
     }
 
-    public function setIcon(Image $icon)
+    public function setIcon(\AppShed\Remote\Style\Image $icon)
     {
         $this->icon = $icon;
     }

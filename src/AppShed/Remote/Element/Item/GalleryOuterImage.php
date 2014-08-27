@@ -2,25 +2,22 @@
 
 namespace AppShed\Remote\Element\Item;
 
-use AppShed\Remote\Element\Link;
-use AppShed\Remote\Style\Image;
-
 /**
  * @internal
  */
 class GalleryOuterImage extends Item
 {
-    use Link;
+    use \AppShed\Remote\Element\Link;
 
     const HTML_TAG = 'td';
 
     /**
      *
-     * @var Image
+     * @var \AppShed\Remote\Style\Image
      */
     protected $thumbImage;
 
-    public function __construct(Image $thumbImage)
+    public function __construct(\AppShed\Remote\Style\Image $thumbImage)
     {
         parent::__construct();
         $this->thumbImage = $thumbImage;
@@ -31,7 +28,7 @@ class GalleryOuterImage extends Item
         return $this->thumbImage;
     }
 
-    public function setThumbImage(Image $thumbImage)
+    public function setThumbImage(\AppShed\Remote\Style\Image $thumbImage)
     {
         $this->thumbImage = $thumbImage;
     }

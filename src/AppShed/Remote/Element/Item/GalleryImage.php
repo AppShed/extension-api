@@ -2,19 +2,17 @@
 
 namespace AppShed\Remote\Element\Item;
 
-use AppShed\Remote\Style\Image;
-
 class GalleryImage extends Item
 {
     /**
      *
-     * @var Image
+     * @var \AppShed\Remote\Style\Image
      */
     protected $image;
 
     /**
      *
-     * @var Image
+     * @var \AppShed\Remote\Style\Image
      */
     protected $thumbImage;
 
@@ -25,7 +23,7 @@ class GalleryImage extends Item
     protected $disableInner;
 
 
-    public function __construct(Image $image, Image $thumbImage = null)
+    public function __construct(\AppShed\Remote\Style\Image $image, \AppShed\Remote\Style\Image $thumbImage = null)
     {
         parent::__construct();
         $this->image = $image;
@@ -37,7 +35,7 @@ class GalleryImage extends Item
         return $this->image;
     }
 
-    public function setImage(Image $image)
+    public function setImage(\AppShed\Remote\Style\Image $image)
     {
         $this->image = $image;
     }
@@ -47,7 +45,7 @@ class GalleryImage extends Item
         return $this->thumbImage ? $this->thumbImage : $this->image;
     }
 
-    public function setThumbImage(Image $thumbImage)
+    public function setThumbImage(\AppShed\Remote\Style\Image $thumbImage)
     {
         $this->thumbImage = $thumbImage;
     }
