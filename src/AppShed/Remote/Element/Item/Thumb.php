@@ -2,8 +2,6 @@
 
 namespace AppShed\Remote\Element\Item;
 
-use AppShed\Remote\Style\Image;
-
 class Thumb extends Plain
 {
     /**
@@ -12,7 +10,7 @@ class Thumb extends Plain
      */
     protected $image;
 
-    public function __construct($title, $subtitle, Image $image = null)
+    public function __construct($title, $subtitle, \AppShed\Remote\Style\Image $image = null)
     {
         parent::__construct($title, $subtitle);
         $this->image = $image;
@@ -23,7 +21,7 @@ class Thumb extends Plain
         return $this->image;
     }
 
-    public function setImage(Image $image)
+    public function setImage(\AppShed\Remote\Style\Image $image)
     {
         $this->image = $image;
     }
