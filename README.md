@@ -18,7 +18,7 @@ Be sure to run `composer install` if you want to run the examples
 
 ## Docs
 
-You can run `apigen` to generate the API doc.
+You can run `[sami](https://github.com/fabpot/sami) update sami.php` to generate the API doc.
 
 ## Contributing
 
