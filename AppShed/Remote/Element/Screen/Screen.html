@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow, all" />
+        <title>AppShed\Remote\Element\Screen\Screen | AppShed Extentions API</title>
+                    <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
+                            </head>
+        <body id="class">
+            <div class="header">
+        <ul>
+            <li><a href="../../../../classes.html">Classes</a></li>
+                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+            <li><a href="../../../../traits.html">Traits</a></li>
+            <li><a href="../../../../doc-index.html">Index</a></li>
+            
+        </ul>
+
+        <div id="title">AppShed Extentions API</div>
+
+            <div class="type">Class</div>
+    <h1><a href="../../../../AppShed/Remote/Element/Screen.html">AppShed\Remote\Element\Screen</a>\Screen</h1>
+    </div>
+        <div class="content">
+                <p>    class
+    <strong>Screen</strong>        extends <a href="../../../../AppShed/Remote/Element/Element.html"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a>        implements
+        <a href="../../../../AppShed/Remote/Element/Root.html"><abbr title="AppShed\Remote\Element\Root">Root</abbr></a></p>
+
+    
+            <h2>Constants</h2>
+
+            <table>
+                    <tr>
+                <td>HTML_TAG</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>TYPE</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>TYPE_CLASS</td>
+                <td class="last">
+                    <p><em>
+</em></p>
+                    <p>
+</p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <table>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setId">setId</a>(string $id)
+                    <p>Ids should be unique, most of the time the generated id will be fine</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../../../AppShed/Remote/Element/Element.html#method_setId"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    string
+                </td>
+                <td class="last">
+                    <a href="#method_getId">getId</a>()
+                    <p>
+</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../../../AppShed/Remote/Element/Element.html#method_getId"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_addClass">addClass</a>(string $class)
+                    <p>Add a class to this element</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../../../AppShed/Remote/Element/Element.html#method_addClass"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    array
+                </td>
+                <td class="last">
+                    <a href="#method_getClasses">getClasses</a>()
+                    <p>Get the classes on this element</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../../../AppShed/Remote/Element/Element.html#method_getClasses"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setEditable">setEditable</a>(bool $editable)
+                    <p>Mark element as editable in AppShed</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../../../AppShed/Remote/Element/Element.html#method_setEditable"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="http://php.net/DOMElement"><abbr title="DOMElement">DOMElement</abbr></a>
+                </td>
+                <td class="last">
+                    <a href="#method_getHTMLNode">getHTMLNode</a>(<a href="../../../../AppShed/Remote/XML/DOMDocument.html"><abbr title="AppShed\Remote\XML\DOMDocument">DOMDocument</abbr></a> $xml, <a href="../../../../AppShed/Remote/HTML/Settings.html"><abbr title="AppShed\Remote\HTML\Settings">Settings</abbr></a> $settings)
+                    <p>Get the html node for this element</p>
+                </td>
+                <td><small>from&nbsp;<a href="../../../../AppShed/Remote/Element/Element.html#method_getHTMLNode"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method___construct">__construct</a>($title)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_getBack">getBack</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setBack">setBack</a>($back)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_getTitle">getTitle</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setTitle">setTitle</a>($title)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_getHeader">getHeader</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setHeader">setHeader</a>($header)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_getTab">getTab</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setTabs">setTabs</a>($tab)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_getScroll">getScroll</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setScroll">setScroll</a>($scroll)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_getSecure">getSecure</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setSecure">setSecure</a>($secure)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_getStatusBarStyle">getStatusBarStyle</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setStatusBarStyle">setStatusBarStyle</a>($statusBarStyle)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_getUpdated">getUpdated</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setUpdated">setUpdated</a>($updated)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_getCustomCSS">getCustomCSS</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setCustomCSS">setCustomCSS</a>($customCSS)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_setChildren">setChildren</a>(<a href="../../../../AppShed/Remote/Element/Item/Item.html"><abbr title="AppShed\Remote\Element\Item\Item">Item</abbr></a>[] $children)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    
+                </td>
+                <td class="last">
+                    <a href="#method_addChild">addChild</a>(<a href="../../../../AppShed/Remote/Element/Item/Item.html"><abbr title="AppShed\Remote\Element\Item\Item">Item</abbr></a> $child)
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type">
+                    <a href="../../../../AppShed/Remote/Element/Item/Item.html"><abbr title="AppShed\Remote\Element\Item\Item">Item</abbr></a>[]
+                </td>
+                <td class="last">
+                    <a href="#method_getChildren">getChildren</a>()
+                    <p>
+</p>
+                </td>
+                <td></td>
+            </tr>
+            </table>
+
+
+        <h2>Details</h2>
+
+                        <h3 id="method_setId">
+        <div class="location">in <a href="../../../../AppShed/Remote/Element/Element.html#method_setId"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a> at line 42</div>
+        <code>            public            
+    <strong>setId</strong>(string $id)</code>
+    </h3>
+    <div class="details">
+        <p>Ids should be unique, most of the time the generated id will be fine</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$id</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getId">
+        <div class="location">in <a href="../../../../AppShed/Remote/Element/Element.html#method_getId"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a> at line 51</div>
+        <code>            public            string
+    <strong>getId</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_addClass">
+        <div class="location">in <a href="../../../../AppShed/Remote/Element/Element.html#method_addClass"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a> at line 61</div>
+        <code>            public            
+    <strong>addClass</strong>(string $class)</code>
+    </h3>
+    <div class="details">
+        <p>Add a class to this element</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getClasses">
+        <div class="location">in <a href="../../../../AppShed/Remote/Element/Element.html#method_getClasses"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a> at line 70</div>
+        <code>            public            array
+    <strong>getClasses</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>Get the classes on this element</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td>array</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setEditable">
+        <div class="location">in <a href="../../../../AppShed/Remote/Element/Element.html#method_setEditable"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a> at line 91</div>
+        <code>            public            
+    <strong>setEditable</strong>(bool $editable)</code>
+    </h3>
+    <div class="details">
+        <p>Mark element as editable in AppShed</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td>bool</td>
+                <td>$editable</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getHTMLNode">
+        <div class="location">in <a href="../../../../AppShed/Remote/Element/Element.html#method_getHTMLNode"><abbr title="AppShed\Remote\Element\Element">Element</abbr></a> at line 105</div>
+        <code>            public            <a href="http://php.net/DOMElement"><abbr title="DOMElement">DOMElement</abbr></a>
+    <strong>getHTMLNode</strong>(<a href="../../../../AppShed/Remote/XML/DOMDocument.html"><abbr title="AppShed\Remote\XML\DOMDocument">DOMDocument</abbr></a> $xml, <a href="../../../../AppShed/Remote/HTML/Settings.html"><abbr title="AppShed\Remote\HTML\Settings">Settings</abbr></a> $settings)</code>
+    </h3>
+    <div class="details">
+        <p>Get the html node for this element</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../../../AppShed/Remote/XML/DOMDocument.html"><abbr title="AppShed\Remote\XML\DOMDocument">DOMDocument</abbr></a></td>
+                <td>$xml</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../AppShed/Remote/HTML/Settings.html"><abbr title="AppShed\Remote\HTML\Settings">Settings</abbr></a></td>
+                <td>$settings</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="http://php.net/DOMElement"><abbr title="DOMElement">DOMElement</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method___construct">
+        <div class="location">at line 81</div>
+        <code>            public            
+    <strong>__construct</strong>($title)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getBack">
+        <div class="location">at line 97</div>
+        <code>            public            
+    <strong>getBack</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setBack">
+        <div class="location">at line 102</div>
+        <code>            public            
+    <strong>setBack</strong>($back)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$back</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getTitle">
+        <div class="location">at line 107</div>
+        <code>            public            
+    <strong>getTitle</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setTitle">
+        <div class="location">at line 112</div>
+        <code>            public            
+    <strong>setTitle</strong>($title)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getHeader">
+        <div class="location">at line 117</div>
+        <code>            public            
+    <strong>getHeader</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setHeader">
+        <div class="location">at line 122</div>
+        <code>            public            
+    <strong>setHeader</strong>($header)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$header</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getTab">
+        <div class="location">at line 127</div>
+        <code>            public            
+    <strong>getTab</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setTabs">
+        <div class="location">at line 132</div>
+        <code>            public            
+    <strong>setTabs</strong>($tab)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$tab</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getScroll">
+        <div class="location">at line 137</div>
+        <code>            public            
+    <strong>getScroll</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setScroll">
+        <div class="location">at line 142</div>
+        <code>            public            
+    <strong>setScroll</strong>($scroll)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$scroll</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getSecure">
+        <div class="location">at line 147</div>
+        <code>            public            
+    <strong>getSecure</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setSecure">
+        <div class="location">at line 152</div>
+        <code>            public            
+    <strong>setSecure</strong>($secure)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$secure</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getStatusBarStyle">
+        <div class="location">at line 157</div>
+        <code>            public            
+    <strong>getStatusBarStyle</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setStatusBarStyle">
+        <div class="location">at line 162</div>
+        <code>            public            
+    <strong>setStatusBarStyle</strong>($statusBarStyle)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$statusBarStyle</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getUpdated">
+        <div class="location">at line 167</div>
+        <code>            public            
+    <strong>getUpdated</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setUpdated">
+        <div class="location">at line 172</div>
+        <code>            public            
+    <strong>setUpdated</strong>($updated)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$updated</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getCustomCSS">
+        <div class="location">at line 177</div>
+        <code>            public            
+    <strong>getCustomCSS</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setCustomCSS">
+        <div class="location">at line 182</div>
+        <code>            public            
+    <strong>setCustomCSS</strong>($customCSS)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td></td>
+                <td>$customCSS</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_setChildren">
+        <div class="location">at line 190</div>
+        <code>            public            
+    <strong>setChildren</strong>(<a href="../../../../AppShed/Remote/Element/Item/Item.html"><abbr title="AppShed\Remote\Element\Item\Item">Item</abbr></a>[] $children)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../../../AppShed/Remote/Element/Item/Item.html"><abbr title="AppShed\Remote\Element\Item\Item">Item</abbr></a>[]</td>
+                <td>$children</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_addChild">
+        <div class="location">at line 198</div>
+        <code>            public            
+    <strong>addChild</strong>(<a href="../../../../AppShed/Remote/Element/Item/Item.html"><abbr title="AppShed\Remote\Element\Item\Item">Item</abbr></a> $child)</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table>
+                    <tr>
+                <td><a href="../../../../AppShed/Remote/Element/Item/Item.html"><abbr title="AppShed\Remote\Element\Item\Item">Item</abbr></a></td>
+                <td>$child</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+                <h3 id="method_getChildren">
+        <div class="location">at line 206</div>
+        <code>            public            <a href="../../../../AppShed/Remote/Element/Item/Item.html"><abbr title="AppShed\Remote\Element\Item\Item">Item</abbr></a>[]
+    <strong>getChildren</strong>()</code>
+    </h3>
+    <div class="details">
+        <p>
+</p>
+        <p>
+</p>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table>
+        <tr>
+            <td><a href="../../../../AppShed/Remote/Element/Item/Item.html"><abbr title="AppShed\Remote\Element\Item\Item">Item</abbr></a>[]</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+    
+            </div>
+            <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/" target="_top">Sami, the API Documentation Generator</a>.
+    </div>
+    </body>
+</html>
