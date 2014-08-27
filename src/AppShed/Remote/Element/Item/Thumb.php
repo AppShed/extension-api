@@ -36,7 +36,7 @@ class Thumb extends Plain
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
         if ($this->image) {
-            $imageDiv = $xml->createElement('div', array('class' => 'image-container'));
+            $imageDiv = $xml->createElement('div', ['class' => 'image-container']);
             $node->appendChild($imageDiv);
             $imageDiv->appendChild($xml->createImgElement($this->image->getUrl(), 'image', $this->image->getSize()));
         }

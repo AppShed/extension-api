@@ -17,7 +17,7 @@ class Apps extends Screen
     /**
      * @var \AppShed\Remote\Element\Item\AppIcon[]
      */
-    protected $homeChildren = array();
+    protected $homeChildren = [];
 
     /**
      * @var \AppShed\Remote\Element\Item\AppIcon[]
@@ -99,31 +99,31 @@ class Apps extends Screen
         $screens = array_chunk($this->children, 16);
 
         //Home bar
-        $items->appendChild($homeBar = $xml->createElement('div', array('class' => 'home-bar')));
+        $items->appendChild($homeBar = $xml->createElement('div', ['class' => 'home-bar']));
         $items->appendChild($xml->createElement('div', 'home-underlay'));
 
         //Dots
-        $homeBar->appendChild($homeDots = $xml->createElement('div', array('class' => 'home-dots')));
-        $homeBar->appendChild($xml->createElement('div', array('class' => 'home-bar-bg')));
-        $homeDots->appendChild($cnt = $xml->createElement('div', array('class' => 'home-dots-inner')));
+        $homeBar->appendChild($homeDots = $xml->createElement('div', ['class' => 'home-dots']));
+        $homeBar->appendChild($xml->createElement('div', ['class' => 'home-bar-bg']));
+        $homeDots->appendChild($cnt = $xml->createElement('div', ['class' => 'home-dots-inner']));
         $screensCount = count($screens) + 1;
         for ($i = 0; $i < $screensCount; $i++) {
             $cnt->appendChild(
                 $xml->createElement(
                     'div',
-                    array('class' => 'dot ' . ($i == 0 ? 'curr search' : 'page'), 'text' => $i == 0 ? '' : $i)
+                    ['class' => 'dot ' . ($i == 0 ? 'curr search' : 'page'), 'text' => $i == 0 ? '' : $i]
                 )
             );
         }
         //Empty screen if there are no apps
         if (count($screens) == 0) {
-            $cnt->appendChild($xml->createElement('div', array('class' => 'dot page', 'text' => '1')));
+            $cnt->appendChild($xml->createElement('div', ['class' => 'dot page', 'text' => '1']));
         }
-        $homeDots->appendChild($xml->createElement('div', array('style' => 'clear:both')));
+        $homeDots->appendChild($xml->createElement('div', ['style' => 'clear:both']));
 
         //Home bar buttons
         if (count($this->homeChildren) > 0) {
-            $homeBar->appendChild($homeBarButtons = $xml->createElement('div', array('class' => 'home-bar-buttons')));
+            $homeBar->appendChild($homeBarButtons = $xml->createElement('div', ['class' => 'home-bar-buttons']));
             foreach ($this->homeChildren as $homeButton) {
                 $childNode = $homeButton->getHTMLNode($xml, $settings);
                 if ($childNode) {
@@ -135,31 +135,31 @@ class Apps extends Screen
         }
 
         //Search
-        $itemsInner->appendChild($searchEl = $xml->createElement('div', array('class' => 'apps search')));
-        $searchEl->appendChild($appInner = $xml->createElement('div', array('class' => 'apps-inner')));
-        $appInner->appendChild($searchContainer = $xml->createElement('div', array('class' => 'search-holder')));
+        $itemsInner->appendChild($searchEl = $xml->createElement('div', ['class' => 'apps search']));
+        $searchEl->appendChild($appInner = $xml->createElement('div', ['class' => 'apps-inner']));
+        $appInner->appendChild($searchContainer = $xml->createElement('div', ['class' => 'search-holder']));
         $searchContainer->appendChild(
             $inp = $xml->createElement(
                 'input',
-                array(
+                [
                     'type' => 'search',
                     'placeholder' => 'Search',
                     'class' => 'search-box',
                     'x-webkit-speech' => 'x-webkit-speech'
-                )
+                ]
             )
         );
-        $appInner->appendChild($searchResults = $xml->createElement('div', array('class' => 'search-results')));
+        $appInner->appendChild($searchResults = $xml->createElement('div', ['class' => 'search-results']));
 
         $settings->pushCurrentScreen($this->getId());
 
         $i = 1;
-        $headButtons = array();
+        $headButtons = [];
         /** @var \AppShed\Remote\Element\Item\AppIcon[] $screen */
         foreach ($screens as $screen) {
-            $itemsInner->appendChild($appsEl = $xml->createElement('div', array('class' => 'apps')));
-            $appsEl->appendChild($xml->createElement('div', array('class' => 'apps-title', 'text' => "Page $i")));
-            $appsEl->appendChild($appInner = $xml->createElement('div', array('class' => 'apps-inner')));
+            $itemsInner->appendChild($appsEl = $xml->createElement('div', ['class' => 'apps']));
+            $appsEl->appendChild($xml->createElement('div', ['class' => 'apps-title', 'text' => "Page $i"]));
+            $appsEl->appendChild($appInner = $xml->createElement('div', ['class' => 'apps-inner']));
             foreach ($screen as $app) {
                 if ($app->getHeaderItem()) {
                     $headButtons[] = $app;
@@ -176,9 +176,9 @@ class Apps extends Screen
         }
         //Empty screen if there are no apps
         if (count($screens) == 0) {
-            $itemsInner->appendChild($appsEl = $xml->createElement('div', array('class' => 'apps')));
-            $appsEl->appendChild($xml->createElement('div', array('class' => 'apps-title', 'text' => "Page $i")));
-            $appsEl->appendChild($appInner = $xml->createElement('div', array('class' => 'apps-inner')));
+            $itemsInner->appendChild($appsEl = $xml->createElement('div', ['class' => 'apps']));
+            $appsEl->appendChild($xml->createElement('div', ['class' => 'apps-title', 'text' => "Page $i"]));
+            $appsEl->appendChild($appInner = $xml->createElement('div', ['class' => 'apps-inner']));
         }
 
         $settings->popCurrentScreen();

@@ -22,7 +22,7 @@ class Select extends Item implements FormVariable
      *
      * @var array
      */
-    protected $options = array();
+    protected $options = [];
 
     public function __construct($variableName, $title)
     {
@@ -58,10 +58,10 @@ class Select extends Item implements FormVariable
 
     public function addOption($name, $value)
     {
-        $this->options[] = array(
+        $this->options[] = [
             'name' => $name,
             'value' => $value
-        );
+        ];
     }
 
 
@@ -75,7 +75,7 @@ class Select extends Item implements FormVariable
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
         if (!empty($this->title)) {
-            $node->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
+            $node->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
         }
 
         $node->appendChild(
@@ -88,16 +88,16 @@ class Select extends Item implements FormVariable
         $inner->appendChild(
             $select = $xml->createElement(
                 'select',
-                array(
+                [
                     'name' => $this->variableName,
                     'data-variable' => $this->variableName,
                     'data-save-value' => $this->save
-                )
+                ]
             )
         );
 
         foreach ($this->options as $option) {
-            $optionNode = $xml->createElement('option', array('value' => $option['value'], 'text' => $option['name']));
+            $optionNode = $xml->createElement('option', ['value' => $option['value'], 'text' => $option['name']]);
             $select->appendChild($optionNode);
             if ($option['value'] == $this->value) {
                 $optionNode->setAttribute('selected', 'selected');

@@ -131,7 +131,7 @@ class Input extends Item implements FormVariable
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
         if (!empty($this->title)) {
-            $node->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
+            $node->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
         }
         $node->appendChild(
             $inner = $xml->createElement('div', 'textbox-container' . (empty($this->title) ? ' no-title' : ''))
@@ -139,7 +139,7 @@ class Input extends Item implements FormVariable
         $inner->appendChild(
             $xml->createElement(
                 'input',
-                array(
+                [
                     'class' => 'textbox' . ($this->localSearch ? ' localsearch' : ''),
                     'type' => static::INPUT_TYPE,
                     'name' => $this->variableName,
@@ -149,7 +149,7 @@ class Input extends Item implements FormVariable
                     'data-save-value' => $this->save,
                     'data-autocomplete-url' => $this->autocomplete,
                     'data-autocomplete-variable' => $this->autoCompleteVariable ? $this->autoCompleteVariable : $this->variableName
-                )
+                ]
             )
         );
     }

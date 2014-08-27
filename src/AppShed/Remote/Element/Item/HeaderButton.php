@@ -42,7 +42,7 @@ class HeaderButton extends Item
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
-        $node->appendChild($xml->createElement('div', array('class' => 'button', 'text' => $this->title)));
+        $node->appendChild($xml->createElement('div', ['class' => 'button', 'text' => $this->title]));
         $this->applyLinkToNode($xml, $node, $settings);
     }
 }

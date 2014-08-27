@@ -13,9 +13,9 @@ class Settings
     protected $fetchId;
     protected $emailPreview = false;
     protected $phonePreview = false;
-    protected $apps = array();
-    protected $screens = array();
-    protected $currentScreens = array();
+    protected $apps = [];
+    protected $screens = [];
+    protected $currentScreens = [];
     protected $direct = true;
 
     public function getPrefix()
@@ -114,13 +114,13 @@ class Settings
      */
     public function addApp($id, $html, $css, $splashHtml, $updated, $secure, $js)
     {
-        $this->apps[$this->getPrefix() . $id] = array(
+        $this->apps[$this->getPrefix() . $id] = [
             'html' => "<style scoped>" . $css->toString() . "</style>$html",
             'splashhtml' => $splashHtml ? "<style scoped>" . $css->toSplashString() . "</style>$splashHtml" : null,
             'updated' => $updated ? $updated->getTimestamp() : null,
             'secure' => $secure,
             'javascript' => $js
-        );
+        ];
     }
 
     /**
@@ -134,12 +134,12 @@ class Settings
      */
     public function addScreen($id, $html, $css, $updated, $secure, $js)
     {
-        $this->screens[$this->getPrefix() . $id] = array(
+        $this->screens[$this->getPrefix() . $id] = [
             'html' => "<style scoped>" . $css->toString() . "</style>$html",
             'updated' => $updated ? $updated->getTimestamp() : null,
             'secure' => $secure,
             'javascripts' => $js
-        );
+        ];
     }
 
     public function getApps()

@@ -42,7 +42,7 @@ class Button extends Item
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
-        $node->appendChild($xml->createElement('button', array('class' => 'button', 'text' => $this->title)));
+        $node->appendChild($xml->createElement('button', ['class' => 'button', 'text' => $this->title]));
         $this->applyLinkToNode($xml, $node, $settings);
     }
 }

@@ -541,33 +541,33 @@ trait Style
         }
 
         $css->addRule(
-            array($idSelector, $css->getClassSelector('glow-back')),
+            [$idSelector, $css->getClassSelector('glow-back')],
             'fill',
             $css->getColorValue($this->glowColor)
         );
         $css->addRule(
-            array(
+            [
                 $css->getClassSelector('android'),
                 $idSelector,
                 $css->getClassSelector('glow-back'),
                 $css->getClassSelector('back-left')
-            ),
+            ],
             'background-color',
             $css->getColorValue($this->glowColor)
         );
         $css->addRule(
-            array($idSelector, $css->getClassSelector('glow-back'), $css->getClassSelector('back-right')),
+            [$idSelector, $css->getClassSelector('glow-back'), $css->getClassSelector('back-right')],
             'background-color',
             $css->getColorValue($this->glowColor)
         );
         $css->addRule(
-            array($idSelector, $css->getClassSelector('glow-back'), $css->getClassSelector('back-center')),
+            [$idSelector, $css->getClassSelector('glow-back'), $css->getClassSelector('back-center')],
             'background-color',
             $css->getColorValue($this->glowColor)
         );
         if ($this->glowColor) {
             $css->addRule(
-                array($idSelector, $css->getClassSelector('glow')),
+                [$idSelector, $css->getClassSelector('glow')],
                 'background-color',
                 $this->glowColor->toString(0.5)
             );
@@ -600,63 +600,63 @@ trait Style
         }
 
         $css->addRule($idSelector, 'border-color', $css->getColorValue($this->borderColor));
-        $css->addRule(array($idSelector, 'textarea'), 'border-color', $css->getColorValue($this->borderColor));
-        $css->addRule(array($idSelector, 'input'), 'border-color', $css->getColorValue($this->borderColor));
-        $css->addRule(array($idSelector, 'select'), 'border-color', $css->getColorValue($this->borderColor));
+        $css->addRule([$idSelector, 'textarea'], 'border-color', $css->getColorValue($this->borderColor));
+        $css->addRule([$idSelector, 'input'], 'border-color', $css->getColorValue($this->borderColor));
+        $css->addRule([$idSelector, 'select'], 'border-color', $css->getColorValue($this->borderColor));
 
         $css->addRule(
-            array($idSelector, $css->getClassSelector('autocomplete')),
+            [$idSelector, $css->getClassSelector('autocomplete')],
             'color',
             $css->getColorValue($this->autoCompleteColor)
         );
         $css->addRule(
-            array($idSelector, $css->getClassSelector('autocomplete')),
+            [$idSelector, $css->getClassSelector('autocomplete')],
             'border-color',
             $css->getColorValue($this->autoCompleteColor)
         );
         $css->addRule(
-            array($idSelector, $css->getClassSelector('autocomplete')),
+            [$idSelector, $css->getClassSelector('autocomplete')],
             'background-color',
             $css->getColorValue($this->autoCompleteBackgroundColor)
         );
         $css->addRule(
-            array(
+            [
                 $idSelector,
                 $css->getClassSelector('autocomplete'),
                 $css->getClassSelector('completion') . $css->getPseudoClassSelector('hover')
-            ),
+            ],
             'color',
             $css->getColorValue($this->autoCompleteHighlightColor)
         );
 
         $css->addRule(
-            array($idSelector, $css->getClassSelector('title')),
+            [$idSelector, $css->getClassSelector('title')],
             'color',
             $css->getColorValue($this->titleColor)
         );
         $css->addRule(
-            array($idSelector, $css->getClassSelector('title')),
+            [$idSelector, $css->getClassSelector('title')],
             'font-size',
             $css->getSizeValue($this->titleSize)
         );
         $css->addRule(
-            array($idSelector, $css->getClassSelector('title')),
+            [$idSelector, $css->getClassSelector('title')],
             'font-family',
             $css->getFontValue($this->titleFont)
         );
 
         $css->addRule(
-            array($idSelector, $css->getClassSelector('text')),
+            [$idSelector, $css->getClassSelector('text')],
             'color',
             $css->getColorValue($this->subtitleColor)
         );
         $css->addRule(
-            array($idSelector, $css->getClassSelector('text')),
+            [$idSelector, $css->getClassSelector('text')],
             'font-size',
             $css->getSizeValue($this->subtitleSize)
         );
         $css->addRule(
-            array($idSelector, $css->getClassSelector('text')),
+            [$idSelector, $css->getClassSelector('text')],
             'font-family',
             $css->getFontValue($this->subtitleFont)
         );
@@ -665,85 +665,85 @@ trait Style
             if ($this->galleryBackground) {
                 $this->galleryBackground->toCSS(
                     $css,
-                    array(
-                        $idSelector . $css->getClassSelector(array('screen', 'gallery')),
+                    [
+                        $idSelector . $css->getClassSelector(['screen', 'gallery']),
                         $css->getClassSelector('items')
-                    )
+                    ]
                 );
                 $this->galleryBackground->toCSS(
                     $css,
-                    array(
-                        $idSelector . $css->getClassSelector(array('screen', 'photo')),
+                    [
+                        $idSelector . $css->getClassSelector(['screen', 'photo']),
                         $css->getClassSelector('items')
-                    )
+                    ]
                 );
             }
             if ($this->listBackground) {
                 $this->listBackground->toCSS(
                     $css,
-                    array(
-                        $idSelector . $css->getClassSelector(array('screen', 'list')),
+                    [
+                        $idSelector . $css->getClassSelector(['screen', 'list']),
                         $css->getClassSelector('items')
-                    )
+                    ]
                 );
             }
             if ($this->iconBackground) {
                 $this->iconBackground->toCSS(
                     $css,
-                    array(
-                        $idSelector . $css->getClassSelector(array('screen', 'icon')),
+                    [
+                        $idSelector . $css->getClassSelector(['screen', 'icon']),
                         $css->getClassSelector('items')
-                    )
+                    ]
                 );
             }
             if ($this->appsBackground) {
                 $this->appsBackground->toCSS(
                     $css,
-                    array(
-                        $idSelector . $css->getClassSelector(array('screen', 'appsscreen')),
+                    [
+                        $idSelector . $css->getClassSelector(['screen', 'appsscreen']),
                         $css->getClassSelector('items')
-                    )
+                    ]
                 );
             }
         } else {
             if ($this->galleryBackground) {
                 $this->galleryBackground->toCSS(
                     $css,
-                    array(
+                    [
                         $idSelector,
-                        $css->getClassSelector(array('screen', 'gallery')),
+                        $css->getClassSelector(['screen', 'gallery']),
                         $css->getClassSelector('items')
-                    )
+                    ]
                 );
                 $this->galleryBackground->toCSS(
                     $css,
-                    array(
+                    [
                         $idSelector,
-                        $css->getClassSelector(array('screen', 'photo')),
+                        $css->getClassSelector(['screen', 'photo']),
                         $css->getClassSelector('items')
-                    )
+                    ]
                 );
             }
             if ($this->listBackground) {
                 $this->listBackground->toCSS(
                     $css,
-                    array($idSelector, $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('items'))
+                    [$idSelector, $css->getClassSelector(['screen', 'list']), $css->getClassSelector('items')]
                 );
             }
             if ($this->iconBackground) {
                 $this->iconBackground->toCSS(
                     $css,
-                    array($idSelector, $css->getClassSelector(array('screen', 'icon')), $css->getClassSelector('items'))
+                    [$idSelector, $css->getClassSelector(['screen', 'icon']), $css->getClassSelector('items')]
                 );
             }
             if ($this->appsBackground) {
                 $this->appsBackground->toCSS(
                     $css,
-                    array(
+                    [
                         $idSelector,
-                        $css->getClassSelector(array('screen', 'appsscreen')),
+                        $css->getClassSelector(['screen', 'appsscreen']),
                         $css->getClassSelector('items')
-                    )
+                    ]
                 );
             }
         }
@@ -753,25 +753,25 @@ trait Style
             if ($isScreen) {
                 $this->background->toCSS(
                     $css,
-                    array($idSelector . $css->getClassSelector(array('screen', 'list')), $css->getClassSelector('item'))
+                    [$idSelector . $css->getClassSelector(['screen', 'list']), $css->getClassSelector('item')]
                 );
             } else {
                 if ($isItem) {
                     $this->background->toCSS(
                         $css,
-                        array(
-                            $css->getClassSelector(array('screen', 'list')),
+                        [
+                            $css->getClassSelector(['screen', 'list']),
                             $idSelector . $css->getClassSelector('item')
-                        )
+                        ]
                     );
                 } else {
                     $this->background->toCSS(
                         $css,
-                        array(
+                        [
                             $idSelector,
-                            $css->getClassSelector(array('screen', 'list')),
+                            $css->getClassSelector(['screen', 'list']),
                             $css->getClassSelector('item')
-                        )
+                        ]
                     );
                 }
             }
@@ -780,53 +780,53 @@ trait Style
         if ($this->headerTextColor) {
             if ($isScreen) {
                 $css->addRule(
-                    array($idSelector . $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                    [$idSelector . $css->getClassSelector('screen'), $css->getClassSelector('header')],
                     'color',
                     $css->getColorValue($this->headerTextColor)
                 );
                 $css->addRule(
-                    array(
+                    [
                         $css->getClassSelector('android'),
                         $idSelector . $css->getClassSelector('screen'),
                         $css->getClassSelector('header'),
                         $css->getClassSelector('back')
-                    ),
+                    ],
                     'stroke',
                     $css->getColorValue($this->headerTextColor)
                 );
                 $css->addRule(
-                    array(
+                    [
                         $idSelector . $css->getClassSelector('screen'),
                         $css->getClassSelector('header'),
                         $css->getClassSelector('title')
-                    ),
+                    ],
                     'text-shadow',
                     "0px 1px 0px " . $css->getColorValue($this->getShadowColor($this->headerTextColor))
                 );
             } else {
                 $css->addRule(
-                    array($idSelector, $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                    [$idSelector, $css->getClassSelector('screen'), $css->getClassSelector('header')],
                     'color',
                     $css->getColorValue($this->headerTextColor)
                 );
                 $css->addRule(
-                    array(
+                    [
                         $css->getClassSelector('android'),
                         $idSelector,
                         $css->getClassSelector('screen'),
                         $css->getClassSelector('header'),
                         $css->getClassSelector('back')
-                    ),
+                    ],
                     'stroke',
                     $css->getColorValue($this->headerTextColor)
                 );
                 $css->addRule(
-                    array(
+                    [
                         $idSelector,
                         $css->getClassSelector('screen'),
                         $css->getClassSelector('header'),
                         $css->getClassSelector('title')
-                    ),
+                    ],
                     'text-shadow',
                     "0px 1px 0px " . $css->getColorValue($this->getShadowColor($this->headerTextColor))
                 );
@@ -835,13 +835,13 @@ trait Style
 
         if ($isScreen) {
             $css->addRule(
-                array($idSelector . $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                [$idSelector . $css->getClassSelector('screen'), $css->getClassSelector('header')],
                 'background-color',
                 $css->getColorValue($this->headerColor)
             );
         } else {
             $css->addRule(
-                array($idSelector, $css->getClassSelector('screen'), $css->getClassSelector('header')),
+                [$idSelector, $css->getClassSelector('screen'), $css->getClassSelector('header')],
                 'background-color',
                 $css->getColorValue($this->headerColor)
             );
@@ -860,7 +860,7 @@ trait Style
                 );
             } else {
                 $css->addRule(
-                    array($idSelector, $css->getClassSelector('item')),
+                    [$idSelector, $css->getClassSelector('item')],
                     'border-bottom-width',
                     $css->getSizeValue($width)
                 );
@@ -870,7 +870,7 @@ trait Style
                 if ($isItem) {
                     $css->addRule($idSelector . $css->getClassSelector('item'), 'border-bottom-width', 0);
                 } else {
-                    $css->addRule(array($idSelector, $css->getClassSelector('item')), 'border-bottom-width', 0);
+                    $css->addRule([$idSelector, $css->getClassSelector('item')], 'border-bottom-width', 0);
                 }
             }
         }
@@ -882,7 +882,7 @@ trait Style
             );
         } else {
             $css->addRule(
-                array($idSelector, $css->getClassSelector('item')),
+                [$idSelector, $css->getClassSelector('item')],
                 'border-bottom-color',
                 $css->getColorValue($this->hrColor)
             );
@@ -902,11 +902,11 @@ trait Style
      */
     protected function getShadowColor($color)
     {
-        $values = array(
+        $values = [
             'red' => $color->getRed(),
             'green' => $color->getGreen(),
             'blue' => $color->getBlue()
-        );
+        ];
         foreach ($values as $key => $v) {
             if ($v > 127) {
                 $v -= ($v * 0.1);

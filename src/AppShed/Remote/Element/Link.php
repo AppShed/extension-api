@@ -464,10 +464,10 @@ trait Link
                     $node->setAttribute(
                         'data-href',
                         'mailto:' . $this->emailTo . '?' . http_build_query(
-                            array(
+                            [
                                 'subject' => $this->emailSubject,
                                 'body' => $this->emailBody
-                            )
+                            ]
                         )
                     );
                     $node->setAttribute('data-weblinktype', LinkConstants::WEBLINK_EXTERNAL);

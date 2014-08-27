@@ -62,7 +62,7 @@ class Link extends Item
         if ($this->image) {
             $node->appendChild($xml->createImgElement($this->image->getUrl(), 'icon', $this->image->getSize()));
         }
-        $node->appendChild($xml->createElement('div', array('class' => 'text', 'text' => $this->title)));
+        $node->appendChild($xml->createElement('div', ['class' => 'text', 'text' => $this->title]));
         $this->applyLinkToNode($xml, $node, $settings);
     }
 }

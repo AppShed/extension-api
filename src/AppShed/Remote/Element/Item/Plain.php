@@ -58,8 +58,8 @@ class Plain extends Item
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
-        $node->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
-        $node->appendChild($xml->createElement('div', array('class' => 'text', 'text' => $this->subtitle)));
+        $node->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
+        $node->appendChild($xml->createElement('div', ['class' => 'text', 'text' => $this->subtitle]));
         $this->applyLinkToNode($xml, $node, $settings);
     }
 }

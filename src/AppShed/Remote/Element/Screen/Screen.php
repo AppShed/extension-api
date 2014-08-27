@@ -222,7 +222,7 @@ class Screen extends Element implements Root
             $idSelector = $css->getIdSelector($this->getIdType() . $settings->getPrefix() . $this->getId());
             $css->addCSSText($this->customCSS, $idSelector);
         }
-        $javascripts = array();
+        $javascripts = [];
         $this->getHTMLNodeBase($node, $xml, $settings, $css, $javascripts);
         if ($this->secure) {
             $node->setAttribute('data-secured', 'secure');
@@ -301,7 +301,7 @@ class Screen extends Element implements Root
             $navbar->appendChild(
                 $back = $xml->createElement(
                     'div',
-                    array('class' => 'back', 'data-linktype' => 'back', 'text' => 'Back')
+                    ['class' => 'back', 'data-linktype' => 'back', 'text' => 'Back']
                 )
             );
             if ($this->back instanceof Screen) {
@@ -316,7 +316,7 @@ class Screen extends Element implements Root
         }
         $navbar->appendChild($title = $xml->createElement('div', 'title'));
 
-        $title->appendChild($xml->createElement('span', array('text' => $this->title)));
+        $title->appendChild($xml->createElement('span', ['text' => $this->title]));
 
         $items = $xml->createElement('div', 'items' . ($this->scroll ? ' scrolling' : ''));
         $node->appendChild($items);
@@ -345,7 +345,7 @@ class Screen extends Element implements Root
 
         $settings->pushCurrentScreen($this->getId());
 
-        $headButtons = array();
+        $headButtons = [];
         foreach ($this->children as $child) {
             if ($child->getHeaderItem()) {
                 $headButtons[] = $child;

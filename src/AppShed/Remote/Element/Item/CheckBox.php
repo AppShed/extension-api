@@ -78,7 +78,7 @@ class CheckBox extends Item implements FormVariable
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
         if (!empty($this->title)) {
-            $node->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
+            $node->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
         }
         $node->appendChild(
             $inner = $xml->createElement('div', 'textbox-container' . (empty($this->title) ? ' no-title' : ''))
@@ -86,14 +86,14 @@ class CheckBox extends Item implements FormVariable
         $inner->appendChild(
             $xml->createElement(
                 'input',
-                array(
+                [
                     'type' => 'checkbox',
                     'name' => $this->variableName,
                     'data-variable' => $this->variableName,
                     'data-save-value' => $this->save,
                     'checked' => $this->checked ? 'checked' : null,
                     'value' => $this->value
-                )
+                ]
             )
         );
     }

@@ -4,7 +4,7 @@ namespace AppShed\Remote\Style;
 
 class CSSDocument
 {
-    protected $rules = array();
+    protected $rules = [];
     protected $css = "";
 
     public function addRule($selector, $name, $value)
@@ -14,7 +14,7 @@ class CSSDocument
                 $selector = implode(' ', $selector);
             }
             if (!isset($this->rules[$selector])) {
-                $this->rules[$selector] = array();
+                $this->rules[$selector] = [];
             }
             $this->rules[$selector][$name] = $value;
         }

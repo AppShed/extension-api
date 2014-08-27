@@ -79,7 +79,7 @@ class Toggle extends Item implements FormVariable
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
         if (!empty($this->title)) {
-            $node->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
+            $node->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
         }
         $node->appendChild(
             $inner = $xml->createElement('div', 'c-container' . (empty($this->title) ? ' no-title' : ''))
@@ -88,7 +88,7 @@ class Toggle extends Item implements FormVariable
         $inner->appendChild(
             $input = $xml->createElement(
                 'input',
-                array(
+                [
                     'type' => 'checkbox',
                     'name' => $this->variable,
                     'data-variable' => $this->variable,
@@ -96,16 +96,16 @@ class Toggle extends Item implements FormVariable
                     'class' => 'switch',
                     'value' => $this->value,
                     'checked' => $this->checked ? 'checked' : null
-                )
+                ]
             )
         );
 
         $inner->appendChild($switch = $xml->createElement('div'));
-        $switch->appendChild($slider = $xml->createElement('div', array('class' => 'slider')));
+        $switch->appendChild($slider = $xml->createElement('div', ['class' => 'slider']));
 
-        $slider->appendChild($xml->createElement('div', array('class' => 'on', 'text' => 'ON')));
-        $slider->appendChild($xml->createElement('div', array('class' => 'divider')));
-        $slider->appendChild($xml->createElement('div', array('class' => 'off', 'text' => 'OFF')));
+        $slider->appendChild($xml->createElement('div', ['class' => 'on', 'text' => 'ON']));
+        $slider->appendChild($xml->createElement('div', ['class' => 'divider']));
+        $slider->appendChild($xml->createElement('div', ['class' => 'off', 'text' => 'OFF']));
     }
 
 }

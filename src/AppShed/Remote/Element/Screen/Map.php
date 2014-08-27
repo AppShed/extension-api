@@ -75,12 +75,12 @@ class Map extends Screen
      */
     protected function addHTMLChildren($items, $xml, $settings, $css, &$javascripts)
     {
-        $items->appendChild($itemsInner = $xml->createElement('script', array('type' => 'application/json')));
+        $items->appendChild($itemsInner = $xml->createElement('script', ['type' => 'application/json']));
 
         $settings->pushCurrentScreen($this->getId());
 
-        $locs = array();
-        $headButtons = array();
+        $locs = [];
+        $headButtons = [];
         foreach ($this->children as $child) {
             if ($child->getHeaderItem()) {
                 $headButtons[] = $child;

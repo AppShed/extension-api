@@ -59,7 +59,7 @@ class Tab extends Element
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
         $node->appendChild($inner = $xml->createElement('div', 'tab-inner'));
-        $inner->appendChild($xml->createElement('div', array('class' => 'label', 'text' => $this->title)));
+        $inner->appendChild($xml->createElement('div', ['class' => 'label', 'text' => $this->title]));
         $inner->appendChild($xml->createImgElement($this->icon->getUrl(), 'icon'));
         $this->applyLinkToNode($xml, $node, $settings);
     }

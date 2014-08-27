@@ -21,7 +21,7 @@ class Remote
      *
      * @var \AppShed\Remote\Element\Root[]
      */
-    protected $roots = array();
+    protected $roots = [];
 
     /**
      * @var string
@@ -97,14 +97,14 @@ class Remote
             $root->getHTMLNode($xml, $settings);
         }
 
-        return array(
+        return [
             'app' => $settings->getApps(),
             'screen' => $settings->getScreens(),
-            'settings' => array(
+            'settings' => [
                 'main' => $settings->getPrefix() . $this->root->getId(),
                 'maintype' => $this->root instanceof App ? 'app' : 'screen'
-            )
-        );
+            ]
+        ];
     }
 
     /**
@@ -135,10 +135,10 @@ class Remote
         }
         $data = $this->getResponseObject($settings);
 
-        $data['remote'] = array(
+        $data['remote'] = [
             'url' => $settings->getFetchUrl(),
             'refreshAfter' => $this->refreshAfter
-        );
+        ];
         $data['remote'][$settings->getFetchUrl()] = $data['settings']['main'];
 
         $json = json_encode($data);
@@ -177,10 +177,10 @@ class Remote
         }
         $data = $this->getResponseObject($settings);
 
-        $data['remote'] = array(
+        $data['remote'] = [
             'url' => $settings->getFetchUrl(),
             'refreshAfter' => $this->refreshAfter
-        );
+        ];
         $data['remote'][$settings->getFetchUrl()] = $data['settings']['main'];
 
         $response = new \Symfony\Component\HttpFoundation\JsonResponse($data, 200, $headers);

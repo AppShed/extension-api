@@ -63,7 +63,7 @@ class Icon extends Item
     {
         $node->appendChild($inner = $xml->createElement('div', 'item-icon-inner'));
         $inner->appendChild($xml->createImgElement($this->icon->getUrl(), 'image', $this->icon->getSize()));
-        $inner->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
+        $inner->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
         $this->applyLinkToNode($xml, $node, $settings);
     }
 }

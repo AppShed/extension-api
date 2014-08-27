@@ -109,7 +109,7 @@ class Gallery extends Screen
         $settings->pushCurrentScreen($this->getId());
 
         $i = 0;
-        $headButtons = array();
+        $headButtons = [];
         foreach ($this->children as $child) {
             if ($child->getHeaderItem()) {
                 $headButtons[] = $child;

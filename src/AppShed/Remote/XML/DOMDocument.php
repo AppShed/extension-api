@@ -45,7 +45,7 @@ class DOMDocument extends \DOMDocument
                 }
             }
         }
-        if (!$text && !in_array($tag, array('img', 'br', 'input'))) {
+        if (!$text && !in_array($tag, ['img', 'br', 'input'])) {
             $node->appendChild($this->createTextNode(''));
         }
         return $node;
@@ -81,10 +81,10 @@ class DOMDocument extends \DOMDocument
             if (is_array($attributes)) {
                 $attributes['src'] = $src;
             } else {
-                $attributes = array(
+                $attributes = [
                     'class' => $attributes,
                     'src' => $src
-                );
+                ];
             }
             if ($imageSize) {
                 $attributes['width'] = $imageSize['width'];

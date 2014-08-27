@@ -61,7 +61,7 @@ class TextArea extends Item implements FormVariable
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
         if (!empty($this->title)) {
-            $node->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
+            $node->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
         }
         $node->appendChild(
             $inner = $xml->createElement('div', 'textarea-container' . (empty($this->title) ? ' no-title' : ''))
@@ -69,13 +69,13 @@ class TextArea extends Item implements FormVariable
         $inner->appendChild(
             $xml->createElement(
                 'textarea',
-                array(
+                [
                     'class' => 'textarea',
                     'name' => $this->variableName,
                     'text' => $this->value,
                     'data-variable' => $this->variableName,
                     'data-save-value' => $this->save
-                )
+                ]
             )
         );
     }

@@ -36,14 +36,14 @@ class AppIcon extends Icon
         $icon->appendChild(
             $xml->createElement(
                 'div',
-                array(
+                [
                     'class' => 'image',
                     'style' => $this->icon ? 'background-image:url(\'' . $this->icon->getUrl() . '\')' : ''
-                )
+                ]
             )
         );
-        $icon->appendChild($xml->createElement('div', array('class' => 'background')));
+        $icon->appendChild($xml->createElement('div', ['class' => 'background']));
         $this->applyLinkToNode($xml, $icon, $settings);
-        $inner->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
+        $inner->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
     }
 }

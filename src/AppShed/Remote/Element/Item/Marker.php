@@ -82,12 +82,12 @@ class Marker extends Item
         $node->setAttribute('data-latitude', $this->latitude);
         $node->setAttribute('data-longitude', $this->longitude);
         $this->applyLinkToNode($xml, $node, $settings);
-        $node->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
+        $node->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
         $subtitle = $this->subtitle;
         if (empty($subtitle)) {
             $xml->addClass($node, 'no-subtitle');
         } else {
-            $node->appendChild($xml->createElement('div', array('class' => 'text', 'text' => $this->subtitle)));
+            $node->appendChild($xml->createElement('div', ['class' => 'text', 'text' => $this->subtitle]));
         }
         return $node;
     }
@@ -100,13 +100,13 @@ class Marker extends Item
      */
     public function getMarkerObject($xml, $settings)
     {
-        return array(
+        return [
             'title' => $this->title,
             'subtitle' => $this->subtitle,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
             'html' => $xml->saveXML($this->getHTMLNode($xml, $settings))
-        );
+        ];
     }
 
 }

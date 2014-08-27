@@ -15,7 +15,7 @@ abstract class Element implements Styleable
      *
      * @var array
      */
-    protected $classes = array();
+    protected $classes = [];
 
     /**
      *

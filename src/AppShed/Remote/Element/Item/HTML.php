@@ -76,7 +76,7 @@ class HTML extends Item
                 $this->checkNode($xml, $node->childNodes->item($i));
             }
         } else {
-            if ($node instanceof \DOMElement && !in_array($node->tagName, array('img', 'br'))) {
+            if ($node instanceof \DOMElement && !in_array($node->tagName, ['img', 'br'])) {
                 $node->appendChild($xml->createTextNode(''));
             }
         }

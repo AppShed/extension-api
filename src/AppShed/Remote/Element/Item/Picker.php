@@ -95,7 +95,7 @@ class Picker extends Item implements FormVariable
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
         if (!empty($this->title)) {
-            $node->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
+            $node->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
         }
         $node->appendChild(
             $inner = $xml->createElement('div', 'textbox-container' . (empty($this->title) ? ' no-title' : ''))
@@ -103,7 +103,7 @@ class Picker extends Item implements FormVariable
         $inner->appendChild(
             $xml->createElement(
                 'span',
-                array(
+                [
                     'class' => 'picked',
                     'data-value' => $this->value ? ($this->type == static::TYPE_DATE ? $this->value->getTimestamp(
                         ) : $this->value->format('H:i')) : null,
@@ -111,7 +111,7 @@ class Picker extends Item implements FormVariable
                     'data-variable' => $this->variableName,
                     'data-picker-type' => $this->type,
                     'data-save-value' => $this->save
-                )
+                ]
             )
         );
     }

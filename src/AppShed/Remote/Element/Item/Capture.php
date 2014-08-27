@@ -84,24 +84,24 @@ class Capture extends Item implements FormVariable
         $node->appendChild($on = $xml->createElement('div', 'on'));
 
         $on->appendChild($xml->createElement('div', 'image'));
-        $on->appendChild($xml->createElement('div', array('class' => 'title', 'text' => $this->title)));
-        $on->appendChild($xml->createElement('div', array('class' => 'text', 'text' => $this->subtitle)));
+        $on->appendChild($xml->createElement('div', ['class' => 'title', 'text' => $this->title]));
+        $on->appendChild($xml->createElement('div', ['class' => 'text', 'text' => $this->subtitle]));
 
-        $on->appendChild($xml->createElement('button', array('class' => 'capture', 'text' => 'Capture')));
-        $on->appendChild($xml->createElement('button', array('class' => 'choose', 'text' => 'Choose')));
+        $on->appendChild($xml->createElement('button', ['class' => 'capture', 'text' => 'Capture']));
+        $on->appendChild($xml->createElement('button', ['class' => 'choose', 'text' => 'Choose']));
 
         $node->appendChild($off = $xml->createElement('div', 'off'));
 
         $off->appendChild(
-            $xml->createElement('div', array('class' => 'title', 'text' => ucfirst($this->type) . ' Capture'))
+            $xml->createElement('div', ['class' => 'title', 'text' => ucfirst($this->type) . ' Capture'])
         );
         $off->appendChild(
             $xml->createElement(
                 'div',
-                array(
+                [
                     'class' => 'text',
                     'text' => "You need to install this app via the store to use {$this->type} capture"
-                )
+                ]
             )
         );
     }

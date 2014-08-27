@@ -47,7 +47,7 @@ class GalleryOuterImage extends Item
      */
     protected function getHTMLNodeInner($node, $xml, $settings)
     {
-        $imageDiv = $xml->createElement('div', array('class' => 'image-container'));
+        $imageDiv = $xml->createElement('div', ['class' => 'image-container']);
         $imageDiv->appendChild($xml->createImgElement($this->thumbImage->getUrl(), 'image'));
         $node->appendChild($imageDiv);
         $this->applyLinkToNode($xml, $node, $settings);

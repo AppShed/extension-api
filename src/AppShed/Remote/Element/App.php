@@ -350,12 +350,12 @@ class App extends Element implements Root
             $node->setAttribute('data-icon', $this->icon->getUrl());
             $idSelector = $css->getIdSelector($this->getIdType() . $settings->getPrefix() . $this->getId());
             $css->addRule(
-                array(".android .phone-navigator $idSelector.app .app-navigator .screen .header .back"),
+                [".android .phone-navigator $idSelector.app .app-navigator .screen .header .back"],
                 'background-image',
                 $css->getURLValue($this->icon->getUrl())
             );
             $css->addRule(
-                array(".blackberry .phone-navigator $idSelector.app .app-navigator .screen .header"),
+                [".blackberry .phone-navigator $idSelector.app .app-navigator .screen .header"],
                 'background-image',
                 $css->getURLValue($this->icon->getUrl())
             );
@@ -391,7 +391,7 @@ class App extends Element implements Root
             $this->splash ? "<style scoped>" . $css->toSplashString(
                 ) . "</style><div class=\"splash\" id=\"app" . $this->getId() . "\"></div>" : null,
             $this->updated === true ? new \DateTime() : $this->updated,
-            array('login' => null, 'register' => null),
+            ['login' => null, 'register' => null],
             $this->js
         );
     }
