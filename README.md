@@ -2,6 +2,10 @@
 
 This is the api for remote screens.
 
+[![Latest Stable Version](https://poser.pugx.org/appshed/extension-api/v/stable.png)](https://packagist.org/packages/appshed/extension-api)
+[![License](https://poser.pugx.org/appshed/extension-api/license.png)](https://packagist.org/packages/appshed/extension-api)
+[![Build Status](https://travis-ci.org/appshed/extension-api.svg?branch=master)](https://travis-ci.org/appshed/extension-api)
+
 ## Installing
 
 ### Composer
@@ -22,6 +26,6 @@ You can run `[sami](https://github.com/fabpot/sami) update sami.php` to generate
 
 ## Contributing
 
- Please be sure to update the phar before commiting. You need to use [Box](http://box-project.org/) to do this.
+Please be sure to update the phar before committing. You need to use [Box](http://box-project.org/) to do this.
 
 Just run `box build -v`.
