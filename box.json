@@ -1,8 +1,8 @@
 {
-    "directories": ["src", "vendor"],
-    "files": ["LICENSE.txt", "README.md"],
+    "directories": ["src"],
+    "files": ["LICENSE.txt", "README.md", "vendor/composer/ClassLoader.php"],
     "output": "build/appshed-api.phar",
-    "main": "vendor/autoload.php",
+    "main": "src/main.php",
     "stub": true,
     "shebang": false
 }

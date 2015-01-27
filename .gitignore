@@ -1,3 +1,5 @@
 /doc/
 /vendor/
 /cache/
+/build/
+!/build/appshed-api.phar

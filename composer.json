@@ -14,5 +14,14 @@
     },
     "autoload": {
         "psr-0": { "AppShed\\Remote\\": ["src/"] }
+    },
+    "autoload-dev": {
+        "psr-0": { "AppShed\\Remote\\": ["tests/"] }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.4",
+        "malkusch/php-mock": "0.4.*",
+        "kherge/box": "~2.5",
+        "sami/sami": "~2.0"
     }
 }

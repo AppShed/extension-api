@@ -28,13 +28,17 @@ You can see the api docs on [github pages](http://appshed.github.io/extension-ap
 
 Please be sure to update the phar before committing. You need to use [Box](http://box-project.org/) to do this.
 
-Just run `box build -v`.
+To build the phar:
 
-You might need to run `composer install` to get the autoloading files generated.
+    ./vendor/bin/box build -v
 
 ### Docs
 
-You can run `[sami.php](https://github.com/fabpot/sami) update sami.php` to generate the API doc.
+The API doc is built using [sami](https://github.com/fabpot/sami).
+
+To generate the API doc:
+    
+    ./vendor/bin/sami.php update sami.php 
 
 You can then commit the doc folder to the `gh-pages` branch, something like:
 
@@ -45,3 +49,8 @@ You can then commit the doc folder to the `gh-pages` branch, something like:
     git add .
     git commit
     
+### Tests
+
+To run the tests 
+
+    ./vendor/bin/phpunit
