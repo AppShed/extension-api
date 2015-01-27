@@ -18,10 +18,28 @@ Be sure to run `composer install` if you want to run the examples
 
 ## Docs
 
-You can run `[sami](https://github.com/fabpot/sami) update sami.php` to generate the API doc.
+You can see the api docs on [github pages](http://appshed.github.io/extension-api/)
 
 ## Contributing
 
- Please be sure to update the phar before commiting. You need to use [Box](http://box-project.org/) to do this.
+### Phar
+
+Please be sure to update the phar before committing. You need to use [Box](http://box-project.org/) to do this.
 
 Just run `box build -v`.
+
+You might need to run `composer install` to get the autoloading files generated.
+
+### Docs
+
+You can run `[sami.php](https://github.com/fabpot/sami) update sami.php` to generate the API doc.
+
+You can then commit the doc folder to the `gh-pages` branch, something like:
+
+    mv doc ~/doc-tmp
+    git checkout gh-pages
+    rm -rf .
+    mv ~/doc-tmp/* .
+    git add .
+    git commit
+    

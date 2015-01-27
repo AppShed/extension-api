@@ -3,5 +3,6 @@
     "files": ["LICENSE.txt", "README.md"],
     "output": "build/appshed-api.phar",
     "main": "vendor/autoload.php",
-    "stub": true
+    "stub": true,
+    "shebang": false
 }
