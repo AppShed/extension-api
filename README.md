@@ -2,6 +2,10 @@
 
 This is the api for remote screens.
 
+[![Latest Stable Version](https://poser.pugx.org/appshed/extension-api/v/stable.png)](https://packagist.org/packages/appshed/extension-api)
+[![License](https://poser.pugx.org/appshed/extension-api/license.png)](https://packagist.org/packages/appshed/extension-api)
+[![Build Status](https://travis-ci.org/AppShed/extension-api.svg?branch=master)](https://travis-ci.org/AppShed/extension-api)
+
 ## Installing
 
 ### Composer
