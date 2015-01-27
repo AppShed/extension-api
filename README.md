@@ -6,19 +6,21 @@ This is the api for remote screens.
 
 ### Composer
 
-You can install the API in your project just add `"appshed/extension-api": "*"` to your composer.json and run `composer update appshed/extension-api`.
+You can install the API in your project just run `composer require appshed/extension-api`.
 
 ### Phar
 
-If you don't want to use composer, you can [download the phar](https://raw.githubusercontent.com/AppShed/extension-api/master/build/appshed-api.phar). This is a package of everything you need, you just need to `require_once 'appshed-api.phar'`.
+If you don't want to use composer, you can [download the phar](https://raw.githubusercontent.com/AppShed/extension-api/master/build/appshed-api.phar).
+This is a package of everything you need, you just need to `require_once 'appshed-api.phar'`.
+Look in the `phar-examples` folder to see how it might be used.
 
 ## Examples
 
-Be sure to run `composer install` if you want to run the examples
+Be sure to run `composer install` if you want to run the examples from this repo.
 
 ## Docs
 
-You can see the api docs on [github pages](http://appshed.github.io/extension-api/)
+You can see the api docs on [github pages](http://appshed.github.io/extension-api/).
 
 ## Contributing
 
