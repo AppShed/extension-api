@@ -11,7 +11,7 @@ namespace AppShed\Remote\HTML;
 use AppShed\Remote\Element\Item\Marker;
 use AppShed\Remote\Element\Screen\Map;
 use AppShed\Remote\Element\Screen\Screen;
-use malkusch\phpmock\phpunit\PHPMock;
+use phpmock\phpunit\PHPMock;
 
 class RemoteTest extends \PHPUnit_Framework_TestCase
 {
