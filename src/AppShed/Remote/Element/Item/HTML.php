@@ -46,9 +46,12 @@ class HTML extends Item
 
         if ($html != '') {
             $fragDoc = new \DOMDocument();
-            @$fragDoc->loadHTML(
+            $libxml_previous_state = libxml_use_internal_errors(true);
+            $fragDoc->loadHTML(
                 '<?xml version="1.0" encoding="utf-8" standalone="yes"?><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/ loose.dtd"><html><head><title></title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/></head><body>' . $html . '</body></html>'
             );
+            libxml_clear_errors();
+            libxml_use_internal_errors($libxml_previous_state);
             if ($fragDoc->hasChildNodes()) {
                 $body = $fragDoc->getElementsByTagName('body')->item(0);
                 if ($body->hasChildNodes()) {
