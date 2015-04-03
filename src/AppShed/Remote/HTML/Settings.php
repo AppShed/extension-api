@@ -1,6 +1,8 @@
 <?php
 namespace AppShed\Remote\HTML;
 
+use AppShed\Remote\Style\CSSDocument;
+
 /**
  * Represents some settings about how html should be generated
  *
@@ -112,7 +114,7 @@ class Settings
      * @param array $secure
      * @param string $js
      */
-    public function addApp($id, $html, $css, $splashHtml, $updated, $secure, $js)
+    public function addApp($id, $html, CSSDocument $css, $splashHtml, \DateTime $updated = null, $secure, $js)
     {
         $this->apps[$this->getPrefix() . $id] = [
             'html' => "<style scoped>" . $css->toString() . "</style>$html",
@@ -132,7 +134,7 @@ class Settings
      * @param boolean $secure
      * @param array $js
      */
-    public function addScreen($id, $html, $css, $updated, $secure, $js)
+    public function addScreen($id, $html, CSSDocument $css, \DateTime $updated = null, $secure, $js)
     {
         $this->screens[$this->getPrefix() . $id] = [
             'html' => "<style scoped>" . $css->toString() . "</style>$html",

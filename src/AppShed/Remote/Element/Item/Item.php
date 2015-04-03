@@ -3,6 +3,7 @@
 namespace AppShed\Remote\Element\Item;
 
 use AppShed\Remote\Element\Element;
+use AppShed\Remote\HTML\Settings;
 
 abstract class Item extends Element
 {
@@ -39,7 +40,7 @@ abstract class Item extends Element
      * @param array $javascripts
      * @param \AppShed\Remote\HTML\Settings $settings
      */
-    public function getJavascript(&$javascripts, $settings)
+    public function getJavascript(&$javascripts, Settings $settings)
     {
 
     }

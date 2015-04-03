@@ -166,7 +166,7 @@ class Image
      * @param CSSDocument $css
      * @param string $selector
      */
-    public function toCSS($css, $selector)
+    public function toCSS(CSSDocument $css, $selector)
     {
         if ($this->url) {
             $size = 'contain';

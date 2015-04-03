@@ -116,7 +116,7 @@ class Remote
      *
      * @return string
      */
-    public function getResponse($settings = null, $header = true, $return = false)
+    public function getResponse(Settings $settings = null, $header = true, $return = false)
     {
         $callback = $this->getCallback();
 

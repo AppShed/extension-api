@@ -4,7 +4,9 @@ namespace AppShed\Remote\Element;
 
 use AppShed\Remote\Element\Item\Item;
 use AppShed\Remote\Element\Screen\Screen;
+use AppShed\Remote\HTML\Settings;
 use AppShed\Remote\Style\Color;
+use AppShed\Remote\Style\CSSDocument;
 use AppShed\Remote\Style\Image;
 
 trait Style
@@ -526,7 +528,7 @@ trait Style
      * @param \AppShed\Remote\Style\CSSDocument $css
      * @param \AppShed\Remote\HTML\Settings $settings
      */
-    public function getCSS($css, $settings)
+    public function getCSS(CSSDocument $css, Settings $settings)
     {
         $idSelector = $css->getIdSelector($this->getIdType() . $settings->getPrefix() . $this->getId());
         $isScreen = $this instanceof Screen;
@@ -900,7 +902,7 @@ trait Style
      *
      * @return Color
      */
-    protected function getShadowColor($color)
+    protected function getShadowColor(Color $color)
     {
         $values = [
             'red' => $color->getRed(),
@@ -923,7 +925,7 @@ trait Style
      *
      * @param \AppShed\Remote\Element\Styleable $from
      */
-    public function copyStyles($from)
+    public function copyStyles(Styleable $from)
     {
         $this->color = $from->getColor();
         $this->titleColor = $from->getTitleColor();

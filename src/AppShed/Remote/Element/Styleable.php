@@ -2,7 +2,9 @@
 
 namespace AppShed\Remote\Element;
 
+use AppShed\Remote\HTML\Settings;
 use AppShed\Remote\Style\Color;
+use AppShed\Remote\Style\CSSDocument;
 use AppShed\Remote\Style\Image;
 
 interface Styleable
@@ -45,7 +47,7 @@ interface Styleable
      * @param \AppShed\Remote\Style\CSSDocument $css
      * @param \AppShed\Remote\HTML\Settings $settings
      */
-    public function getCSS($css, $settings);
+    public function getCSS(CSSDocument $css, Settings $settings);
 
     public function getSubtitleSize();
 

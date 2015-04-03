@@ -77,7 +77,7 @@ class CSSDocument
      *
      * @return string
      */
-    public function getColorValue($c)
+    public function getColorValue(Color $c = null)
     {
         if ($c) {
             return $c->toString();

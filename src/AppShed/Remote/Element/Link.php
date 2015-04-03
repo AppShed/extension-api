@@ -7,6 +7,8 @@ use AppShed\Remote\Element\Item\Input;
 use AppShed\Remote\Element\Item\Link as LinkElement;
 use AppShed\Remote\Element\Item\TextArea;
 use AppShed\Remote\Element\Screen\Screen;
+use AppShed\Remote\HTML\Settings;
+use AppShed\Remote\XML\DOMDocument;
 
 trait Link
 {
@@ -345,7 +347,7 @@ trait Link
      * @param \DOMElement $node
      * @param \AppShed\Remote\HTML\Settings $settings
      */
-    protected function applyLinkToNode($xml, $node, $settings)
+    protected function applyLinkToNode(DOMDocument $xml, \DOMElement $node, Settings $settings)
     {
         switch ($this->linktype) {
             case LinkConstants::LINK_JAVASCRIPT:
@@ -531,7 +533,7 @@ trait Link
      * @param array $javascripts
      * @param \AppShed\Remote\HTML\Settings $settings
      */
-    public function getJavascript(&$javascripts, $settings)
+    public function getJavascript(&$javascripts, Settings $settings)
     {
         if ($this->linktype == LinkConstants::LINK_JAVASCRIPT) {
             $javascripts[$this->getIdType() . $settings->getPrefix() . $this->getId()] = $this->javascript;
