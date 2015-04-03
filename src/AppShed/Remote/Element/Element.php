@@ -6,7 +6,7 @@ abstract class Element implements Styleable
 {
     use Style;
 
-    private static $ID = null;
+    private static $ID = 0;
 
     private $id;
 
@@ -130,9 +130,6 @@ abstract class Element implements Styleable
      */
     private static function id()
     {
-        if (self::$ID == null) {
-            self::$ID = 0;
-        }
         return "a" . self::$ID++;
     }
 }
