@@ -121,7 +121,9 @@ class Remote
         $callback = $this->getCallback();
 
         if ($header) {
-            static::getCORSResponse();
+            if (static::getCORSResponse()) {
+                return null;
+            }
 
             if ($callback) {
                 header('Content-type: application/javascript');
@@ -231,7 +233,8 @@ class Remote
 
     /**
      * Helper function to set CORS headers
-     * Will call exit if this is an OPTIONS request
+     * When it returns true you should finish the response
+     * @return boolean
      */
     public static function getCORSResponse() {
         $headers = static::getCORSResponseHeaders();
@@ -239,9 +242,7 @@ class Remote
             header("$name: $value");
         }
 
-        if (static::isOptionsRequest()) {
-            exit(0);
-        }
+        return static::isOptionsRequest();
     }
 
     /**
