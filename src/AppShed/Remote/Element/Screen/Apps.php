@@ -139,7 +139,7 @@ class Apps extends Screen
         $searchEl->appendChild($appInner = $xml->createElement('div', ['class' => 'apps-inner']));
         $appInner->appendChild($searchContainer = $xml->createElement('div', ['class' => 'search-holder']));
         $searchContainer->appendChild(
-            $inp = $xml->createElement(
+            $xml->createElement(
                 'input',
                 [
                     'type' => 'search',
@@ -149,7 +149,7 @@ class Apps extends Screen
                 ]
             )
         );
-        $appInner->appendChild($searchResults = $xml->createElement('div', ['class' => 'search-results']));
+        $appInner->appendChild($xml->createElement('div', ['class' => 'search-results']));
 
         $settings->pushCurrentScreen($this->getId());
 

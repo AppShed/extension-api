@@ -86,7 +86,7 @@ class Toggle extends Item implements FormVariable
         );
 
         $inner->appendChild(
-            $input = $xml->createElement(
+            $xml->createElement(
                 'input',
                 [
                     'type' => 'checkbox',
