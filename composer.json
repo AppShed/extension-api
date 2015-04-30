@@ -13,10 +13,10 @@
         "php": ">=5.4.0"
     },
     "autoload": {
-        "psr-0": { "AppShed\\Remote\\": ["src/"] }
+        "psr-4": { "AppShed\\Remote\\": "src/AppShed/Remote" }
     },
     "autoload-dev": {
-        "psr-0": { "AppShed\\Remote\\": ["tests/"] }
+        "psr-4": { "AppShed\\Remote\\": "tests/AppShed/Remote" }
     },
     "require-dev": {
         "phpunit/phpunit": "~4.4",
