@@ -163,6 +163,11 @@ trait Link
      */
     protected $registerId;
 
+    /**
+     * @var bool
+     */
+    protected $appshedLink;
+
     public function getLinkArrow()
     {
         return $this->linkArrow;
@@ -197,22 +202,26 @@ trait Link
      *
      * @param Screen|string $screen
      * @param string $elementId
+     * @param bool $appshedLink
      */
-    public function setScreenLink($screen, $elementId = null)
+    public function setScreenLink($screen, $elementId = null, $appshedLink = false)
     {
         $this->linktype = LinkConstants::LINK_SCREEN;
         $this->screen = $screen;
         $this->elementId = $elementId;
+        $this->appshedLink = $appshedLink;
     }
 
     /**
      *
      * @param Tab|string $tab
+     * @param bool $appshedLink
      */
-    public function setTabLink($tab)
+    public function setTabLink($tab, $appshedLink)
     {
         $this->linktype = LinkConstants::LINK_TAB;
         $this->tab = $tab;
+        $this->appshedLink = $appshedLink;
     }
 
     /**
@@ -367,6 +376,9 @@ trait Link
                 if ($this->screen instanceof Screen) {
                     $this->screen->getHTMLNode($xml, $settings);
                     $node->setAttribute('data-href', $settings->getPrefix() . $this->screen->getId());
+                } elseif ($this->appshedLink) {
+                    $node->setAttribute('data-href', $this->screen);
+                    $node->setAttribute('data-appshed', 'appshed');
                 } else {
                     $node->setAttribute('data-href', $settings->getPrefix() . $this->screen);
                 }
@@ -378,6 +390,9 @@ trait Link
                 $node->setAttribute('data-linktype', LinkConstants::LINK_TAB);
                 if ($this->tab instanceof Tab) {
                     $node->setAttribute('data-href', $settings->getPrefix() . $this->tab->getId());
+                } elseif ($this->appshedLink) {
+                    $node->setAttribute('data-href', $this->tab);
+                    $node->setAttribute('data-appshed', 'appshed');
                 } else {
                     $node->setAttribute('data-href', $settings->getPrefix() . $this->tab);
                 }
