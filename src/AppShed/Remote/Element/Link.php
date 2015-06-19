@@ -217,7 +217,7 @@ trait Link
      * @param Tab|string $tab
      * @param bool $appshedLink
      */
-    public function setTabLink($tab, $appshedLink)
+    public function setTabLink($tab, $appshedLink = false)
     {
         $this->linktype = LinkConstants::LINK_TAB;
         $this->tab = $tab;
@@ -459,7 +459,6 @@ trait Link
                 if ($settings->getEmailPreview()) {
                     $screen = new Screen('Email');
                     $screen->setId('email' . $this->getId());
-                    $screen->setUpdated(false);
                     $screen->setEditable(false);
                     $screen->setBack($settings->getCurrentScreen());
 
@@ -494,7 +493,6 @@ trait Link
                 if ($settings->getPhonePreview()) {
                     $screen = new Screen('Phone');
                     $screen->setId('phone' . $this->getId());
-                    $screen->setUpdated(false);
                     $screen->setScroll(false);
                     $screen->setEditable(false);
                     $screen->setBack($settings->getCurrentScreen());
