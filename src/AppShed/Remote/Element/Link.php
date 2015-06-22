@@ -168,6 +168,16 @@ trait Link
      */
     protected $appshedLink;
 
+    /**
+     * @var string
+     */
+    protected $iotValue;
+
+    /**
+     * @var string
+     */
+    protected $iotPinName;
+
     public function getLinkArrow()
     {
         return $this->linkArrow;
@@ -332,6 +342,13 @@ trait Link
         $this->linktype = LinkConstants::LINK_BACK;
         $this->backScreenId = $screenId;
     }
+
+    public function setIotLink($pinName, $value)
+    {
+        $this->iotPinName = $pinName;
+        $this->iotValue = $value;
+    }
+
 
     /**
      * @param \AppShed\Remote\Element\Item\FormVariable $variable
@@ -526,6 +543,11 @@ trait Link
                 if ($this->backScreenId) {
                     $node->setAttribute('data-href', $this->backScreenId);
                 }
+                break;
+            case LinkConstants::LINK_IOT:
+                $node->setAttribute('data-linktype', LinkConstants::LINK_IOT);
+                $node->setAttribute('data-href', $this->iotPinName);
+                $node->setAttribute('data-value', $this->iotValue);
                 break;
         }
         if ($node->hasAttribute('data-linktype')) {

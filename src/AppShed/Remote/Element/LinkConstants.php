@@ -24,6 +24,7 @@ class LinkConstants
     const LINK_REMOTE = 'remote';
     const LINK_LOGIN = 'login';
     const LINK_REGISTER = 'register';
+    const LINK_IOT = 'iot';
 
     const WEBLINK_NORMAL = 'normal';
     const WEBLINK_IFRAME = 'iframe';
