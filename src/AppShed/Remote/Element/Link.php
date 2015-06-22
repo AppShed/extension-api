@@ -345,6 +345,7 @@ trait Link
 
     public function setIotLink($pinName, $value)
     {
+        $this->linktype = LinkConstants::LINK_IOT;
         $this->iotPinName = $pinName;
         $this->iotValue = $value;
     }
