@@ -361,6 +361,7 @@ trait Link
         switch ($this->linktype) {
             case LinkConstants::LINK_JAVASCRIPT:
                 $node->setAttribute('data-linktype', LinkConstants::LINK_JAVASCRIPT);
+                $node->setAttribute('data-href', $this->getIdType() . $settings->getPrefix() . $this->getId());
                 break;
             case LinkConstants::LINK_APP:
                 $node->setAttribute('data-linktype', LinkConstants::LINK_APP);
