@@ -73,6 +73,12 @@ class Screen extends Element implements Root
     protected $customCSS;
 
     /**
+     *
+     * @var boolean
+     */
+    protected $refreshable = false;
+
+    /**
      * @var \AppShed\Remote\Element\Item\Item[]
      */
     protected $children = [];
@@ -208,6 +214,16 @@ class Screen extends Element implements Root
         return $this->children;
     }
 
+    function isRefreshable()
+    {
+        return $this->refreshable;
+    }
+
+    function setRefreshable($refreshable) 
+    {
+        $this->refreshable = $refreshable;
+    }
+
     /**
      * Get the html node for this element
      *
@@ -326,6 +342,11 @@ class Screen extends Element implements Root
             if ($c) {
                 $navbar->appendChild($c);
             }
+        }
+
+        if ($this->isRefreshable()) {
+            $navbar->appendChild($refreshButton = $xml->createElement('div', ['data-linktype' => 'refresh', 'class' => 'refresh item headerbutton']));
+            $refreshButton->appendChild($xml->createElement('div', ['class' => 'button', '']));
         }
     }
 
